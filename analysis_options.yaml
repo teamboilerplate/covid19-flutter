@@ -1,0 +1,24 @@
+include: package:lint/analysis_options.yaml
+
+linter:
+  rules:
+    - avoid_relative_lib_imports
+    - empty_statements
+    - avoid_print
+    - avoid_empty_else
+    - prefer_conditional_assignment
+    - avoid_returning_null_for_future
+
+analyzer:
+  errors:
+    missing_required_param: error
+    avoid_relative_lib_imports: error
+    avoid_returning_null_for_future: error
+    argument_type_not_assignable: ignore
+    return_of_invalid_type: ignore
+    avoid_classes_with_only_static_members: ignore
+    prefer_collection_literals: ignore
+    overridden_fields: ignore
+    unnecessary_getters_setters: ignore
+    invariant_booleans: ignore
+    avoid_bool_literals_in_conditional_expressions: ignore
