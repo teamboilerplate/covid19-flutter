@@ -1,11 +1,8 @@
 class Endpoints {
   Endpoints._();
 
-  // base url to retrieve Information
-  static const baseUrlInformation = "https://covid19.mathdro.id/api";
-
-  // base url to retreieve statistics
-  static const baseUrlStatistics = "https://api.covid19api.com/total/country/";
+  // base url
+  static const baseUrlStatistics = "https://api.covid19api.com";
 
   // base url to retreieve user's IP
   static const baseUrlIP = "https://httpbin.org/ip";
@@ -16,20 +13,31 @@ class Endpoints {
   // base url to retrieve country flags
   static const baseUrlCountryFlags = 'https://www.countryflags.io/';
 
+  // base url for Covid-19 prevention Infographic
+  static const baseUrlPreventionInfographic =
+      'http://boilerplate.in/covid19/COVID-19-Prevention-Dos-and-Donts.jpg';
+
+  static const dataSourceReferenceURL =
+      'https://visme.co/blog/coronavirus-prevention';
+
+  static const dataSourceAuthorURL = 'http://www.chloesocial.com/';
+
   // receiveTimeout
   static const receiveTimeout = 5000;
 
   // connectTimeout
   static const connectionTimeout = 3000;
 
-  // fetch Home Offers Data
-  static const _fetchHomeData = '/countries/';
+  // fetch Home Data (Global and Countries Summary)
+  static const _fetchHomeData = '/summary';
 
-  static String get fetchHomeData => baseUrlInformation + _fetchHomeData;
+  // fetch Statistics about a particulr country
+  static const _fetchCountryStatistics = '/total/country/';
 
-  static String get fetchCountriesList => baseUrlInformation + _fetchHomeData;
+  static String get fetchHomeData => baseUrlStatistics + _fetchHomeData;
 
-  static String get fetchDailyData => baseUrlStatistics;
+  static String get fetchCountryStatistics =>
+      baseUrlStatistics + _fetchCountryStatistics;
 
   static String get fetchIP => baseUrlIP;
 

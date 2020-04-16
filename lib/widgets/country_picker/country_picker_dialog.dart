@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
-import 'package:covid19/models/home/countries_list_model.dart';
+import 'package:covid19/constants/strings.dart';
+import 'package:covid19/models/statistics/countries_list_model.dart';
+import 'package:covid19/utils/custom_scroll_behaviour.dart';
 import 'package:covid19/widgets/country_picker/utils/my_alert_dialog.dart';
 import 'package:covid19/widgets/country_picker/utils/typedefs.dart';
-import 'package:covid19/utils/custom_scroll_behaviour.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 /// Provides a customizable [Dialog] which displays all countries
 /// with optional search feature
@@ -213,7 +214,7 @@ class SingleChoiceDialogState extends State<CountryPickerDialog> {
       cursorColor: widget.searchCursorColor,
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.search),
-        hintText: 'Search',
+        hintText: Strings.countryDialogSearch,
         contentPadding: const EdgeInsets.all(1),
         border: const OutlineInputBorder(
           borderRadius: BorderRadius.all(

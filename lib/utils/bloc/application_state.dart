@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:covid19/models/application/country_information_model.dart';
-import 'package:covid19/models/home/countries_list_model.dart';
+import 'package:covid19/models/statistics/countries_list_model.dart';
+import 'package:flutter/material.dart';
 
 /// Base class for the states of Authentication
 ///

@@ -1,22 +1,22 @@
-import 'package:covid19/constants/colors.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:bloc/bloc.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
-import 'package:covid19/routes.dart';
-import 'package:covid19/res/asset_images.dart';
 import 'package:covid19/constants/app_theme.dart';
+import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/strings.dart';
 import 'package:covid19/data/repository/base_repository.dart';
 import 'package:covid19/data/repository/user_repository.dart';
-import 'package:covid19/stores/home/home_notifier.dart';
-import 'package:covid19/ui/home/home_screen.dart';
+import 'package:covid19/res/asset_images.dart';
+import 'package:covid19/routes.dart';
+import 'package:covid19/stores/statistics/statistics_notifier.dart';
+import 'package:covid19/ui/home/home_navigator.dart';
 import 'package:covid19/ui/splash/splash_screen.dart';
 import 'package:covid19/ui/static/static_error_screen.dart';
 import 'package:covid19/utils/bloc/application_bloc.dart';
 import 'package:covid19/utils/bloc/application_events.dart';
 import 'package:covid19/utils/bloc/application_state.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 /// [SimpleBloocDelegate] handles all the Bloc events delegated by the [BlocSupervisor]
 class SimpleBlocDelegate extends BlocDelegate {
@@ -102,8 +102,8 @@ class MyApp extends StatelessWidget {
           // To handle the state with [ApplicationInitialized] after all the required
           // data is pre-fetched to direct the user to the [HomeScreen]
           if (state is ApplicationInitialized) {
-            return ChangeNotifierProvider<HomeChangeNotifier>(
-              create: (BuildContext context) => HomeChangeNotifier(
+            return ChangeNotifierProvider<StatisticsChangeNotifier>(
+              create: (BuildContext context) => StatisticsChangeNotifier(
                 userRepository: repository,
               ),
               child: Scaffold(
@@ -117,7 +117,7 @@ class MyApp extends StatelessWidget {
                     elevation: 0.0,
                   ),
                 ),
-                body: HomeScreen(),
+                body: HomeNavigator(),
               ),
             );
           }
@@ -144,9 +144,9 @@ class MyApp extends StatelessWidget {
                     );
                   },
                   image: AssetImage(AssetImages.noInternet),
-                  title: 'No Internet Connection',
-                  desc: 'You don’t seem to have an active Internet Connection',
-                  actionText: 'RETRY',
+                  title: Strings.noInternetErrorDesc,
+                  desc: Strings.noInternetErrorDesc,
+                  actionText: Strings.retryButton,
                 ),
               ),
             );
@@ -173,10 +173,9 @@ class MyApp extends StatelessWidget {
                   );
                 },
                 image: AssetImage(AssetImages.genericError),
-                actionText: 'Retry',
-                title: 'Something Went Wrong',
-                desc:
-                    'We are having some technical difficulties.\nPlease try again',
+                title: Strings.genericErrorTitle,
+                desc: Strings.genericErrorDesc,
+                actionText: Strings.retryButton,
               ),
             ),
           );
