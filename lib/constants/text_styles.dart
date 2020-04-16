@@ -8,14 +8,13 @@ class TextStyles {
   /// Global Font Styles
   /// used used throughout the app
   ///
-
   static const titleTextStyle = TextStyle(
     color: AppColors.accentBlackColor,
   );
 
   static const hightlightText = TextStyle(
-    color: AppColors.blackColor,
     fontWeight: FontWeight.w700,
+    color: AppColors.blackColor,
   );
 
   /// ------------------------------------------------------
@@ -38,31 +37,52 @@ class TextStyles {
   );
 
   /// ------------------------------------------------------
-  /// Font Styles for Home
-  /// used in (ui/home)
+  /// Font Styles for Statistics Screen
+  /// used in (ui/statistics)
   ///
-
-  static const homeHeadingTextStlye = TextStyle(
+  static const statisticsHeadingTextStlye = TextStyle(
     fontWeight: FontWeight.w700,
     color: AppColors.blackColor,
   );
 
-  static const homeSubHeadingTextStlye = TextStyle(
-    fontWeight: FontWeight.w500,
+  static const statisticsSubHeadingTextStlye = TextStyle(
+    fontWeight: FontWeight.w400,
     color: AppColors.offBlackColor,
   );
 
-  static const homeAccentTextStyle = TextStyle(
+  static const statisticsAccentTextStyle = TextStyle(
     fontWeight: FontWeight.w600,
     color: AppColors.blueColor,
   );
 
-  static const homeSymptonCheckerHeadingTextStyle = TextStyle(
+  static const infoCountTextStyle = TextStyle(
+    fontWeight: FontWeight.w700,
+  );
+
+  static const infoLabelTextStyle = TextStyle(
+    fontWeight: FontWeight.w700,
+    color: AppColors.offBlackColor,
+  );
+
+  /// ------------------------------------------------------
+  /// Font Styles for Home Screen
+  /// used in (ui/home)
+  ///
+  static const homeCardTitle = TextStyle(
     fontWeight: FontWeight.w700,
     color: AppColors.whiteColor,
   );
 
-  static const homeSymptonCheckerSubHeadingTextStyle = TextStyle(
+  /// ------------------------------------------------------
+  /// Font Styles for Symptom Checker
+  /// used in (ui/home/widgets) and (ui/symptomChecker)
+  ///
+  static const symptonCheckerHeadingTextStyle = TextStyle(
+    fontWeight: FontWeight.w700,
+    color: AppColors.whiteColor,
+  );
+
+  static const symptonCheckerSubHeadingTextStyle = TextStyle(
     fontWeight: FontWeight.w500,
     color: AppColors.offWhiteColor,
   );

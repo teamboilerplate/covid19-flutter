@@ -1,0 +1,70 @@
+{
+  "name": "Covid19",
+  "css_prefix_text": "",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "52c6fc2494bcc643373bb69d3d5d74dc",
+      "css": "autorenew",
+      "code": 59392,
+      "src": "material"
+    },
+    {
+      "uid": "830b6d2375dcc686ba61ed166e4166f7",
+      "css": "error",
+      "code": 59393,
+      "src": "material"
+    },
+    {
+      "uid": "af76421f7827c9b8dbf4330d596be014",
+      "css": "keyboard_arrow_left",
+      "code": 59394,
+      "src": "material"
+    },
+    {
+      "uid": "6a12c2b74456ea21cc984e11dec227a1",
+      "css": "globe",
+      "code": 59395,
+      "src": "entypo"
+    },
+    {
+      "uid": "34b1fe24d083539fd5d40ab2e57322b4",
+      "css": "add",
+      "code": 59396,
+      "src": "material"
+    },
+    {
+      "uid": "bb949f02bd55a4b012c03a9b8651f1b7",
+      "css": "favorite",
+      "code": 59397,
+      "src": "material"
+    },
+    {
+      "uid": "5eb07554925705653f5a05894271d8d3",
+      "css": "close",
+      "code": 59398,
+      "src": "material"
+    },
+    {
+      "uid": "5a2e0f80f343a57e27915d85fefa82c6",
+      "css": "keyboard_arrow_right",
+      "code": 59399,
+      "src": "material"
+    },
+    {
+      "uid": "4dffe5e59760395857c5e7cbf7e2d20a",
+      "css": "search",
+      "code": 59400,
+      "src": "material"
+    },
+    {
+      "uid": "46fe603b8b3390939c1cb27b4e4241ea",
+      "css": "arrow_drop_down",
+      "code": 59401,
+      "src": "material"
+    }
+  ]
+}

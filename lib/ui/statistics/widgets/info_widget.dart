@@ -1,8 +1,9 @@
-import 'package:covid19/constants/colors.dart';
+import 'package:flutter/material.dart';
 import 'package:covid19/constants/dimens.dart';
+import 'package:covid19/constants/colors.dart';
+import 'package:covid19/constants/text_styles.dart';
 import 'package:covid19/utils/device/device_utils.dart';
 import 'package:covid19/widgets/sized_box_height_widget.dart';
-import 'package:flutter/material.dart';
 
 /// Displays the current summary information about the selected
 /// country
@@ -15,12 +16,15 @@ import 'package:flutter/material.dart';
 class InfoCard extends StatelessWidget {
   final Color infoColor;
   final IconData infoIcon;
-  final String infoValue, infoLabel;
+  final int infoValueNew;
+  final int infoValue;
+  final String infoLabel;
 
   const InfoCard({
     Key key,
     @required this.infoColor,
     @required this.infoIcon,
+    @required this.infoValueNew,
     @required this.infoValue,
     @required this.infoLabel,
   }) : super(key: key);
@@ -34,7 +38,7 @@ class InfoCard extends StatelessWidget {
         horizontal: Dimens.horizontalPadding / 2,
       ),
       padding: EdgeInsets.symmetric(
-        vertical: screenHeight / 23,
+        vertical: screenHeight / 55,
         horizontal: screenWidth / 25,
       ),
       decoration: const BoxDecoration(
@@ -54,6 +58,29 @@ class InfoCard extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
+          Container(
+            padding: EdgeInsets.symmetric(
+              horizontal: screenWidth / 75,
+              vertical: screenHeight / 250,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(5),
+              ),
+              color: infoColor.withOpacity(0.4),
+            ),
+            child: Text(
+              '+ $infoValueNew',
+              style: TextStyles.infoCountTextStyle.copyWith(
+                fontSize: screenWidth / 28,
+                color: infoColor,
+              ),
+            ),
+          ),
+          // Vertical Spacing
+          SizedBoxHeightWidget(screenHeight / 50),
+
+          // Info Icon
           Container(
             padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
@@ -76,7 +103,7 @@ class InfoCard extends StatelessWidget {
           ),
 
           // Vertical Spacing
-          SizedBoxHeightWidget(screenHeight / 66),
+          SizedBoxHeightWidget(screenHeight / 50),
 
           // Information Text
           RichText(
@@ -84,18 +111,15 @@ class InfoCard extends StatelessWidget {
               children: <TextSpan>[
                 TextSpan(
                   text: '$infoValue \n',
-                  style: TextStyle(
-                    fontSize: screenWidth / 27,
+                  style: TextStyles.infoCountTextStyle.copyWith(
+                    fontSize: screenWidth / 25,
                     color: infoColor,
-                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 TextSpan(
                   text: infoLabel.toUpperCase(),
-                  style: TextStyle(
+                  style: TextStyles.infoLabelTextStyle.copyWith(
                     fontSize: screenWidth / 40,
-                    color: AppColors.offBlackColor,
-                    fontWeight: FontWeight.w700,
                   ),
                 ),
               ],

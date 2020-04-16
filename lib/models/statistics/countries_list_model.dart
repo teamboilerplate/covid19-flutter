@@ -25,21 +25,21 @@ class CountriesLisitModel {
 class Countries {
   String name;
   String iso2;
-  String iso3;
+  String slug;
 
-  Countries({this.name, this.iso2, this.iso3});
+  Countries({this.name, this.iso2, this.slug});
 
   Countries.fromJson(Map<String, dynamic> json) {
-    name = json['name'] as String;
-    iso2 = json['iso2'] as String;
-    iso3 = json['iso3'] as String;
+    name = json['Country'] as String;
+    iso2 = json['ISO2'] as String;
+    slug = json['Slug'] as String;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = Map<String, dynamic>();
     data['name'] = name;
     data['iso2'] = iso2;
-    data['iso3'] = iso3;
+    data['slug'] = slug;
     return data;
   }
 }

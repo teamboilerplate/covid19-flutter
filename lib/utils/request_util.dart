@@ -6,15 +6,14 @@ import 'package:crypto/crypto.dart' show md5;
 import 'package:flutter/material.dart';
 import 'package:covid19/data/network/exceptions/network_exceptions.dart';
 
-/// A class wrapper to house url, body and headers under one name
+/// A class wrapper to house url and body under one name
 class RequestWrapper {
   final String url;
-  final Map body, headers;
+  final Map body;
 
   RequestWrapper({
     @required this.url,
     @required this.body,
-    @required this.headers,
   });
 }
 
@@ -23,7 +22,6 @@ class RequestWrapper {
 class HttpRequestUtil {
   static String hashRequest(RequestWrapper request) {
     final urlHash = generateHash(request.url);
-    // final headerHash = generateHash(sortMap(request.headers).toString());
     final bodyHash = generateHash(sortMap(request.body ?? {}).toString());
     final requestHash = generateHash(urlHash + bodyHash);
     debugPrint("Request Hash :- $requestHash");
@@ -41,16 +39,15 @@ class HttpRequestUtil {
   }
 
   /// Sends a ***HTTP GET*** request to the specified url
-  static Future<Map> getRequest(
-    String url, {
-    Map<String, String> headers = const {},
-  }) async {
+  /// Dynamic is used to support different types of JSON responses
+  /// Maps and Arrays in the case of the current situation of use
+  static dynamic getRequest(String url) async {
     debugPrint('getting $url');
 
     try {
       // Fetch the contens of the fiven URL and decode it
-      final response = await http.get(url, headers: headers);
-      final responseMap = jsonDecode(response.body);
+      final jsonResponse = await http.get(url);
+      final responseMap = jsonDecode(jsonResponse.body);
 
       debugPrint('HTTP Response :- \n $responseMap');
       return responseMap;
@@ -87,6 +84,6 @@ class HttpRequestUtil {
     Map jsonResponse,
     String customError,
   ) {
-    debugPrint('In Handle Response Error + ${jsonResponse.toString()}');
+    // debugPrint('In Handle Response Error + ${jsonResponse.toString()}');
   }
 }

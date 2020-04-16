@@ -88,9 +88,9 @@ class StaticErrorScreen extends StatelessWidget {
                 width: screenWidth / 1.2,
                 height: screenHeight / 15,
                 decoration: BoxDecoration(
-                  boxShadow: [
+                  boxShadow: const [
                     BoxShadow(
-                      offset: const Offset(-2, 10),
+                      offset: Offset(-2, 10),
                       blurRadius: 10,
                       color: AppColors.boxShadowColor,
                     ),

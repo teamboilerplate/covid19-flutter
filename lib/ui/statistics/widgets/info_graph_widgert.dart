@@ -1,23 +1,24 @@
 import 'dart:convert';
-import 'package:flutter/material.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/dimens.dart';
+import 'package:covid19/constants/strings.dart';
 import 'package:covid19/constants/text_styles.dart';
-import 'package:covid19/models/home/country_statistics_day_model.dart';
+import 'package:covid19/models/statistics/country_statistics_day_model.dart';
 import 'package:covid19/utils/device/device_utils.dart';
 import 'package:covid19/widgets/sized_box_width_widget.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'package:flutter/material.dart';
 
-class InfoGraph extends StatefulWidget {
+class InfoGraphWidget extends StatefulWidget {
   final List<CountryStatistics> countryStatisticsList;
 
-  const InfoGraph({Key key, @required this.countryStatisticsList})
+  const InfoGraphWidget({Key key, @required this.countryStatisticsList})
       : super(key: key);
   @override
-  _InfoGraphState createState() => _InfoGraphState();
+  _InfoGraphWidgetState createState() => _InfoGraphWidgetState();
 }
 
-class _InfoGraphState extends State<InfoGraph> {
+class _InfoGraphWidgetState extends State<InfoGraphWidget> {
   bool dailySelected = true, weeklyselected = false;
 
   // Page Controller to control change between Daily and Weekly
@@ -79,21 +80,45 @@ class _InfoGraphState extends State<InfoGraph> {
           Dimens.horizontalPadding,
           Dimens.verticalPadding / 50,
         ),
-        child: BarChart(
-          mainBarData(
-            countryStatisticsList: widget.countryStatisticsList,
-            screenWidth: screenWidth,
-            screenHeight: screenHeight,
-          ),
-        ),
+        // Checking if the list has any elemnts i.e the API provided
+        // data for the queried country
+        child: (widget.countryStatisticsList.isNotEmpty)
+            ? BarChart(
+                mainBarData(
+                  countryStatisticsList: widget.countryStatisticsList,
+                  screenWidth: screenWidth,
+                  screenHeight: screenHeight,
+                ),
+              )
+            : Text(
+                Strings.emptyData,
+                style: TextStyles.errorHeadingTextStlye.copyWith(
+                  fontSize: screenWidth / 25,
+                ),
+              ),
       ),
       Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: Dimens.horizontalPadding,
         ),
-        child: LineChart(
-          mainData(widget.countryStatisticsList),
-        ),
+        // Checking if the list has any elemnts i.e the API provided
+        // data for the queried country
+        child: (widget.countryStatisticsList.isNotEmpty)
+            ? LineChart(
+                mainData(widget.countryStatisticsList),
+              )
+            : Padding(
+                padding: const EdgeInsets.only(
+                  top: Dimens.verticalPadding / 0.75,
+                  right: Dimens.verticalPadding / 50,
+                ),
+                child: Text(
+                  Strings.emptyData,
+                  style: TextStyles.errorHeadingTextStlye.copyWith(
+                    fontSize: screenWidth / 25,
+                  ),
+                ),
+              ),
       ),
     ];
 
