@@ -1,14 +1,13 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:covid19/constants/app_theme.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/dimens.dart';
 import 'package:covid19/constants/strings.dart';
 import 'package:covid19/constants/text_styles.dart';
-import 'package:covid19/data/network/constants/endpoints.dart';
 import 'package:covid19/models/statistics/countries_list_model.dart';
 import 'package:covid19/res/asset_images.dart';
 import 'package:covid19/icons/covid19_icons.dart';
@@ -21,10 +20,11 @@ import 'package:covid19/utils/bloc/application_bloc.dart';
 import 'package:covid19/utils/bloc/application_state.dart';
 import 'package:covid19/utils/custom_scroll_behaviour.dart';
 import 'package:covid19/utils/device/device_utils.dart';
-import 'package:covid19/utils/image_cache_manager.dart';
+import 'package:covid19/utils/emoji_flags.dart';
 import 'package:covid19/widgets/country_picker/country_picker_dialog.dart';
 import 'package:covid19/widgets/progress_indicator_widget.dart';
 import 'package:covid19/widgets/sized_box_height_widget.dart';
+import 'package:covid19/widgets/sized_box_width_widget.dart';
 
 /// Displays the country Information and country statistics
 /// Handles the various states of the [HomeChangeNotifier] to perform
@@ -35,10 +35,12 @@ class StatisticsScreen extends StatefulWidget {
 }
 
 class _StatisticsScreenState extends State<StatisticsScreen> {
+  bool isOffline = false;
+
   List<Countries> countriesList;
-  DateTime today;
+  DateTime today = DateTime.now();
   List<Countries> countrySearchItems = [];
-  String selectedCountry, selectedCountryISO2;
+  String selectedCountry = '', selectedCountryISO2 = '';
 
   @override
   void initState() {
@@ -60,9 +62,11 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
         if (state is ApplicationInitialized) {
           setState(
             () {
-              selectedCountry = state.userCountryInformation.countryName;
-              selectedCountryISO2 = state.userCountryInformation.countryCode;
+              selectedCountryISO2 = state.userCountryInformation.country;
               countriesList = state.countriesList;
+              selectedCountry = countriesList
+                  .firstWhere((item) => item.iso2 == selectedCountryISO2)
+                  .name;
               // Adding all the items of the [countriesList] to [countrySearchItems]
               for (final item in countriesList) {
                 countrySearchItems.add(
@@ -93,6 +97,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
       iso2: iso2,
     );
     setState(() {
+      // Setting today's date value
       today = DateTime.now();
     });
   }
@@ -101,14 +106,20 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
   Widget _buildDialogItem(Countries country) {
     return Row(
       children: <Widget>[
-        CachedNetworkImage(
-          imageUrl:
-              '${Endpoints.baseUrlCountryFlags}${country.iso2}/flat/32.png',
-          cacheManager: ImageCacheManager(),
+        Text(
+          Emoji.byISOCode('flag_${country.iso2.toLowerCase()}').char,
+          style: const TextStyle(
+            fontSize: 30,
+          ),
         ),
-        const SizedBox(width: 8.0),
+        const SizedBoxWidthWidget(15),
         Flexible(
-          child: Text(country.name),
+          child: Text(
+            country.name,
+            style: TextStyles.statisticsHeadingTextStlye.copyWith(
+              fontSize: 16,
+            ),
+          ),
         )
       ],
     );
@@ -150,6 +161,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
     // timeDilation = 15.0;
     final screenWidth = DeviceUtils.getScaledWidth(context, 1);
     final screenHeight = DeviceUtils.getScaledHeight(context, 1);
+    debugPrint('Todays Date : $today');
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.whiteColor,
@@ -203,7 +215,6 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                             // Back Icon
                             GestureDetector(
                               onTap: () => Navigator.of(context).pop(),
-                              // padding: const EdgeInsets.all(0),
                               child: Icon(
                                 Covid19Icons.keyboardArrowLeft,
                                 size: screenWidth / 12,
@@ -377,8 +388,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                             // Verical Spacing
                             SizedBoxHeightWidget(screenHeight / 35),
 
-                            Padding(
-                              padding: const EdgeInsets.only(
+                            const Padding(
+                              padding: EdgeInsets.only(
                                 right: Dimens.horizontalPadding,
                               ),
                               child: Divider(
@@ -417,10 +428,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   ),
                                   Flexible(
                                     flex: 1,
-                                    child: CachedNetworkImage(
-                                      imageUrl:
-                                          '${Endpoints.baseUrlCountryFlags}$selectedCountryISO2/flat/32.png',
-                                      cacheManager: ImageCacheManager(),
+                                    child: Text(
+                                      Emoji.byISOCode(
+                                              'flag_${selectedCountryISO2.toLowerCase()}')
+                                          .char,
+                                      style: const TextStyle(
+                                        fontSize: 30,
+                                      ),
                                     ),
                                   ),
                                   Flexible(

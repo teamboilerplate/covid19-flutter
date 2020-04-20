@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/dimens.dart';
 import 'package:covid19/constants/strings.dart';
 import 'package:covid19/constants/text_styles.dart';
-import 'package:covid19/data/network/constants/endpoints.dart';
 import 'package:covid19/icons/covid19_icons.dart';
 import 'package:covid19/ui/statistics/statistics_screen.dart';
 import 'package:covid19/utils/custom_scroll_behaviour.dart';
 import 'package:covid19/utils/device/device_utils.dart';
-import 'package:covid19/utils/image_cache_manager.dart';
+import 'package:covid19/utils/emoji_flags.dart';
 import 'package:covid19/widgets/custom_shimmer.dart';
 import 'package:covid19/widgets/sized_box_height_widget.dart';
 import 'package:covid19/widgets/sized_box_width_widget.dart';
@@ -39,7 +37,7 @@ class HomeLoadingWidget extends StatelessWidget {
       behavior: const CustomScrollBehaviour(),
       child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(
+          padding: const EdgeInsets.fromLTRB(
             Dimens.horizontalPadding,
             Dimens.verticalPadding / 0.75,
             0,
@@ -209,8 +207,8 @@ class HomeLoadingWidget extends StatelessWidget {
               // Verical Spacing
               SizedBoxHeightWidget(screenHeight / 35),
 
-              Padding(
-                padding: const EdgeInsets.only(
+              const Padding(
+                padding: EdgeInsets.only(
                   right: Dimens.horizontalPadding,
                 ),
                 child: Divider(
@@ -244,10 +242,13 @@ class HomeLoadingWidget extends StatelessWidget {
                   ),
                   Flexible(
                     flex: 1,
-                    child: CachedNetworkImage(
-                      imageUrl:
-                          '${Endpoints.baseUrlCountryFlags}$selectedCountryISO2/flat/32.png',
-                      cacheManager: ImageCacheManager(),
+                    child: Text(
+                      Emoji.byISOCode(
+                              'flag_${selectedCountryISO2.toLowerCase()}')
+                          .char,
+                      style: const TextStyle(
+                        fontSize: 30,
+                      ),
                     ),
                   ),
                   Flexible(

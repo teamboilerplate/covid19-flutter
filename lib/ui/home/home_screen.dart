@@ -19,6 +19,16 @@ class HomeScreen extends StatelessWidget {
     final screenHeight = DeviceUtils.getScaledHeight(context, 1);
     return Material(
       child: Scaffold(
+        // [AppBar] with 0 size used to set the statusbar background color and
+        // statusbat text/icon color
+        appBar: PreferredSize(
+          preferredSize: const Size.fromHeight(0.0),
+          child: AppBar(
+            backgroundColor: AppColors.transparentColor,
+            brightness: Brightness.light,
+            elevation: 0.0,
+          ),
+        ),
         body: Container(
           padding: EdgeInsets.fromLTRB(
             Dimens.horizontalPadding,
@@ -47,12 +57,10 @@ class HomeScreen extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: HomeCardWidget(
-                      start: -screenWidth / 10,
-                      end: -screenWidth / 10,
-                      bottom: -screenHeight / 20,
                       backgroundColor: AppColors.primaryColor,
                       title: Strings.latestNumbersTitle,
                       imagePath: AssetImages.latestNumbers,
+                      backgroundImage: true,
                       route: HomeRoutes.latestNumbers.name,
                     ),
                   ),
@@ -61,8 +69,6 @@ class HomeScreen extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: HomeCardWidget(
-                      end: -screenWidth / 5,
-                      bottom: -screenHeight / 100,
                       backgroundColor: AppColors.primaryColor,
                       title: Strings.preventionTitle,
                       imagePath: AssetImages.prevention,
@@ -79,7 +85,40 @@ class HomeScreen extends StatelessWidget {
               GestureDetector(
                 onTap: () => HomeNavigator.navigatorKey.currentState
                     .pushNamed(HomeRoutes.symptomChecker.name),
-                child: SymptomCheckerCardWidget(),
+                child: Hero(
+                  tag: 'symptomChecker',
+                  child: SymptomCheckerCardWidget(),
+                ),
+              ),
+
+              // Verical Spacing
+              SizedBoxHeightWidget(screenHeight / 50),
+
+              // Symptoms and Myth Busters
+              Row(
+                children: <Widget>[
+                  // Symptoms Card
+                  Expanded(
+                    flex: 1,
+                    child: HomeCardWidget(
+                      backgroundColor: AppColors.primaryColor,
+                      title: Strings.symptomsTitle,
+                      imagePath: AssetImages.symptoms,
+                      route: HomeRoutes.latestNumbers.name,
+                    ),
+                  ),
+
+                  // Myth Busters Card
+                  Expanded(
+                    flex: 1,
+                    child: HomeCardWidget(
+                      backgroundColor: AppColors.primaryColor,
+                      title: Strings.mythBusterTitle,
+                      imagePath: AssetImages.mythBusters,
+                      route: HomeRoutes.prevention.name,
+                    ),
+                  ),
+                ],
               ),
             ],
           ),

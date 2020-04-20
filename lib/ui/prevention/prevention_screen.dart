@@ -1,20 +1,49 @@
+import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:covid19/constants/dimens.dart';
 import 'package:covid19/constants/strings.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/text_styles.dart';
 import 'package:covid19/icons/covid19_icons.dart';
 import 'package:covid19/data/network/constants/endpoints.dart';
+import 'package:covid19/models/statistics/statistics_response_model.dart';
 import 'package:covid19/utils/custom_scroll_behaviour.dart';
-import 'package:covid19/utils/image_cache_manager.dart';
+import 'package:covid19/utils/cache_manager.dart';
 import 'package:covid19/utils/device/device_utils.dart';
 import 'package:covid19/widgets/custom_alert_dialog.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 /// Displays the information in regards to prevention of Coronavirus
 /// and reference to where the data is taken from
-class PreventionScreen extends StatelessWidget {
+class PreventionScreen extends StatefulWidget {
+  @override
+  _PreventionScreenState createState() => _PreventionScreenState();
+}
+
+class _PreventionScreenState extends State<PreventionScreen> {
+  File preventionImage;
+  @override
+  void initState() {
+    super.initState();
+    getStatisticsFile();
+  }
+
+  Future getStatisticsFile() async {
+    final cachedImage =
+        await CacheManager().getSingleFile(Endpoints.fetchHomeData);
+
+    final contents = await cachedImage.readAsString();
+
+    final jsonResponse = jsonDecode(contents);
+
+    final countryInformation = StatisticsResponseModel.fromJson(jsonResponse);
+
+    debugPrint('${countryInformation.global.newConfirmed}');
+  }
+
   @override
   Widget build(BuildContext context) {
     final screenWidth = DeviceUtils.getScaledWidth(context, 1);
@@ -25,21 +54,25 @@ class PreventionScreen extends StatelessWidget {
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(
-          screenHeight / 25,
+          screenHeight / 20,
         ),
         child: AppBar(
           // Leading set to empty container to remove the back button
           leading: Container(),
+          // Setting the background color to transparent so that the
+          // image can be full screen without any froeground colors
           backgroundColor: AppColors.transparentColor,
           elevation: 0,
           actions: <Widget>[
             // Adding padding to the action info button so it doesn't stick
-            // to the end of the screen
+            // to the side of the screen
             Padding(
               padding: EdgeInsets.only(
-                right: screenWidth / 25,
+                right: screenWidth / 50,
               ),
               child: GestureDetector(
+                // Displaying the dialog to reference the source of the
+                // image
                 onTap: () => showDialog(
                   context: context,
                   builder: (BuildContext context) {
@@ -47,12 +80,16 @@ class PreventionScreen extends StatelessWidget {
                       title: RichText(
                         softWrap: true,
                         text: TextSpan(children: <TextSpan>[
+                          // Dialog Title - Data Source
                           TextSpan(
                             text: '${Strings.dataSource}\n\n\n',
                             style: TextStyles.hightlightText.copyWith(
                               fontSize: screenWidth / 20,
                             ),
                           ),
+
+                          // Dialoog description referncing and linking the blog post
+                          // and the Author
                           TextSpan(
                             style: TextStyles.statisticsSubHeadingTextStlye
                                 .copyWith(
@@ -68,6 +105,8 @@ class PreventionScreen extends StatelessWidget {
                                   decoration: TextDecoration.underline,
                                   color: AppColors.accentBlueColor,
                                 ),
+                                // Launcing the URL of the blog post
+                                // throwing an error if the user doesn't have any browswer to open the link (Shouldn't ever happen)
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () async => await canLaunch(
                                           Endpoints.dataSourceReferenceURL)
@@ -77,6 +116,8 @@ class PreventionScreen extends StatelessWidget {
                               TextSpan(
                                 text: Strings.writtenBy,
                               ),
+                              // Launcing the URL of the Author's Website
+                              // throwing an error if the user doesn't have any browswer to open the link (Shouldn't ever happen)
                               TextSpan(
                                 text: Strings.author,
                                 style: TextStyle(
@@ -93,8 +134,9 @@ class PreventionScreen extends StatelessWidget {
                           ),
                         ]),
                       ),
+
+                      // Defining the Action item [Close] for the Dialog
                       actions: <Widget>[
-                        // Dialog Close Button
                         GestureDetector(
                           onTap: () => Navigator.of(context).pop(),
                           child: Container(
@@ -105,8 +147,8 @@ class PreventionScreen extends StatelessWidget {
                             decoration: BoxDecoration(
                               boxShadow: const [
                                 BoxShadow(
-                                  offset: Offset(-2, 10),
-                                  blurRadius: 10,
+                                  offset: Offset(-2, 4),
+                                  blurRadius: 2,
                                   color: AppColors.boxShadowColor,
                                 ),
                               ],
@@ -128,15 +170,10 @@ class PreventionScreen extends StatelessWidget {
                     );
                   },
                 ),
+
+                // Adding the information Icon to the [AppBar]
                 child: Container(
                   decoration: BoxDecoration(
-                    boxShadow: const [
-                      BoxShadow(
-                        offset: Offset(-1, 1),
-                        blurRadius: 2,
-                        color: AppColors.boxShadowColor,
-                      ),
-                    ],
                     borderRadius: BorderRadius.all(
                       Radius.circular(screenWidth / 15),
                     ),
@@ -152,32 +189,24 @@ class PreventionScreen extends StatelessWidget {
           ],
         ),
       ),
-      // Settingt the background color to avoid the default
-      // white color of the SafeArea widget
-      backgroundColor: AppColors.preventionBackgroundColor,
       body: ScrollConfiguration(
         behavior: const CustomScrollBehaviour(),
         child: SingleChildScrollView(
-          // Adding SafeArea to avoid the image being fullScreen
           // Padding been added to keep the VISME logo visible at the bottom
-          child: SafeArea(
-            child: Container(
-              padding: EdgeInsets.only(
-                bottom: screenHeight / 20,
-              ),
-              color: AppColors.preventionBackgroundColor,
-              child: Stack(
-                children: <Widget>[
-                  CachedNetworkImage(
-                    imageUrl: Endpoints.baseUrlPreventionInfographic,
-                    cacheManager: ImageCacheManager(),
-                  ),
-                ],
-              ),
+          child: Container(
+            padding: EdgeInsets.only(
+              top: Dimens.verticalPadding / 0.2,
+              bottom: Dimens.verticalPadding / 0.15,
+            ),
+            color: AppColors.preventionBackgroundColor,
+            child: CachedNetworkImage(
+              imageUrl: Endpoints.baseUrlPreventionInfographic,
+              cacheManager: CacheManager(),
             ),
           ),
         ),
       ),
+      // Back button to lead back to the [HomeScreen]
       // Floating Action Button used so that the item remains fixed when the image is scolled
       floatingActionButton: Padding(
         padding: EdgeInsets.only(

@@ -542,11 +542,6 @@ const countriesListJSON = '''
 "ISO2": "LV"
 },
 {
-"Country": "Netherlands Antilles",
-"Slug": "netherlands-antilles",
-"ISO2": "AN"
-},
-{
 "Country": "Peru",
 "Slug": "peru",
 "ISO2": "PE"

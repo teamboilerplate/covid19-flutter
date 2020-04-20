@@ -11,8 +11,9 @@ import 'package:covid19/widgets/sized_box_height_widget.dart';
 /// **Requires**
 /// 1. [infoColor] - For the iconColor and the title text
 /// 2. [infoIcon] - For the icon to displayed based on the label
-/// 3. [infoValue] - For the value of the case count for the provided label
-/// 4. [infoLabel] - For the value of the label
+/// 3. [infoValueNew] - For the value of new case count for the provided label
+/// 4. [infoValue] - For the value of the case count for the provided label
+/// 5. [infoLabel] - For the value of the label
 class InfoCard extends StatelessWidget {
   final Color infoColor;
   final IconData infoIcon;
@@ -67,7 +68,7 @@ class InfoCard extends StatelessWidget {
               borderRadius: const BorderRadius.all(
                 Radius.circular(5),
               ),
-              color: infoColor.withOpacity(0.4),
+              color: infoColor.withOpacity(0.3),
             ),
             child: Text(
               '+ $infoValueNew',

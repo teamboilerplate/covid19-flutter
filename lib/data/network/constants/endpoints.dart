@@ -4,14 +4,8 @@ class Endpoints {
   // base url
   static const baseUrlStatistics = "https://api.covid19api.com";
 
-  // base url to retreieve user's IP
-  static const baseUrlIP = "https://httpbin.org/ip";
-
-  // base url to retrive iso2 code based on IP
-  static const baseUrlCurrentCountry = 'https://freegeoip.live/json';
-
-  // base url to retrieve country flags
-  static const baseUrlCountryFlags = 'https://www.countryflags.io/';
+  // base url to retreieve user's country ISO2 code
+  static const baseUrlIPLookup = "https://ip.rootnet.in/lookup";
 
   // base url for Covid-19 prevention Infographic
   static const baseUrlPreventionInfographic =
@@ -38,10 +32,5 @@ class Endpoints {
 
   static String get fetchCountryStatistics =>
       baseUrlStatistics + _fetchCountryStatistics;
-
-  static String get fetchIP => baseUrlIP;
-
-  static String get fetchCurrentCountry => baseUrlCurrentCountry;
-
-  static String get fetchCountryFlags => baseUrlCountryFlags;
+  static String get fetchCurrentCountry => baseUrlIPLookup;
 }

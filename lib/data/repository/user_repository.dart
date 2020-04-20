@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:covid19/data/countries_list_data.dart';
 import 'package:covid19/data/network/constants/endpoints.dart';
 import 'package:covid19/data/repository/base_repository.dart';
-import 'package:covid19/models/application/ip_model.dart';
 import 'package:covid19/models/statistics/statistics_response_model.dart';
 import 'package:covid19/models/application/country_information_model.dart';
 import 'package:covid19/models/statistics/countries_list_model.dart';
@@ -13,25 +12,12 @@ import 'package:covid19/utils/request_util.dart';
 /// Extends the [BaseRepository] to implement the API request methods
 class UserRepository implements BaseRepository {
   @override
-  Future<IPModel> fetchUserIP() async {
-    final jsonResponse = await HttpRequestUtil.getRequest(
-      Endpoints.fetchIP,
-    );
-
-    HttpRequestUtil.handleResponseError(
-      jsonResponse,
-      'Error fetching User\'s IP',
-    );
-
-    return IPModel.fromJson(jsonResponse);
-  }
-
-  @override
   Future<CountryInformationModel> fetchUserCountryInformation({
     @required String ipAddress,
   }) async {
     final jsonResponse = await HttpRequestUtil.getRequest(
-      '${Endpoints.fetchCurrentCountry}/$ipAddress',
+      url: '${Endpoints.fetchCurrentCountry}',
+      shouldCache: false,
     );
 
     HttpRequestUtil.handleResponseError(
@@ -53,7 +39,8 @@ class UserRepository implements BaseRepository {
     @required String iso2,
   }) async {
     final jsonResponse = await HttpRequestUtil.getRequest(
-      '${Endpoints.fetchHomeData}',
+      url: '${Endpoints.fetchHomeData}',
+      shouldCache: true,
     );
 
     HttpRequestUtil.handleResponseError(
@@ -70,7 +57,8 @@ class UserRepository implements BaseRepository {
     CountryStatistics countryStatistics;
 
     final responseMap = await HttpRequestUtil.getRequest(
-      '${Endpoints.fetchCountryStatistics}$iso2/status/confirmed',
+      url: '${Endpoints.fetchCountryStatistics}$iso2/status/confirmed',
+      shouldCache: true,
     );
 
     for (int i = 0; i < responseMap.length; i++) {

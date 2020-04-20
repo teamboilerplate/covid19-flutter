@@ -38,7 +38,7 @@ class TextStyles {
 
   /// ------------------------------------------------------
   /// Font Styles for Statistics Screen
-  /// used in (ui/statistics)
+  /// used in (ui/statistics) and (ui/statistics/widgets)
   ///
   static const statisticsHeadingTextStlye = TextStyle(
     fontWeight: FontWeight.w700,
@@ -62,6 +62,16 @@ class TextStyles {
   static const infoLabelTextStyle = TextStyle(
     fontWeight: FontWeight.w700,
     color: AppColors.offBlackColor,
+  );
+
+  static const statisticsLabelTextStyle = TextStyle(
+    fontWeight: FontWeight.w500,
+    color: AppColors.accentBlackColor,
+  );
+
+  static const statisticsToopTipTextStyle = TextStyle(
+    fontWeight: FontWeight.w500,
+    color: AppColors.whiteColor,
   );
 
   /// ------------------------------------------------------
