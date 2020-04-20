@@ -1,6 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:covid19/models/application/country_information_model.dart';
 import 'package:covid19/models/statistics/countries_list_model.dart';
-import 'package:flutter/material.dart';
 
 /// Base class for the states of Authentication
 ///
@@ -14,12 +14,11 @@ class ApplicationUninitialized extends ApplicationState {}
 /// The required start-up data has been fetched and loaded in memory
 class ApplicationInitialized extends ApplicationState {
   final List<Countries> countriesList;
-  final String ipAddress;
+
   final CountryInformationModel userCountryInformation;
 
   ApplicationInitialized({
     @required this.countriesList,
-    @required this.ipAddress,
     @required this.userCountryInformation,
   });
 }

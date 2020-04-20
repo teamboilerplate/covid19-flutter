@@ -1,6 +1,7 @@
 import 'dart:collection';
 import 'dart:convert';
 import 'dart:io';
+import 'package:covid19/utils/cache_manager.dart';
 import 'package:http/http.dart' as http;
 import 'package:crypto/crypto.dart' show md5;
 import 'package:flutter/material.dart';
@@ -41,7 +42,10 @@ class HttpRequestUtil {
   /// Sends a ***HTTP GET*** request to the specified url
   /// Dynamic is used to support different types of JSON responses
   /// Maps and Arrays in the case of the current situation of use
-  static dynamic getRequest(String url) async {
+  static dynamic getRequest({
+    String url,
+    bool shouldCache = false,
+  }) async {
     debugPrint('getting $url');
 
     try {
@@ -49,7 +53,11 @@ class HttpRequestUtil {
       final jsonResponse = await http.get(url);
       final responseMap = jsonDecode(jsonResponse.body);
 
-      debugPrint('HTTP Response :- \n $responseMap');
+      if (shouldCache) {
+        await CacheManager().downloadFile(url, force: true);
+      }
+
+      // debugPrint('HTTP Response :- \n $responseMap');
       return responseMap;
     }
     // Catching the [FormatException] which occurs due to the server not responding
@@ -62,8 +70,9 @@ class HttpRequestUtil {
     // Thus throwing the Network Exception
     on SocketException {
       debugPrint('Get Request Socket Exception');
-      throw NetworkException(
-        message: 'You don’t seem to have an active Internet Connection',
+      return handleSocketException(
+        url: url,
+        shouldCache: shouldCache,
       );
     }
     // Catching any Generic Errors and throwing APIRresponseException to display
@@ -72,6 +81,32 @@ class HttpRequestUtil {
       debugPrint('Error in GET Request :- \n ${e.message}');
       throw APIResponseException(
         message: 'Unknown Exception while GETting',
+      );
+    }
+  }
+
+  /// Handle [SocketException]. Try and retrieve cached responses
+  /// if [shouldCache] is set to true
+  static dynamic handleSocketException({
+    String url,
+    bool shouldCache,
+  }) async {
+    if (!shouldCache) {
+      throw NetworkException(
+        message: 'You don’t seem to have an active Internet Connection',
+      );
+    }
+    // debugPrint('URL is $url');
+    try {
+      final cacheFileIInfo = await CacheManager().getFileFromCache(url);
+      debugPrint('${cacheFileIInfo.file}');
+      final cacheFile = await cacheFileIInfo.file.readAsString();
+      final cache = jsonDecode(cacheFile);
+      return cache;
+    } catch (e) {
+      debugPrint('Cache Request Network Exception $e');
+      throw NetworkException(
+        message: 'You don’t seem to have an active Internet Connection',
       );
     }
   }

@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/foundation.dart';
 import 'package:covid19/constants/strings.dart';
 import 'package:covid19/models/statistics/countries_list_model.dart';
 import 'package:covid19/utils/custom_scroll_behaviour.dart';
 import 'package:covid19/widgets/country_picker/utils/my_alert_dialog.dart';
 import 'package:covid19/widgets/country_picker/utils/typedefs.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 
 /// Provides a customizable [Dialog] which displays all countries
 /// with optional search feature
@@ -92,7 +92,7 @@ class CountryPickerDialog extends StatefulWidget {
     this.onValuePicked,
     this.title,
     this.titlePadding,
-    this.contentPadding = const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 16.0),
+    this.contentPadding = const EdgeInsets.fromLTRB(0.0, 12.0, 0.0, 0.0),
     this.semanticLabel,
     this.sortComparator,
     this.priorityList,

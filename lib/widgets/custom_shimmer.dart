@@ -1,6 +1,6 @@
-import 'package:covid19/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:covid19/constants/colors.dart';
 
 ///
 /// An enum defines all supported directions of shimmer effect

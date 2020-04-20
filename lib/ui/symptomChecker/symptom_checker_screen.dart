@@ -1,4 +1,3 @@
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/dimens.dart';
@@ -25,94 +24,126 @@ class SymptomCheckerScreen extends StatefulWidget {
 
 class _SymptomCheckerScreenState extends State<SymptomCheckerScreen> {
   @override
+  void initState() {
+    super.initState();
+
+    // Uncomment if you need a call back after the Hero Animation is over
+    // and a task needs to be performed
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //Future.delayed(const Duration(seconds: 5), () =>
+
+    //);
+    // });
+  }
+
+  @override
   Widget build(BuildContext context) {
     final screenWidth = DeviceUtils.getScaledWidth(context, 1);
     final screenHeight = DeviceUtils.getScaledHeight(context, 1);
-    return Container(
-      color: AppColors.primaryColor,
-      child: SafeArea(
-        child: Scaffold(
-          backgroundColor: AppColors.primaryColor,
-          body: ScrollConfiguration(
-            behavior: const CustomScrollBehaviour(),
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(
-                  Dimens.horizontalPadding,
-                  Dimens.verticalPadding / 0.75,
-                  Dimens.horizontalPadding,
-                  0,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: <Widget>[
-                    // Back Icon
-                    IconButton(
-                      // padding: const EdgeInsets.all(0),
-                      icon: Icon(
-                        Covid19Icons.keyboardArrowLeft,
+    return Hero(
+      tag: 'symptomChecker',
+      flightShuttleBuilder: (
+        BuildContext flightContext,
+        Animation<double> animation,
+        HeroFlightDirection flightDirection,
+        BuildContext fromHeroContext,
+        BuildContext toHeroContext,
+      ) {
+        return Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(screenWidth / 10),
+            ),
+            color: AppColors.primaryColor,
+          ),
+        );
+      },
+      child: Container(
+        color: AppColors.primaryColor,
+        child: SafeArea(
+          child: Scaffold(
+            backgroundColor: AppColors.primaryColor,
+            body: ScrollConfiguration(
+              behavior: const CustomScrollBehaviour(),
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(
+                    Dimens.horizontalPadding,
+                    Dimens.verticalPadding / 0.75,
+                    Dimens.horizontalPadding,
+                    0,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: <Widget>[
+                      // Back Icon
+                      IconButton(
+                        // padding: const EdgeInsets.all(0),
+                        icon: Icon(
+                          Covid19Icons.keyboardArrowLeft,
+                        ),
+                        iconSize: screenWidth / 12,
+                        color: AppColors.whiteColor,
+                        onPressed: () => Navigator.of(context).pop(),
                       ),
-                      iconSize: screenWidth / 12,
-                      color: AppColors.whiteColor,
-                      onPressed: () => Navigator.of(context).pop(),
-                    ),
 
-                    // Verical Spacing
-                    SizedBoxHeightWidget(screenHeight / 50),
+                      // Verical Spacing
+                      SizedBoxHeightWidget(screenHeight / 50),
 
-                    // Wrapping other items inside a container to add extra padding
-                    // to meet the default padding of Material Icons
-                    Container(
-                      padding: const EdgeInsets.only(
-                        left: Dimens.horizontalPadding / 0.75,
-                        right: Dimens.horizontalPadding / 0.75,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          // Symtpom Checker Heading
-                          Text(
-                            Strings.symptomCheckerTiitle,
-                            style: TextStyles.symptonCheckerHeadingTextStyle
-                                .copyWith(
-                              fontSize: screenWidth / 25,
+                      // Wrapping other items inside a container to add extra padding
+                      // to meet the default padding of Material Icons
+                      Container(
+                        padding: const EdgeInsets.only(
+                          left: Dimens.horizontalPadding / 0.75,
+                          right: Dimens.horizontalPadding / 0.75,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: <Widget>[
+                            // Symtpom Checker Heading
+                            Text(
+                              Strings.symptomCheckerTiitle,
+                              style: TextStyles.symptonCheckerHeadingTextStyle
+                                  .copyWith(
+                                fontSize: screenWidth / 25,
+                              ),
                             ),
-                          ),
 
-                          // Verical Spacing
-                          SizedBoxHeightWidget(screenHeight / 100),
+                            // Verical Spacing
+                            SizedBoxHeightWidget(screenHeight / 100),
 
-                          // Symptom Checker Disclaimer
-                          Text(
-                            Strings.disclaimerText,
-                            style: TextStyles.symptonCheckerHeadingTextStyle
-                                .copyWith(
-                              fontSize: screenWidth / 30,
+                            // Symptom Checker Disclaimer
+                            Text(
+                              Strings.disclaimerText,
+                              style: TextStyles.symptonCheckerHeadingTextStyle
+                                  .copyWith(
+                                fontSize: screenWidth / 30,
+                              ),
                             ),
-                          ),
 
-                          // Verical Spacing
-                          SizedBoxHeightWidget(screenHeight / 35),
-                        ],
+                            // Verical Spacing
+                            SizedBoxHeightWidget(screenHeight / 35),
+                          ],
+                        ),
                       ),
-                    ),
 
-                    // Stacked Cards of
-                    Container(
-                      height: screenHeight / 1.8,
-                      child: const SymptomCheckerCards(),
-                    ),
+                      // Stacked Cards of
+                      Container(
+                        height: screenHeight / 1.8,
+                        child: const SymptomCheckerCards(),
+                      ),
 
-                    // Verical Spacing
-                    SizedBoxHeightWidget(screenHeight / 35),
+                      // Verical Spacing
+                      SizedBoxHeightWidget(screenHeight / 35),
 
-                    // Question Progress and Count
-                    QuestionProgressCount(
-                      screenWidth: screenWidth,
-                      screenHeight: screenHeight,
-                    ),
-                  ],
+                      // Question Progress and Count
+                      QuestionProgressCount(
+                        screenWidth: screenWidth,
+                        screenHeight: screenHeight,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -324,7 +355,6 @@ class _SymptomCheckerCardsState extends State<SymptomCheckerCards>
 
   @override
   Widget build(BuildContext context) {
-    timeDilation = 0.4;
     const double initialBottom = 15.0;
     final dataLength = data.length;
     double backCardPosition = initialBottom + (dataLength - 1) * 10 + 10;

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:covid19/data/repository/base_repository.dart';
-import 'package:covid19/models/application/ip_model.dart';
 import 'package:covid19/models/application/country_information_model.dart';
 import 'package:covid19/models/statistics/countries_list_model.dart';
 import 'package:covid19/models/statistics/country_statistics_day_model.dart';
@@ -16,21 +15,13 @@ class TestRepository implements BaseRepository {
   }
 
   @override
-  Future<IPModel> fetchUserIP() async {
-    _wait();
-    return IPModel(
-      origin: "103.69.21.105",
-    );
-  }
-
-  @override
   Future<CountryInformationModel> fetchUserCountryInformation({
     @required String ipAddress,
   }) async {
     _wait();
     return CountryInformationModel(
-      countryName: "India",
-      countryCode: "IN",
+      ip: "127.0.0.1",
+      country: "IN",
     );
   }
 

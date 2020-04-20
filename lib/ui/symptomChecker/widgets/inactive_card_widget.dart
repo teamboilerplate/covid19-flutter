@@ -47,7 +47,7 @@ class InActiveCardWidget extends StatelessWidget {
               ),
               child: Text(
                 "I'M IN $index",
-                style: TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.white),
               ),
             ),
           ),

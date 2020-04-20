@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:covid19/ui/prevention/prevention_screen.dart';
 import 'package:covid19/ui/splash/splash_screen.dart';
 import 'package:covid19/ui/symptomChecker/symptom_checker_screen.dart';
-import 'package:flutter/material.dart';
 
 /// Defines routes for the application which can be used via the [routes]
 /// from outside the class

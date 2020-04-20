@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:covid19/data/network/constants/endpoints.dart';
+import 'package:covid19/utils/cache_manager.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/strings.dart';
 import 'package:covid19/constants/text_styles.dart';
@@ -16,29 +19,44 @@ class SplashScreen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: AppColors.primaryColor.withAlpha(200),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        mainAxisSize: MainAxisSize.max,
+      body: Stack(
         children: <Widget>[
-          // Actual SplashScreen
-          Center(
-            child: Image(
-              width: screenWidth / 0.75,
-              image: AssetImage(
-                AssetAnimations.splash,
-              ),
+          // Preload prevention Image to avoid the very short spanning white screen
+          // before the Image is loaded
+          Opacity(
+            opacity: 0,
+            child: CachedNetworkImage(
+              imageUrl: Endpoints.baseUrlPreventionInfographic,
+              cacheManager: CacheManager(),
             ),
           ),
 
-          // Vertical Spacing
-          SizedBoxHeightWidget(screenHeight / 25),
+          // Actual Splash Screen Data
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: <Widget>[
+              // Actual SplashScreen
+              Center(
+                child: Image(
+                  width: screenWidth / 0.75,
+                  image: AssetImage(
+                    AssetAnimations.splash,
+                  ),
+                ),
+              ),
 
-          Text(
-            Strings.appName,
-            style: TextStyles.hightlightText.copyWith(
-              fontSize: screenWidth / 15,
-              color: AppColors.whiteColor,
-            ),
+              // Vertical Spacing
+              SizedBoxHeightWidget(screenHeight / 25),
+
+              Text(
+                Strings.appName,
+                style: TextStyles.hightlightText.copyWith(
+                  fontSize: screenWidth / 15,
+                  color: AppColors.whiteColor,
+                ),
+              ),
+            ],
           ),
         ],
       ),

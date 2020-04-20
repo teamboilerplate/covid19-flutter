@@ -1,3 +1,4 @@
+import 'package:covid19/constants/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:covid19/ui/home/home_screen.dart';
 import 'package:covid19/ui/statistics/statistics_screen.dart';
@@ -55,12 +56,14 @@ class HomeRouter {
       case HomeRoutes.home:
         return MaterialPageRoute(builder: (_) => HomeScreen());
       case HomeRoutes.latestNumbers:
-        debugPrint('Entering here inside Latest Numbers');
         return MaterialPageRoute(builder: (_) => StatisticsScreen());
       case HomeRoutes.prevention:
         return MaterialPageRoute(builder: (_) => PreventionScreen());
       case HomeRoutes.symptomChecker:
-        return MaterialPageRoute(builder: (_) => SymptomCheckerScreen());
+        // return MaterialPageRoute(builder: (_) => SymptomCheckerScreen());
+        return CustomPageRoute(SymptomCheckerScreen());
+      // return FadePageRoute(builder: (_) => SymptomCheckerScreen());
+
       default:
         return MaterialPageRoute(builder: (_) => HomeScreen());
     }
@@ -71,9 +74,17 @@ class HomeRouter {
 /// [HomeScreen].
 ///
 /// Add any new routes that have to be re-directed from the [HomeScreen]
+/// [HomeNavigator] can handle the following [HomeRoutes]
+///
+/// 1. [home] - To lead the use to the default [HomeScreen]
+/// 2. [latestNumbers] - To lead the user to the [StatisticsScreen]
+/// 3. [prevention] -  To lead the user to the [PreventionScreen]
+/// 4. [symptomChecker] - To lead the user to the [SymptomCheckerScreen]
 class HomeNavigator extends StatelessWidget {
   static final GlobalKey<NavigatorState> navigatorKey =
       GlobalKey<NavigatorState>();
+
+  final HeroController _heroController = HeroController();
 
   // Convenience static method for extended functionality
   static void pop(BuildContext context) {
@@ -95,9 +106,38 @@ class HomeNavigator extends StatelessWidget {
       },
       child: Navigator(
         key: navigatorKey,
+        observers: [_heroController],
         initialRoute: HomeRoutes.home.name,
         onGenerateRoute: (settings) => HomeRouter.generateRoute(settings),
       ),
     );
   }
+}
+
+class CustomPageRoute<T> extends PageRoute<T> {
+  CustomPageRoute(this.child);
+  @override
+  // TODO: implement barrierColor
+  Color get barrierColor => AppColors.primaryColor;
+
+  @override
+  String get barrierLabel => null;
+
+  final Widget child;
+
+  @override
+  Widget buildPage(BuildContext context, Animation<double> animation,
+      Animation<double> secondaryAnimation) {
+    return child;
+    // return FadeTransition(
+    //   opacity: animation,
+    //   child: child,
+    // );
+  }
+
+  @override
+  bool get maintainState => true;
+
+  @override
+  Duration get transitionDuration => const Duration(milliseconds: 500);
 }

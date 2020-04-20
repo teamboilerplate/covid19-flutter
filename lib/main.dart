@@ -1,4 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 import 'package:covid19/constants/app_theme.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/strings.dart';
@@ -13,10 +17,7 @@ import 'package:covid19/ui/static/static_error_screen.dart';
 import 'package:covid19/utils/bloc/application_bloc.dart';
 import 'package:covid19/utils/bloc/application_events.dart';
 import 'package:covid19/utils/bloc/application_state.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
+import 'package:covid19/utils/connection_status_singleton.dart';
 
 /// [SimpleBloocDelegate] handles all the Bloc events delegated by the [BlocSupervisor]
 class SimpleBlocDelegate extends BlocDelegate {
@@ -46,6 +47,11 @@ Future<void> main() async {
 
   // Initialize WidgetsBinding before runApp
   WidgetsFlutterBinding.ensureInitialized();
+
+  final ConnectionStatusSingleton connectionStatus =
+      ConnectionStatusSingleton.getInstance();
+  connectionStatus.initialize();
+
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then(
@@ -107,16 +113,6 @@ class MyApp extends StatelessWidget {
                 userRepository: repository,
               ),
               child: Scaffold(
-                // [AppBar] with 0 size used to set the statusbar background color and
-                // statusbat text/icon color
-                appBar: PreferredSize(
-                  preferredSize: const Size.fromHeight(0.0),
-                  child: AppBar(
-                    backgroundColor: AppColors.whiteColor,
-                    brightness: Brightness.light,
-                    elevation: 0.0,
-                  ),
-                ),
                 body: HomeNavigator(),
               ),
             );

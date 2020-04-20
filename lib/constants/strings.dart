@@ -28,6 +28,10 @@ class Strings {
 
   static const preventionTitle = 'Prevention';
 
+  static const symptomsTitle = 'Symptoms';
+
+  static const mythBusterTitle = 'Myth Busters';
+
   /// ------------------------------------------------------
   /// Font Styles for Statistics and StatisticsLoadingWidget
   /// used in (ui/statistics) and (ui/statistics/widgets)
