@@ -1,3 +1,4 @@
+import 'package:covid19/data/symptoms_data.dart';
 import 'package:flutter/material.dart';
 import 'package:bloc/bloc.dart';
 import 'package:covid19/data/network/constants/endpoints.dart';
@@ -52,6 +53,16 @@ class ApplicationBloc extends Bloc<OnBoardingEvent, ApplicationState> {
         // Caching the Covid-19 Prevention Do's and Don'ts
         await cacheManager.downloadFile(Endpoints.baseUrlPreventionInfographic);
 
+        // Caching the Symptom Images
+        for (final item in symptomsData) {
+          try {
+            await cacheManager.downloadFile(item.imageURL);
+          } catch (e) {
+            debugPrint("Error while pre-caching: ${item.imageURL} due to: $e");
+            yield ApplicationNetworkException();
+          }
+        }
+
         // Yielding the value to the output stream by passing all the data fetched
         yield ApplicationInitialized(
           countriesList: countriesList,
@@ -66,7 +77,7 @@ class ApplicationBloc extends Bloc<OnBoardingEvent, ApplicationState> {
 
       // Yielding Generic Exception - to be handled by main.dart to display error screen
       catch (e) {
-        debugPrint('Error in Authentical Blooc :- ${e.toString()}');
+        debugPrint('Error in Application Blooc :- ${e.toString()}');
         yield ApplicationGenericException();
       }
     }

@@ -11,10 +11,10 @@ class Endpoints {
   static const baseUrlPreventionInfographic =
       'http://boilerplate.in/covid19/COVID-19-Prevention-Dos-and-Donts.jpg';
 
-  static const dataSourceReferenceURL =
+  static const preventionDataSourceReferenceURL =
       'https://visme.co/blog/coronavirus-prevention';
 
-  static const dataSourceAuthorURL = 'http://www.chloesocial.com/';
+  static const preventionDataSourceAuthorURL = 'http://www.chloesocial.com';
 
   // receiveTimeout
   static const receiveTimeout = 5000;

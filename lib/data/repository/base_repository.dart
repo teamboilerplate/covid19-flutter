@@ -18,7 +18,11 @@ abstract class BaseRepository {
   /// Fetch Global Information and country specific information
   Future<StatisticsResponseModel> fetchHomeData({@required String iso2});
 
-  /// Fetch Statistics about the required country
-  Future<List<CountryStatistics>> fetchCountryStatistics(
+  /// Fetch Statistics about the required country - Confirmed Cases
+  Future<List<CountryStatistics>> fetchCountryStatisticsConfirmed(
+      {@required String iso2});
+
+  /// Fetch Statistics about the required country - Confirmed Cases
+  Future<List<CountryStatistics>> fetchCountryStatisticsRecovered(
       {@required String iso2});
 }

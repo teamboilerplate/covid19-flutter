@@ -158,10 +158,11 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // timeDilation = 15.0;
     final screenWidth = DeviceUtils.getScaledWidth(context, 1);
     final screenHeight = DeviceUtils.getScaledHeight(context, 1);
-    debugPrint('Todays Date : $today');
+
+    // Wrapping the contents in [SafeArea] to avoid the Notch (When avaiable) and the bottom
+    // navigation bar (Mostly comes in use for iOS Devices)
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.whiteColor,
@@ -342,7 +343,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: InfoCard(
-                                      infoColor: AppColors.orangeColor,
+                                      infoColor: AppColors.confirmedColor,
                                       infoIcon: Covid19Icons.add,
                                       infoValueNew: data
                                           .statisticsInformationData
@@ -356,7 +357,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: InfoCard(
-                                      infoColor: AppColors.greenColor,
+                                      infoColor: AppColors.recoveredColor,
                                       infoIcon: Covid19Icons.favorite,
                                       infoValueNew: data
                                           .statisticsInformationData
@@ -370,7 +371,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: InfoCard(
-                                      infoColor: AppColors.redColor,
+                                      infoColor: AppColors.deadColor,
                                       infoIcon: Covid19Icons.close,
                                       infoValueNew: data
                                           .statisticsInformationData
@@ -487,7 +488,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: InfoCard(
-                                      infoColor: AppColors.orangeColor,
+                                      infoColor: AppColors.confirmedColor,
                                       infoIcon: Covid19Icons.add,
                                       infoValueNew: data
                                           .statisticsInformationData
@@ -503,7 +504,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: InfoCard(
-                                      infoColor: AppColors.greenColor,
+                                      infoColor: AppColors.recoveredColor,
                                       infoIcon: Covid19Icons.favorite,
                                       infoValueNew: data
                                           .statisticsInformationData
@@ -519,7 +520,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: InfoCard(
-                                      infoColor: AppColors.redColor,
+                                      infoColor: AppColors.deadColor,
                                       infoIcon: Covid19Icons.close,
                                       infoValueNew: data
                                           .statisticsInformationData
@@ -560,7 +561,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
                             // Information Tab
                             InfoGraphWidget(
-                              countryStatisticsList: data.countryStatisticsList,
+                              countryStatisticsConfirmedList:
+                                  data.countryStatisticsConfirmedList,
+                              countryStatisticsRecoveredList:
+                                  data.countryStatisticsRecoveredList,
                             ),
                           ],
                         ),

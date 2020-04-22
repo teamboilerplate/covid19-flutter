@@ -49,6 +49,8 @@ class _SymptomCheckerScreenState extends State<SymptomCheckerScreen> {
         BuildContext fromHeroContext,
         BuildContext toHeroContext,
       ) {
+        // Using a container with the same colour and radius as the [SymotomCheckerCardWidget] to ensure
+        // a smooth Hero animation
         return Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
@@ -60,6 +62,9 @@ class _SymptomCheckerScreenState extends State<SymptomCheckerScreen> {
       },
       child: Container(
         color: AppColors.primaryColor,
+
+        // Wrapping the contents in [SafeArea] to avoid the Notch (When avaiable) and the bottom
+        // navigation bar (Mostly comes in use for iOS Devices)
         child: SafeArea(
           child: Scaffold(
             backgroundColor: AppColors.primaryColor,
@@ -255,7 +260,7 @@ class _SymptomCheckerCardsState extends State<SymptomCheckerCards>
   List data = [
     const SymptomQuestionCard(
       index: 0,
-      color: AppColors.redColor,
+      color: AppColors.deadColor,
     ),
     const SymptomQuestionCard(
       index: 1,
@@ -271,7 +276,7 @@ class _SymptomCheckerCardsState extends State<SymptomCheckerCards>
     ),
     const SymptomQuestionCard(
       index: 4,
-      color: AppColors.redColor,
+      color: AppColors.deadColor,
     ),
     const SymptomQuestionCard(
       index: 5,

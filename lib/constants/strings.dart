@@ -1,8 +1,7 @@
 class Strings {
   Strings._(); // this basically makes it so you can instantiate this class
 
-  // TODO :- Please think of a better name as the application will be expanded to be more than a tracker
-  static const appName = 'Covid-19';
+  static const appName = 'Fight Covid-19';
 
   static const noInternetErrorTitle = 'No Internet Connection';
 
@@ -21,7 +20,7 @@ class Strings {
   static const countryDialogSearch = 'Search for Country';
 
   /// ------------------------------------------------------
-  /// Font Styles for Statistics and StatisticsLoadingWidget
+  /// Strings for Statistics and StatisticsLoadingWidget
   /// used in (ui/statistics) and (ui/statistics/widgets)
   ///
   static const latestNumbersTitle = 'Latest Numbers';
@@ -33,7 +32,7 @@ class Strings {
   static const mythBusterTitle = 'Myth Busters';
 
   /// ------------------------------------------------------
-  /// Font Styles for Statistics and StatisticsLoadingWidget
+  /// Strings for Statistics and StatisticsLoadingWidget
   /// used in (ui/statistics) and (ui/statistics/widgets)
   ///
   static const outbreakTitle = 'Current Outbreak';
@@ -56,7 +55,7 @@ class Strings {
       'Contains several list of questions to check whetehr your physical condition';
 
   /// ------------------------------------------------------
-  /// Font Styles for SymptomChecker
+  /// Strings for SymptomChecker
   /// used in (ui/symptomChecker) and (ui/symptomChecker/widgets)
   ///
   static const questiionsTitle = 'Questions';
@@ -65,12 +64,12 @@ class Strings {
       'This test is not endorsed by any medical professional and is only a means to be aware of your symptoms and get timely help';
 
   /// ------------------------------------------------------
-  /// Font Styles for PreventionScreen
+  /// Strings for PreventionScreen
   /// used in (ui/preventionScreen)
   ///
   static const dataSource = 'Data Source';
 
-  static const informationSourceDescription =
+  static const informationPreventionSourceDescription =
       'The Infographic has been obtained from VISME ';
 
   static const blog = 'Blog';
@@ -78,4 +77,11 @@ class Strings {
   static const writtenBy = ' written By ';
 
   static const author = 'Chloe West';
+
+  /// ------------------------------------------------------
+  /// Font Styles for Statistics and StatisticsLoadingWidget
+  /// used in (ui/statistics) and (ui/statistics/widgets)
+  ///
+  ///
+
 }

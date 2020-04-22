@@ -403,7 +403,7 @@ class HomeLoadingWidget extends StatelessWidget {
                   ),
 
                   // Horizontal Spacing
-                  SizedBoxWidthWidget(screenWidth / 15),
+                  SizedBoxWidthWidget(screenWidth / 20),
 
                   // Tab 2
                   // Gesture Detector used to avoid the Ripple Effect caused in InkWell
@@ -412,6 +412,22 @@ class HomeLoadingWidget extends StatelessWidget {
                     decoration: const BoxDecoration(),
                     child: Text(
                       'Weekly',
+                      style: TextStyles.titleTextStyle.copyWith(
+                        fontSize: screenWidth / 20,
+                      ),
+                    ),
+                  ),
+
+                  // Horizontal Spacing
+                  SizedBoxWidthWidget(screenWidth / 20),
+
+                  // Tab 2
+                  // Gesture Detector used to avoid the Ripple Effect caused in InkWell
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(),
+                    child: Text(
+                      'Daily Growth',
                       style: TextStyles.titleTextStyle.copyWith(
                         fontSize: screenWidth / 20,
                       ),

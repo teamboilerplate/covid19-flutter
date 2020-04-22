@@ -104,7 +104,7 @@ class HomeScreen extends StatelessWidget {
                       backgroundColor: AppColors.primaryColor,
                       title: Strings.symptomsTitle,
                       imagePath: AssetImages.symptoms,
-                      route: HomeRoutes.latestNumbers.name,
+                      route: HomeRoutes.symptoms.name,
                     ),
                   ),
 

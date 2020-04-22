@@ -97,7 +97,8 @@ class _PreventionScreenState extends State<PreventionScreen> {
                             ),
                             children: <InlineSpan>[
                               TextSpan(
-                                text: Strings.informationSourceDescription,
+                                text: Strings
+                                    .informationPreventionSourceDescription,
                               ),
                               TextSpan(
                                 text: Strings.blog,
@@ -109,8 +110,10 @@ class _PreventionScreenState extends State<PreventionScreen> {
                                 // throwing an error if the user doesn't have any browswer to open the link (Shouldn't ever happen)
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () async => await canLaunch(
-                                          Endpoints.dataSourceReferenceURL)
-                                      ? launch(Endpoints.dataSourceReferenceURL)
+                                          Endpoints
+                                              .preventionDataSourceReferenceURL)
+                                      ? launch(Endpoints
+                                          .preventionDataSourceReferenceURL)
                                       : throw 'Could not launch Refernce URL',
                               ),
                               TextSpan(
@@ -126,8 +129,10 @@ class _PreventionScreenState extends State<PreventionScreen> {
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () async => await canLaunch(
-                                          Endpoints.dataSourceAuthorURL)
-                                      ? launch(Endpoints.dataSourceAuthorURL)
+                                          Endpoints
+                                              .preventionDataSourceAuthorURL)
+                                      ? launch(Endpoints
+                                          .preventionDataSourceAuthorURL)
                                       : throw 'Could not launch Refernce URL',
                               ),
                             ],

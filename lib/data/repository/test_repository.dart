@@ -70,7 +70,24 @@ class TestRepository implements BaseRepository {
   }
 
   @override
-  Future<List<CountryStatistics>> fetchCountryStatistics({String iso2}) async {
+  Future<List<CountryStatistics>> fetchCountryStatisticsConfirmed(
+      {String iso2}) async {
+    return [
+      CountryStatistics(
+        country: "India",
+        countryCode: "IN",
+        lat: "20.59",
+        lon: "78.96",
+        cases: 0,
+        status: "confirmed",
+        date: "2020-01-22T00:00:00Z",
+      )
+    ];
+  }
+
+  @override
+  Future<List<CountryStatistics>> fetchCountryStatisticsRecovered(
+      {String iso2}) async {
     return [
       CountryStatistics(
         country: "India",

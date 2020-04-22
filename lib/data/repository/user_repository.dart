@@ -52,8 +52,9 @@ class UserRepository implements BaseRepository {
   }
 
   @override
-  Future<List<CountryStatistics>> fetchCountryStatistics({String iso2}) async {
-    final List<CountryStatistics> countryStatisticsList = [];
+  Future<List<CountryStatistics>> fetchCountryStatisticsConfirmed(
+      {String iso2}) async {
+    final List<CountryStatistics> countryStatisticsConfirmedList = [];
     CountryStatistics countryStatistics;
 
     final responseMap = await HttpRequestUtil.getRequest(
@@ -63,7 +64,7 @@ class UserRepository implements BaseRepository {
 
     for (int i = 0; i < responseMap.length; i++) {
       countryStatistics = CountryStatistics.fromJson(responseMap[i]);
-      countryStatisticsList.add(
+      countryStatisticsConfirmedList.add(
         CountryStatistics(
           cases: countryStatistics.cases,
           date: countryStatistics.date,
@@ -71,6 +72,30 @@ class UserRepository implements BaseRepository {
       );
     }
 
-    return countryStatisticsList;
+    return countryStatisticsConfirmedList;
+  }
+
+  @override
+  Future<List<CountryStatistics>> fetchCountryStatisticsRecovered(
+      {String iso2}) async {
+    final List<CountryStatistics> countryStatisticsRecoveredList = [];
+    CountryStatistics countryStatistics;
+
+    final responseMap = await HttpRequestUtil.getRequest(
+      url: '${Endpoints.fetchCountryStatistics}$iso2/status/recovered',
+      shouldCache: true,
+    );
+
+    for (int i = 0; i < responseMap.length; i++) {
+      countryStatistics = CountryStatistics.fromJson(responseMap[i]);
+      countryStatisticsRecoveredList.add(
+        CountryStatistics(
+          cases: countryStatistics.cases,
+          date: countryStatistics.date,
+        ),
+      );
+    }
+
+    return countryStatisticsRecoveredList;
   }
 }
