@@ -1,13 +1,21 @@
-import 'package:covid19/constants/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:covid19/constants/colors.dart';
 import 'package:covid19/ui/home/home_screen.dart';
 import 'package:covid19/ui/statistics/statistics_screen.dart';
 import 'package:covid19/ui/prevention/prevention_screen.dart';
 import 'package:covid19/ui/symptomChecker/symptom_checker_screen.dart';
 import 'package:covid19/ui/symptoms/symptoms_screen.dart';
+import 'package:covid19/ui/faq/faq_screen.dart';
 
 /// States for [HomeRoutes]
-enum HomeRoutes { home, latestNumbers, prevention, symptomChecker, symptoms }
+enum HomeRoutes {
+  home,
+  latestNumbers,
+  prevention,
+  symptomChecker,
+  symptoms,
+  faq
+}
 
 /// [HomeRoutesDefinitions] to map the appropriate states of [HomeRoutes]
 /// to paths
@@ -24,6 +32,8 @@ extension HomeRouteDefinitions on HomeRoutes {
         return '/symptom-checker';
       case HomeRoutes.symptoms:
         return '/symptoms';
+      case HomeRoutes.faq:
+        return '/faq';
       default:
         return '/';
     }
@@ -42,6 +52,8 @@ extension HomeRouteDefinitions on HomeRoutes {
         return HomeRoutes.symptomChecker;
       case '/symptoms':
         return HomeRoutes.symptoms;
+      case '/faq':
+        return HomeRoutes.faq;
       default:
         return HomeRoutes.home;
     }
@@ -59,18 +71,20 @@ class HomeRouter {
     routesStack.add(settings.name);
     switch (HomeRouteDefinitions.fromString(settings.name)) {
       case HomeRoutes.home:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return CustomPageRoute(HomeScreen());
       case HomeRoutes.latestNumbers:
         return MaterialPageRoute(builder: (_) => StatisticsScreen());
       case HomeRoutes.prevention:
         return MaterialPageRoute(builder: (_) => PreventionScreen());
       case HomeRoutes.symptomChecker:
-        return CustomPageRoute(SymptomCheckerScreen());
+        return MaterialPageRoute(builder: (_) => SymptomCheckerScreen());
       case HomeRoutes.symptoms:
-        return CustomPageRoute(SymptomsScreen());
+        return MaterialPageRoute(builder: (_) => SymptomsScreen());
+      case HomeRoutes.faq:
+        return MaterialPageRoute(builder: (_) => FAQScreen());
 
       default:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return CustomPageRoute(HomeScreen());
     }
   }
 }

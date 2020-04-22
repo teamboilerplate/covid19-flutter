@@ -17,7 +17,7 @@
 
 
 ### Follow the roadmap
-##### You can follow the roadmap from [here](ROADMAP.md), and (let me know your suggestions)
+##### You can follow the roadmap from [here](ROADMAP.md) (let us know your suggestions)
 
 ### Contributing
 
@@ -32,7 +32,7 @@ This Application gets data from [Covid19API](https://covid19api.com/) created by
 Data sourced from [Visme](https://visme.co/blog/coronavirus-prevention) authored by [Chloe West](http://www.chloesocial.com) with permission from the Author
 
 **Symptom Icons**
-Data sourced from [Freepik](href="https://www.freepik.com/free-photos-vectors/health)
+Data sourced from [Freepik](https://www.freepik.com/free-photos-vectors/health)
 
 ### Design
 

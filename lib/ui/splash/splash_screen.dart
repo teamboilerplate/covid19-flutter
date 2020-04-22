@@ -26,7 +26,7 @@ class SplashScreen extends StatelessWidget {
           Opacity(
             opacity: 0,
             child: CachedNetworkImage(
-              imageUrl: Endpoints.baseUrlPreventionInfographic,
+              imageUrl: Endpoints.fetchPreventionGraphic,
               cacheManager: CacheManager(),
             ),
           ),

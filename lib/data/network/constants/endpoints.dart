@@ -7,9 +7,8 @@ class Endpoints {
   // base url to retreieve user's country ISO2 code
   static const baseUrlIPLookup = "https://ip.rootnet.in/lookup";
 
-  // base url for Covid-19 prevention Infographic
-  static const baseUrlPreventionInfographic =
-      'http://boilerplate.in/covid19/COVID-19-Prevention-Dos-and-Donts.jpg';
+  // base url for Home Screen Graphic
+  static const baseUrlGraphics = 'http://boilerplate.in/covid19';
 
   static const preventionDataSourceReferenceURL =
       'https://visme.co/blog/coronavirus-prevention';
@@ -28,9 +27,22 @@ class Endpoints {
   // fetch Statistics about a particulr country
   static const _fetchCountryStatistics = '/total/country/';
 
+  // fetch Covid-19 prevention Infographic
+  static const _fetchPreventionGraphic =
+      '/COVID-19-Prevention-Dos-and-Donts.jpg';
+
+  // fetch Home graphic
+  static const _fetchHomeGraphic = '/home.png';
+
   static String get fetchHomeData => baseUrlStatistics + _fetchHomeData;
 
   static String get fetchCountryStatistics =>
       baseUrlStatistics + _fetchCountryStatistics;
+
   static String get fetchCurrentCountry => baseUrlIPLookup;
+
+  static String get fetchPreventionGraphic =>
+      baseUrlGraphics + _fetchPreventionGraphic;
+
+  static String get fetchHomeGraphic => baseUrlGraphics + _fetchHomeGraphic;
 }

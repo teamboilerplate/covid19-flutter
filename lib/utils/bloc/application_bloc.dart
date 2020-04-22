@@ -51,7 +51,10 @@ class ApplicationBloc extends Bloc<OnBoardingEvent, ApplicationState> {
         final CacheManager cacheManager = CacheManager();
 
         // Caching the Covid-19 Prevention Do's and Don'ts
-        await cacheManager.downloadFile(Endpoints.baseUrlPreventionInfographic);
+        await cacheManager.downloadFile(Endpoints.fetchPreventionGraphic);
+
+        // Caching the Home Graphi
+        await cacheManager.downloadFile(Endpoints.fetchHomeGraphic);
 
         // Caching the Symptom Images
         for (final item in symptomsData) {

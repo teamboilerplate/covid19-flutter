@@ -205,7 +205,7 @@ class _PreventionScreenState extends State<PreventionScreen> {
             ),
             color: AppColors.preventionBackgroundColor,
             child: CachedNetworkImage(
-              imageUrl: Endpoints.baseUrlPreventionInfographic,
+              imageUrl: Endpoints.fetchPreventionGraphic,
               cacheManager: CacheManager(),
             ),
           ),

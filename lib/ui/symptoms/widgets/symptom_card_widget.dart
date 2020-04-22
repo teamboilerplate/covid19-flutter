@@ -73,13 +73,16 @@ class SymptomCardWidget extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.only(
-            top: screenHeight / 50,
-          ),
-          child: CachedNetworkImage(
-            imageUrl: imageURL,
-            cacheManager: CacheManager(),
+        Align(
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: EdgeInsets.only(
+              top: screenHeight / 50,
+            ),
+            child: CachedNetworkImage(
+              imageUrl: imageURL,
+              cacheManager: CacheManager(),
+            ),
           ),
         )
       ],

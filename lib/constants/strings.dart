@@ -3,6 +3,8 @@ class Strings {
 
   static const appName = 'Fight Covid-19';
 
+  static const appSlogan = 'Together, we can \nFight Covid-19';
+
   static const noInternetErrorTitle = 'No Internet Connection';
 
   static const noInternetErrorDesc =
@@ -20,16 +22,20 @@ class Strings {
   static const countryDialogSearch = 'Search for Country';
 
   /// ------------------------------------------------------
-  /// Strings for Statistics and StatisticsLoadingWidget
-  /// used in (ui/statistics) and (ui/statistics/widgets)
+  /// Strings for Home
+  /// used in (ui/home/home_screen.dart) and (ui/home/widgets)
   ///
-  static const latestNumbersTitle = 'Latest Numbers';
+  static const statisticsTitle = 'Statistics';
 
   static const preventionTitle = 'Prevention';
 
   static const symptomsTitle = 'Symptoms';
 
   static const mythBusterTitle = 'Myth Busters';
+
+  static const faqTitle = 'FAQ';
+
+  static const covidInformationTitle = 'What is Covid-19';
 
   /// ------------------------------------------------------
   /// Strings for Statistics and StatisticsLoadingWidget
@@ -77,11 +83,4 @@ class Strings {
   static const writtenBy = ' written By ';
 
   static const author = 'Chloe West';
-
-  /// ------------------------------------------------------
-  /// Font Styles for Statistics and StatisticsLoadingWidget
-  /// used in (ui/statistics) and (ui/statistics/widgets)
-  ///
-  ///
-
 }
