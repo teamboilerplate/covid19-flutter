@@ -1,19 +1,24 @@
 # Fight Covid-19
 
 <p align="center">
-    <img alt="Home" src="https://user-images.githubusercontent.com/26878414/79934191-9983a800-846f-11ea-8fae-9cc638e8b381.png" width="25%">
-    <img alt="Statistics" src="https://user-images.githubusercontent.com/26878414/79934202-a0121f80-846f-11ea-85c0-f7c188c6ec58.png" width="25%">
-    <img alt="Statistics Graphs" src="https://user-images.githubusercontent.com/26878414/79934198-9ee0f280-846f-11ea-8f4b-52a4868bbcc6.png" width="25%">
+    <img width="25%" alt="Home" src="https://user-images.githubusercontent.com/26878414/80150072-53e0ef80-85d5-11ea-83b4-10b6ac94fc6f.png">
+    <img width="25%" alt="Statistics Info" src="https://user-images.githubusercontent.com/26878414/80150198-8ee32300-85d5-11ea-913f-0922656b0c0a.png">
+    <img width="25%" alt="Statistics Graph" src="https://user-images.githubusercontent.com/26878414/80150192-8985d880-85d5-11ea-84aa-5bf7ca498482.png">
     <img alt="Prevention" src="https://user-images.githubusercontent.com/26878414/79934197-9dafc580-846f-11ea-9c9c-f4e425f6db87.png" width="25%">
-    <img alt="Symptoms" src="https://user-images.githubusercontent.com/26878414/79934205-a1434c80-846f-11ea-8f8c-9db981ace33d.png" width="25%">
+    <img width="25%" alt="Symptpms" src="https://user-images.githubusercontent.com/26878414/80150208-94406d80-85d5-11ea-84a8-71211848695e.png">
+    <img width="25%" alt="MythBuster" src="https://user-images.githubusercontent.com/26878414/80150085-59d6d080-85d5-11ea-9e11-739d3f2974ad.png">
+    <img width="25%" alt="MythBuster Fact" src="https://user-images.githubusercontent.com/26878414/80150082-58a5a380-85d5-11ea-8412-1fc2f39dd81b.png">
+    <img width="25%" alt="FAQ" src="https://user-images.githubusercontent.com/26878414/80150069-53485900-85d5-11ea-9a42-a8a29be1d928.png">
+    <img width="25%" alt="FAQ Expanded" src="https://user-images.githubusercontent.com/26878414/80150054-4deb0e80-85d5-11ea-87e1-f1a84f94f026.png">
+    <img width="25%" alt="Information" src="https://user-images.githubusercontent.com/26878414/80150075-55aab300-85d5-11ea-99c0-a1dcd9acbc1a.png">
 </p>
 
 ## About
 - Provides user with relevant data from across the globe and about each specific country. 
 - Prevention with Do's and Don'ts information
 - A list of all Covid-19 Symptoms
-- Ability to check your symptoms for Covid-19
-(This information is not authorized by any health organisation and shouldn't be considered as a fool proof test. Please consult your doctor in case you witness any symptoms)
+- Myth busters to always segregate the facts from the myths
+- Frequently Asked Questions to be get all your answers 
 
 
 ### Follow the roadmap
@@ -31,8 +36,14 @@ This Application gets data from [Covid19API](https://covid19api.com/) created by
 **Prevention Infographic**
 Data sourced from [Visme](https://visme.co/blog/coronavirus-prevention) authored by [Chloe West](http://www.chloesocial.com) with permission from the Author
 
+**COVID-19 Infographic**
+Data sourced from [Visme](https://visme.co/blog/what-is-coronavirus) authored by [Mahnoor Sheikh](www.mahnoorsheikh.com) with permission from the Author
+
 **Symptom Icons**
 Data sourced from [Freepik](https://www.freepik.com/free-photos-vectors/health)
+
+**Myth Busters**
+Data sourced from [WHO](https://www.who.int/emergencies/diseases/novel-coronavirus-2019/advice-for-public/myth-busters) and [MyGovIndia](https://twitter.com/mygovindia/status/1248645463110062080)
 
 ### Design
 

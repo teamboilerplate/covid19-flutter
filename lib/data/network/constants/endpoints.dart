@@ -15,6 +15,11 @@ class Endpoints {
 
   static const preventionDataSourceAuthorURL = 'http://www.chloesocial.com';
 
+  static const informationDataSourceReferenceURL =
+      'https://visme.co/blog/what-is-coronavirus';
+
+  static const informationSourceAuthorURL = 'https://www.mahnoorsheikh.com';
+
   // receiveTimeout
   static const receiveTimeout = 5000;
 
@@ -31,6 +36,10 @@ class Endpoints {
   static const _fetchPreventionGraphic =
       '/COVID-19-Prevention-Dos-and-Donts.jpg';
 
+  // fetch Covid-19 information Infographic
+  static const _fetchInformationGraphic =
+      '/COVID-19-A-Global-Health-Crisis.jpg';
+
   // fetch Home graphic
   static const _fetchHomeGraphic = '/home.png';
 
@@ -41,8 +50,11 @@ class Endpoints {
 
   static String get fetchCurrentCountry => baseUrlIPLookup;
 
+  static String get fetchHomeGraphic => baseUrlGraphics + _fetchHomeGraphic;
+
   static String get fetchPreventionGraphic =>
       baseUrlGraphics + _fetchPreventionGraphic;
 
-  static String get fetchHomeGraphic => baseUrlGraphics + _fetchHomeGraphic;
+  static String get fetchInformatiionGraphic =>
+      baseUrlGraphics + _fetchInformationGraphic;
 }

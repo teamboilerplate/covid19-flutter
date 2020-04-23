@@ -7,9 +7,9 @@
 
 - [x] Daily Growth
 
-- [ ] <b>Do the Five</b> Information Section - [Check Here](https://www.who.int/news-room/detail/23-03-2020-pass-the-message-five-steps-to-kicking-out-coronavirus)
+- [x] <b>Do the Five</b> Information Section - [Check Here](https://www.who.int/news-room/detail/23-03-2020-pass-the-message-five-steps-to-kicking-out-coronavirus)
 
-- [ ] Symptom Checker
+- [ ] Symptom Checker 
 
 - [x] Symptoms Information
 
@@ -17,7 +17,7 @@
 
 - [ ] Detailed Information about each country
 
-- [ ] Myth Buster
+- [x] Myth Buster
 
 - [ ] Donation links for the government funds (Country Sepcific)
 

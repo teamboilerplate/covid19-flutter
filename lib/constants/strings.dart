@@ -60,6 +60,12 @@ class Strings {
   static const symptomCheckerDesc =
       'Contains several list of questions to check whetehr your physical condition';
 
+  static const dailyStatiscsLable = 'Daily';
+
+  static const weeklyStatiscsLable = 'Weekly';
+
+  static const dailyGrowthStatiscsLable = 'Daily Growth';
+
   /// ------------------------------------------------------
   /// Strings for SymptomChecker
   /// used in (ui/symptomChecker) and (ui/symptomChecker/widgets)
@@ -75,12 +81,19 @@ class Strings {
   ///
   static const dataSource = 'Data Source';
 
-  static const informationPreventionSourceDescription =
+  static const informationSourceDescription =
       'The Infographic has been obtained from VISME ';
 
   static const blog = 'Blog';
 
   static const writtenBy = ' written By ';
 
-  static const author = 'Chloe West';
+  static const authorPrevetnionGraphic = 'Chloe West';
+
+  /// ------------------------------------------------------
+  /// Strings for InformationScreen
+  /// used in (ui/preventionScreen)
+  //
+
+  static const authorInformationGraphic = 'Mahnoor Sheikh';
 }

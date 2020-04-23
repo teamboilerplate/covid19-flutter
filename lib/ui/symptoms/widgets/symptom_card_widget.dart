@@ -1,12 +1,16 @@
-import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/text_styles.dart';
-import 'package:covid19/utils/device/device_utils.dart';
 import 'package:covid19/utils/cache_manager.dart';
+import 'package:covid19/utils/device/device_utils.dart';
 import 'package:covid19/widgets/sized_box_height_widget.dart';
+import 'package:flutter/material.dart';
 
 /// To Build the widget to display the card for each Symptom
+/// **Requires**
+/// 1. [title] - title of the Symptom
+/// 2. [description] - Description about the symptom
+/// 3. [imageURL] - URL for the image specific to the symptom
 class SymptomCardWidget extends StatelessWidget {
   final String title, description, imageURL;
 
@@ -18,7 +22,6 @@ class SymptomCardWidget extends StatelessWidget {
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    debugPrint('$title $description $imageURL');
     final screenWidth = DeviceUtils.getScaledWidth(context, 1);
     final screenHeight = DeviceUtils.getScaledHeight(context, 1);
     return Stack(
@@ -60,7 +63,7 @@ class SymptomCardWidget extends StatelessWidget {
                   ),
                 ),
 
-                // Verical Spacing
+                // Vertical Spacing
                 SizedBoxHeightWidget(screenHeight / 75),
 
                 Text(

@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -10,7 +8,6 @@ import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/text_styles.dart';
 import 'package:covid19/icons/covid19_icons.dart';
 import 'package:covid19/data/network/constants/endpoints.dart';
-import 'package:covid19/models/statistics/statistics_response_model.dart';
 import 'package:covid19/utils/custom_scroll_behaviour.dart';
 import 'package:covid19/utils/cache_manager.dart';
 import 'package:covid19/utils/device/device_utils.dart';
@@ -18,32 +15,7 @@ import 'package:covid19/widgets/custom_alert_dialog.dart';
 
 /// Displays the information in regards to prevention of Coronavirus
 /// and reference to where the data is taken from
-class PreventionScreen extends StatefulWidget {
-  @override
-  _PreventionScreenState createState() => _PreventionScreenState();
-}
-
-class _PreventionScreenState extends State<PreventionScreen> {
-  File preventionImage;
-  @override
-  void initState() {
-    super.initState();
-    getStatisticsFile();
-  }
-
-  Future getStatisticsFile() async {
-    final cachedImage =
-        await CacheManager().getSingleFile(Endpoints.fetchHomeData);
-
-    final contents = await cachedImage.readAsString();
-
-    final jsonResponse = jsonDecode(contents);
-
-    final countryInformation = StatisticsResponseModel.fromJson(jsonResponse);
-
-    debugPrint('${countryInformation.global.newConfirmed}');
-  }
-
+class PreventionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = DeviceUtils.getScaledWidth(context, 1);
@@ -97,8 +69,7 @@ class _PreventionScreenState extends State<PreventionScreen> {
                             ),
                             children: <InlineSpan>[
                               TextSpan(
-                                text: Strings
-                                    .informationPreventionSourceDescription,
+                                text: Strings.informationSourceDescription,
                               ),
                               TextSpan(
                                 text: Strings.blog,
@@ -122,7 +93,7 @@ class _PreventionScreenState extends State<PreventionScreen> {
                               // Launcing the URL of the Author's Website
                               // throwing an error if the user doesn't have any browswer to open the link (Shouldn't ever happen)
                               TextSpan(
-                                text: Strings.author,
+                                text: Strings.authorPrevetnionGraphic,
                                 style: TextStyle(
                                   decoration: TextDecoration.underline,
                                   color: AppColors.accentBlueColor,

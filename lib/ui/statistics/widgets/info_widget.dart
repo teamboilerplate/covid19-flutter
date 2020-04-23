@@ -5,8 +5,7 @@ import 'package:covid19/constants/text_styles.dart';
 import 'package:covid19/utils/device/device_utils.dart';
 import 'package:covid19/widgets/sized_box_height_widget.dart';
 
-/// Displays the current summary information about the selected
-/// country
+/// Displays the current summary information about the selected country
 ///
 /// **Requires**
 /// 1. [infoColor] - For the iconColor and the title text

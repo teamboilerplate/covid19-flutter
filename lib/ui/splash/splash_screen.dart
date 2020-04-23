@@ -31,6 +31,16 @@ class SplashScreen extends StatelessWidget {
             ),
           ),
 
+          // Preload Information Image to avoid the very short spanning white screen
+          // before the Image is loaded
+          Opacity(
+            opacity: 0,
+            child: CachedNetworkImage(
+              imageUrl: Endpoints.fetchInformatiionGraphic,
+              cacheManager: CacheManager(),
+            ),
+          ),
+
           // Actual Splash Screen Data
           Column(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -8,9 +8,9 @@ import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/dimens.dart';
 import 'package:covid19/constants/strings.dart';
 import 'package:covid19/constants/text_styles.dart';
+import 'package:covid19/icons/covid19_icons.dart';
 import 'package:covid19/models/statistics/countries_list_model.dart';
 import 'package:covid19/res/asset_images.dart';
-import 'package:covid19/icons/covid19_icons.dart';
 import 'package:covid19/stores/statistics/statistics_notifier.dart';
 import 'package:covid19/ui/static/static_error_screen.dart';
 import 'package:covid19/ui/statistics//widgets/statistics_loading_widget.dart';
@@ -223,7 +223,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 50),
 
                             // Page Title
@@ -244,7 +244,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 100),
 
                             // Global Title
@@ -271,7 +271,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ],
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 100),
 
                             // Last Updated On Information
@@ -305,7 +305,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ],
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 50),
 
                             // Details Button
@@ -329,7 +329,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ],
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 75),
 
                             // Information Cards
@@ -386,7 +386,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 35),
 
                             const Padding(
@@ -399,7 +399,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 75),
 
                             // Country Title
@@ -450,7 +450,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 200),
 
                             // Details Button
@@ -474,7 +474,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ],
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 75),
 
                             // Information Cards
@@ -537,7 +537,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 25),
 
                             // Confirmed Cases Label
@@ -556,7 +556,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ],
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 75),
 
                             // Information Tab

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:covid19/constants/dimens.dart';
 import 'package:covid19/constants/colors.dart';
+import 'package:covid19/constants/dimens.dart';
 import 'package:covid19/constants/strings.dart';
 import 'package:covid19/constants/text_styles.dart';
 import 'package:covid19/icons/covid19_icons.dart';
@@ -52,7 +52,7 @@ class SymptomsScreen extends StatelessWidget {
                 ),
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 50),
 
               // Page Title
@@ -63,7 +63,7 @@ class SymptomsScreen extends StatelessWidget {
                 ),
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 25),
 
               // Symptom Items
@@ -77,6 +77,7 @@ class SymptomsScreen extends StatelessWidget {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
+                        // Adding all the symptoms from [symptomsData] to the Column
                         for (final item in symptomsData)
                           SymptomCardWidget(
                             title: item.title,

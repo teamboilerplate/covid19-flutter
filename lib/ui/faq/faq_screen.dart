@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/dimens.dart';
 import 'package:covid19/constants/strings.dart';
@@ -8,7 +9,6 @@ import 'package:covid19/models/faq/faq_model.dart';
 import 'package:covid19/utils/custom_scroll_behaviour.dart';
 import 'package:covid19/utils/device/device_utils.dart';
 import 'package:covid19/widgets/sized_box_height_widget.dart';
-import 'package:flutter/material.dart';
 
 class FAQScreen extends StatefulWidget {
   @override
@@ -107,7 +107,7 @@ class _FAQScreenState extends State<FAQScreen> {
                 ),
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 50),
 
               // Page Title

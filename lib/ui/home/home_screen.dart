@@ -1,15 +1,15 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:covid19/data/network/constants/endpoints.dart';
-import 'package:covid19/utils/cache_manager.dart';
-import 'package:covid19/utils/custom_scroll_behaviour.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/dimens.dart';
 import 'package:covid19/constants/strings.dart';
 import 'package:covid19/constants/text_styles.dart';
+import 'package:covid19/data/network/constants/endpoints.dart';
 import 'package:covid19/res/asset_images.dart';
 import 'package:covid19/ui/home/home_navigator.dart';
 import 'package:covid19/ui/home/widgets/home_card_widget.dart';
+import 'package:covid19/utils/cache_manager.dart';
+import 'package:covid19/utils/custom_scroll_behaviour.dart';
 import 'package:covid19/utils/device/device_utils.dart';
 import 'package:covid19/widgets/sized_box_height_widget.dart';
 
@@ -53,7 +53,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
 
-                  // Verical Spacing
+                  // Vertical Spacing
                   SizedBoxHeightWidget(screenHeight / 30),
 
                   Container(
@@ -75,7 +75,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
 
-                  // Verical Spacing
+                  // Vertical Spacing
                   SizedBoxHeightWidget(screenHeight / 30),
 
                   Row(
@@ -116,7 +116,7 @@ class HomeScreen extends StatelessWidget {
                     ],
                   ),
 
-                  // Verical Spacing
+                  // Vertical Spacing
                   SizedBoxHeightWidget(screenHeight / 30),
 
                   Row(
@@ -128,7 +128,7 @@ class HomeScreen extends StatelessWidget {
                           backgroundColor: AppColors.primaryColor,
                           title: Strings.mythBusterTitle,
                           imagePath: AssetImages.mythBusters,
-                          route: HomeRoutes.symptoms.name,
+                          route: HomeRoutes.mythBusters.name,
                         ),
                       ),
 
@@ -150,7 +150,7 @@ class HomeScreen extends StatelessWidget {
                           backgroundColor: AppColors.primaryColor,
                           title: Strings.covidInformationTitle,
                           imagePath: AssetImages.virus,
-                          route: HomeRoutes.symptoms.name,
+                          route: HomeRoutes.information.name,
                         ),
                       ),
                     ],

@@ -93,7 +93,7 @@ class _SymptomCheckerScreenState extends State<SymptomCheckerScreen> {
                         onPressed: () => Navigator.of(context).pop(),
                       ),
 
-                      // Verical Spacing
+                      // Vertical Spacing
                       SizedBoxHeightWidget(screenHeight / 50),
 
                       // Wrapping other items inside a container to add extra padding
@@ -115,7 +115,7 @@ class _SymptomCheckerScreenState extends State<SymptomCheckerScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 100),
 
                             // Symptom Checker Disclaimer
@@ -127,7 +127,7 @@ class _SymptomCheckerScreenState extends State<SymptomCheckerScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 35),
                           ],
                         ),
@@ -139,7 +139,7 @@ class _SymptomCheckerScreenState extends State<SymptomCheckerScreen> {
                         child: const SymptomCheckerCards(),
                       ),
 
-                      // Verical Spacing
+                      // Vertical Spacing
                       SizedBoxHeightWidget(screenHeight / 35),
 
                       // Question Progress and Count

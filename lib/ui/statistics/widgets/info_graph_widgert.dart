@@ -10,6 +10,11 @@ import 'package:covid19/models/statistics/country_statistics_day_model.dart';
 import 'package:covid19/utils/device/device_utils.dart';
 import 'package:covid19/widgets/sized_box_width_widget.dart';
 
+/// Displays the current statistics about the selected country
+///
+/// **Requires**
+/// 1. [countryStatisticsConfirmedList] - List of Confirmed Cases since case 0 for the selected country
+/// 2. [countryStatisticsRecoveredList] - List of Recovered Cases since case 0 for the selected country
 class InfoGraphWidget extends StatefulWidget {
   final List<CountryStatistics> countryStatisticsConfirmedList;
   final List<CountryStatistics> countryStatisticsRecoveredList;
@@ -28,8 +33,7 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
       weeklyselected = false,
       dailyChangeSelected = false;
 
-  // Page Controller to control change between Daily and Weekly
-  // TODO : Figure out visualisation of Monthly Data
+  // Page Controller to control change between Daily, Weekly and Daily Growth
   PageController pageController = PageController(
     initialPage: 0,
     keepPage: true,
@@ -95,6 +99,9 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
     final screenHeight = DeviceUtils.getScaledHeight(context, 1);
 
     // Adding the Respective Charts to the list of page [_pages]
+    // 1. Bar Chart for daily data
+    // 2. Area (Line) Chart for weekly data
+    // 3. Dual Bar Chart for daily growth data
     final List<Widget> _pages = <Widget>[
       Padding(
         padding: const EdgeInsets.fromLTRB(
@@ -238,7 +245,7 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
                         )
                       : const BoxDecoration(),
                   child: Text(
-                    'Daily',
+                    Strings.dailyStatiscsLable,
                     style: dailySelected
                         ? TextStyles.hightlightText.copyWith(
                             fontSize: screenWidth / 20,
@@ -277,7 +284,7 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
                         )
                       : const BoxDecoration(),
                   child: Text(
-                    'Weekly',
+                    Strings.weeklyStatiscsLable,
                     style: weeklyselected
                         ? TextStyles.hightlightText.copyWith(
                             fontSize: screenWidth / 20,
@@ -316,7 +323,7 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
                         )
                       : const BoxDecoration(),
                   child: Text(
-                    'Daily Growth',
+                    Strings.dailyGrowthStatiscsLable,
                     style: dailyChangeSelected
                         ? TextStyles.hightlightText.copyWith(
                             fontSize: screenWidth / 20,
@@ -331,7 +338,7 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
           ),
         ),
 
-        // Non-Scrollable PageView builder used to display the Charts
+        // Non-Scrollable PageView builder used to display the Statistics Charts
         Container(
           width: screenWidth,
           height: screenHeight / 3.5,

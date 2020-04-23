@@ -35,5 +35,9 @@ class AppColors {
 
   static const Color deadColor = Color(0xFFF44336);
 
+  static const Color mythColor = Color(0xFFD95F6C);
+
+  static const Color factColor = Color(0xFF6FCF97);
+
   static const Color preventionBackgroundColor = Color(0xFF337CE3);
 }
