@@ -32,7 +32,7 @@ class SymptomsScreen extends StatelessWidget {
       // navigation bar (Mostly comes in use for iOS Devices)
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.fromLTRB(
+          padding: const EdgeInsets.fromLTRB(
             Dimens.horizontalPadding,
             Dimens.verticalPadding / 0.75,
             Dimens.horizontalPadding,

@@ -50,7 +50,7 @@ class SplashScreen extends StatelessWidget {
               Center(
                 child: Image(
                   width: screenWidth / 0.75,
-                  image: AssetImage(
+                  image: const AssetImage(
                     AssetImages.splash,
                   ),
                 ),

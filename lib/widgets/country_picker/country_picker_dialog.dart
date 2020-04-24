@@ -212,11 +212,11 @@ class SingleChoiceDialogState extends State<CountryPickerDialog> {
   Widget _buildSearchField() {
     return TextField(
       cursorColor: widget.searchCursorColor,
-      decoration: InputDecoration(
+      decoration: const InputDecoration(
         prefixIcon: Icon(Icons.search),
         hintText: Strings.countryDialogSearch,
-        contentPadding: const EdgeInsets.all(1),
-        border: const OutlineInputBorder(
+        contentPadding: EdgeInsets.all(1),
+        border: OutlineInputBorder(
           borderRadius: BorderRadius.all(
             Radius.circular(20),
           ),

@@ -36,7 +36,7 @@ class HomeScreen extends StatelessWidget {
           behavior: const CustomScrollBehaviour(),
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.fromLTRB(
+              padding: const EdgeInsets.fromLTRB(
                 Dimens.horizontalPadding,
                 Dimens.verticalPadding / 0.75,
                 Dimens.horizontalPadding,

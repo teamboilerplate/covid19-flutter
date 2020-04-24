@@ -68,12 +68,12 @@ class PreventionScreen extends StatelessWidget {
                               fontSize: screenWidth / 25,
                             ),
                             children: <InlineSpan>[
-                              TextSpan(
+                              const TextSpan(
                                 text: Strings.informationSourceDescription,
                               ),
                               TextSpan(
                                 text: Strings.blog,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   decoration: TextDecoration.underline,
                                   color: AppColors.accentBlueColor,
                                 ),
@@ -87,14 +87,14 @@ class PreventionScreen extends StatelessWidget {
                                           .preventionDataSourceReferenceURL)
                                       : throw 'Could not launch Refernce URL',
                               ),
-                              TextSpan(
+                              const TextSpan(
                                 text: Strings.writtenBy,
                               ),
                               // Launcing the URL of the Author's Website
                               // throwing an error if the user doesn't have any browswer to open the link (Shouldn't ever happen)
                               TextSpan(
                                 text: Strings.authorPrevetnionGraphic,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   decoration: TextDecoration.underline,
                                   color: AppColors.accentBlueColor,
                                 ),
@@ -170,7 +170,7 @@ class PreventionScreen extends StatelessWidget {
         child: SingleChildScrollView(
           // Padding been added to keep the VISME logo visible at the bottom
           child: Container(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               top: Dimens.verticalPadding / 0.2,
               bottom: Dimens.verticalPadding / 0.15,
             ),
@@ -198,7 +198,7 @@ class PreventionScreen extends StatelessWidget {
             size: screenWidth / 20,
             color: AppColors.whiteColor,
           ),
-          label: Text(
+          label: const Text(
             'Go Back',
             style: TextStyles.infoLabelTextStyle,
           ),

@@ -85,7 +85,7 @@ class _SymptomCheckerScreenState extends State<SymptomCheckerScreen> {
                       // Back Icon
                       IconButton(
                         // padding: const EdgeInsets.all(0),
-                        icon: Icon(
+                        icon: const Icon(
                           Covid19Icons.keyboardArrowLeft,
                         ),
                         iconSize: screenWidth / 12,
@@ -394,7 +394,7 @@ class _SymptomCheckerCardsState extends State<SymptomCheckerCards>
                   }
                 },
               ).toList())
-          : Center(
+          : const Center(
               child: Text(
                 "Your Result",
                 style: TextStyle(

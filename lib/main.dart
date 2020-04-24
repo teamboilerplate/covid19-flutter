@@ -139,7 +139,7 @@ class MyApp extends StatelessWidget {
                       AppStarted(context: context),
                     );
                   },
-                  image: AssetImage(AssetImages.noInternet),
+                  image: const AssetImage(AssetImages.noInternet),
                   title: Strings.noInternetErrorDesc,
                   desc: Strings.noInternetErrorDesc,
                   actionText: Strings.retryButton,
@@ -168,7 +168,7 @@ class MyApp extends StatelessWidget {
                     AppStarted(context: context),
                   );
                 },
-                image: AssetImage(AssetImages.genericError),
+                image: const AssetImage(AssetImages.genericError),
                 title: Strings.genericErrorTitle,
                 desc: Strings.genericErrorDesc,
                 actionText: Strings.retryButton,

@@ -113,10 +113,10 @@ class Dialog extends StatelessWidget {
                 children: <Widget>[
                   Column(
                     mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      const CircularProgressIndicator(),
+                    children: const <Widget>[
+                      CircularProgressIndicator(),
                       Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: EdgeInsets.all(16.0),
                         child: Text(
                           "Fetching Data",
                           style: TextStyle(fontSize: 20, color: Colors.black54),

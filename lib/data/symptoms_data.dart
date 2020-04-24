@@ -40,19 +40,19 @@ List<SymptomsModel> symptomsData = [
   SymptomsModel(
     title: 'Tierdness',
     description:
-        'Enim, proin sit tincidunt nunc, purus quam. Justo rutrum scelerisque.',
+        'You might find yourself feeling dehydrated. Muscle soreness has also been noted in some cases.',
     imageURL: 'https://boilerplate.in/covid19/tierdness.png',
   ),
   SymptomsModel(
     title: 'Difficulty Breathing',
     description:
-        'Enim, proin sit tincidunt nunc, purus quam. Justo rutrum scelerisque.',
+        'You may find that you are nasally congested or worse, that you are always short of breath and finding it tougher to breathe in than to breathe out.',
     imageURL: 'https://boilerplate.in/covid19/difficulty-breathing.png',
   ),
   SymptomsModel(
     title: 'Headache',
     description:
-        'Enim, proin sit tincidunt nunc, purus quam. Justo rutrum scelerisque.',
+        'In rare cases, sharp headaches that persist for a short duration has been noted. These headaches are similar to migraine headaches.',
     imageURL: 'https://boilerplate.in/covid19/headache.png',
   ),
 ];

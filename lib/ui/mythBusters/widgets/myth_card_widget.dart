@@ -28,64 +28,65 @@ class MythCardWidget extends StatelessWidget {
           // Opening [Dialog] with the fact on click of each Myth
           onTap: () {
             showDialog(
-                context: context,
-                builder: (BuildContext context) {
-                  // Using Animated padding to add the animation of the dialog appearing in
-                  // to the screen
-                  return AnimatedPadding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 0,
-                      vertical: screenHeight / 10,
-                    ),
-                    duration: const Duration(milliseconds: 100),
-                    curve: Curves.decelerate,
-                    child: Container(
-                      // Defining the width to be taken by the children as the entire width of the screen
-                      width: screenWidth,
-                      // using a column to lay out the icon and the Fact Item
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: <Widget>[
-                          // Fact Icon
-                          Container(
-                            width: screenWidth / 8,
-                            height: screenWidth / 8,
-                            decoration: BoxDecoration(
-                              boxShadow: const [
-                                BoxShadow(
-                                  offset: Offset(0, 0),
-                                  blurRadius: 29,
-                                  color: AppColors.boxShadowColor,
-                                ),
-                              ],
-                              borderRadius: BorderRadius.all(
-                                Radius.circular(screenWidth / 10),
+              context: context,
+              builder: (BuildContext context) {
+                // Using Animated padding to add the animation of the dialog appearing in
+                // to the screen
+                return AnimatedPadding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 0,
+                    vertical: screenHeight / 12,
+                  ),
+                  duration: const Duration(milliseconds: 100),
+                  curve: Curves.decelerate,
+                  child: Container(
+                    // Defining the width to be taken by the children as the entire width of the screen
+                    width: screenWidth,
+                    // using a column to lay out the icon and the Fact Item
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: <Widget>[
+                        // Fact Icon
+                        Container(
+                          width: screenWidth / 8,
+                          height: screenWidth / 8,
+                          decoration: BoxDecoration(
+                            boxShadow: const [
+                              BoxShadow(
+                                offset: Offset(0, 0),
+                                blurRadius: 29,
+                                color: AppColors.boxShadowColor,
                               ),
-                              color: AppColors.factColor,
+                            ],
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(screenWidth / 10),
                             ),
-                            child: Center(
-                              child: Image.asset(
-                                AssetImages.fact,
-                                height: screenWidth / 8,
-                              ),
+                            color: AppColors.factColor,
+                          ),
+                          child: Center(
+                            child: Image.asset(
+                              AssetImages.fact,
+                              height: screenWidth / 8,
                             ),
                           ),
+                        ),
 
-                          // Vertical Spacing
-                          SizedBoxHeightWidget(screenHeight / 10),
+                        // Vertical Spacing
+                        SizedBoxHeightWidget(screenHeight / 10),
 
-                          // Displaying the Fact item
-                          MythFactItemWidget(
-                            screenWidth: screenWidth,
-                            screenHeight: screenHeight,
-                            shadowColor: AppColors.factColor,
-                            text: fact,
-                          ),
-                        ],
-                      ),
+                        // Displaying the Fact item
+                        MythFactItemWidget(
+                          screenWidth: screenWidth,
+                          screenHeight: screenHeight,
+                          shadowColor: AppColors.factColor,
+                          text: fact,
+                        ),
+                      ],
                     ),
-                  );
-                });
+                  ),
+                );
+              },
+            );
           },
 
           // Adding the Myth Item with a spacing b/w each item using [SizedBoxHeightWidget]
