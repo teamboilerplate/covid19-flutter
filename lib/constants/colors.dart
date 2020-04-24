@@ -9,6 +9,8 @@ class AppColors {
   static const Color accentColor = Color(0xFFDC1D7D);
   static const Color secondaryAccentColor = Color(0xFF8D5FC2);
 
+  static const Color splashColor = Color(0xFF1C1D3C);
+
   static const Color transparentColor = Color(0x00000000);
 
   static const Color whiteColor = Color(0xFFFFFFFF);
@@ -27,11 +29,15 @@ class AppColors {
 
   static const Color accentBlueColor = Color(0xFF8ECFFF);
 
-  static const Color orangeColor = Color(0xFFFF9800);
+  static const Color confirmedColor = Color(0xFFFF9800);
 
-  static const Color greenColor = Color(0xFF4CAF50);
+  static const Color recoveredColor = Color(0xFF4CAF50);
 
-  static const Color redColor = Color(0xFFF44336);
+  static const Color deadColor = Color(0xFFF44336);
+
+  static const Color mythColor = Color(0xFFD95F6C);
+
+  static const Color factColor = Color(0xFF6FCF97);
 
   static const Color preventionBackgroundColor = Color(0xFF337CE3);
 }

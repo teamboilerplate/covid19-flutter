@@ -80,7 +80,7 @@ class TextStyles {
   ///
   static const homeCardTitle = TextStyle(
     fontWeight: FontWeight.w700,
-    color: AppColors.whiteColor,
+    color: AppColors.blackColor,
   );
 
   /// ------------------------------------------------------
@@ -95,5 +95,19 @@ class TextStyles {
   static const symptonCheckerSubHeadingTextStyle = TextStyle(
     fontWeight: FontWeight.w500,
     color: AppColors.offWhiteColor,
+  );
+
+  /// ------------------------------------------------------
+  /// Font Styles for FAQ
+  /// used in (ui/faq/faq_screen.darr) and (ui/faq/widgets)
+  ///
+  static const faqHeadingTextStyle = TextStyle(
+    fontWeight: FontWeight.w700,
+    color: AppColors.accentBlackColor,
+  );
+
+  static const faqBodyTextStyle = TextStyle(
+    fontWeight: FontWeight.w400,
+    color: AppColors.accentBlackColor,
   );
 }

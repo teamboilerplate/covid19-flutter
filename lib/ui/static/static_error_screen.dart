@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:covid19/constants/dimens.dart';
 import 'package:covid19/constants/colors.dart';
+import 'package:covid19/constants/dimens.dart';
 import 'package:covid19/constants/text_styles.dart';
-import 'package:covid19/widgets/sized_box_height_widget.dart';
 import 'package:covid19/utils/device/device_utils.dart';
+import 'package:covid19/widgets/sized_box_height_widget.dart';
+import 'package:flutter/material.dart';
 
 /// The screen that's shown when a [Exception] occurs
 /// Handles the context of the screen to support the retry operation
@@ -44,7 +44,7 @@ class StaticErrorScreen extends StatelessWidget {
               ),
             ),
 
-          // Verical Spacing
+          // Vertical Spacing
           SizedBoxHeightWidget(screenHeight / 20),
 
           // Adds the title to the Column if provided
@@ -60,7 +60,7 @@ class StaticErrorScreen extends StatelessWidget {
               ),
             ),
 
-          // Verical Spacing
+          // Vertical Spacing
           SizedBoxHeightWidget(screenHeight / 250),
 
           // Adds the desctiption to the Column if provided
@@ -76,7 +76,7 @@ class StaticErrorScreen extends StatelessWidget {
               ),
             ),
 
-          // Verical Spacing
+          // Vertical Spacing
           SizedBoxHeightWidget(screenHeight / 50),
 
           // Adds the Button to the Column if provided and attaches

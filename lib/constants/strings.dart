@@ -1,8 +1,9 @@
 class Strings {
   Strings._(); // this basically makes it so you can instantiate this class
 
-  // TODO :- Please think of a better name as the application will be expanded to be more than a tracker
-  static const appName = 'Covid-19';
+  static const appName = 'Fight Covid-19';
+
+  static const appSlogan = 'Together, we can \nFight Covid-19';
 
   static const noInternetErrorTitle = 'No Internet Connection';
 
@@ -21,10 +22,10 @@ class Strings {
   static const countryDialogSearch = 'Search for Country';
 
   /// ------------------------------------------------------
-  /// Font Styles for Statistics and StatisticsLoadingWidget
-  /// used in (ui/statistics) and (ui/statistics/widgets)
+  /// Strings for Home
+  /// used in (ui/home/home_screen.dart) and (ui/home/widgets)
   ///
-  static const latestNumbersTitle = 'Latest Numbers';
+  static const statisticsTitle = 'Statistics';
 
   static const preventionTitle = 'Prevention';
 
@@ -32,8 +33,12 @@ class Strings {
 
   static const mythBusterTitle = 'Myth Busters';
 
+  static const faqTitle = 'FAQ';
+
+  static const covidInformationTitle = 'What is Covid-19';
+
   /// ------------------------------------------------------
-  /// Font Styles for Statistics and StatisticsLoadingWidget
+  /// Strings for Statistics and StatisticsLoadingWidget
   /// used in (ui/statistics) and (ui/statistics/widgets)
   ///
   static const outbreakTitle = 'Current Outbreak';
@@ -55,8 +60,14 @@ class Strings {
   static const symptomCheckerDesc =
       'Contains several list of questions to check whetehr your physical condition';
 
+  static const dailyStatiscsLable = 'Daily';
+
+  static const weeklyStatiscsLable = 'Weekly';
+
+  static const dailyGrowthStatiscsLable = 'Daily Growth';
+
   /// ------------------------------------------------------
-  /// Font Styles for SymptomChecker
+  /// Strings for SymptomChecker
   /// used in (ui/symptomChecker) and (ui/symptomChecker/widgets)
   ///
   static const questiionsTitle = 'Questions';
@@ -65,7 +76,7 @@ class Strings {
       'This test is not endorsed by any medical professional and is only a means to be aware of your symptoms and get timely help';
 
   /// ------------------------------------------------------
-  /// Font Styles for PreventionScreen
+  /// Strings for PreventionScreen
   /// used in (ui/preventionScreen)
   ///
   static const dataSource = 'Data Source';
@@ -77,5 +88,12 @@ class Strings {
 
   static const writtenBy = ' written By ';
 
-  static const author = 'Chloe West';
+  static const authorPrevetnionGraphic = 'Chloe West';
+
+  /// ------------------------------------------------------
+  /// Strings for InformationScreen
+  /// used in (ui/preventionScreen)
+  //
+
+  static const authorInformationGraphic = 'Mahnoor Sheikh';
 }

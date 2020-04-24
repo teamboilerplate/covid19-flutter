@@ -1312,7 +1312,9 @@ class Emoji {
 
   /// Returns the Emoji Flag from the given ISO2 Code of the Country
   factory Emoji.byISOCode(String isoCode) {
-    return Emoji.all().firstWhere((Emoji emoji) => emoji.iso2Code == isoCode);
+    return Emoji.all().firstWhere(
+      (Emoji emoji) => emoji.iso2Code == isoCode,
+    );
   }
 
   @override

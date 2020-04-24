@@ -8,9 +8,9 @@ import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/dimens.dart';
 import 'package:covid19/constants/strings.dart';
 import 'package:covid19/constants/text_styles.dart';
+import 'package:covid19/icons/covid19_icons.dart';
 import 'package:covid19/models/statistics/countries_list_model.dart';
 import 'package:covid19/res/asset_images.dart';
-import 'package:covid19/icons/covid19_icons.dart';
 import 'package:covid19/stores/statistics/statistics_notifier.dart';
 import 'package:covid19/ui/static/static_error_screen.dart';
 import 'package:covid19/ui/statistics//widgets/statistics_loading_widget.dart';
@@ -158,10 +158,11 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // timeDilation = 15.0;
     final screenWidth = DeviceUtils.getScaledWidth(context, 1);
     final screenHeight = DeviceUtils.getScaledHeight(context, 1);
-    debugPrint('Todays Date : $today');
+
+    // Wrapping the contents in [SafeArea] to avoid the Notch (When avaiable) and the bottom
+    // navigation bar (Mostly comes in use for iOS Devices)
     return SafeArea(
       child: Scaffold(
         backgroundColor: AppColors.whiteColor,
@@ -190,10 +191,15 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 final StatisticseData data = notifier.data;
                 // Fetching the index of the selected country
                 // TODO :- Change this post summary API being available country-wise
-                final int currentCountryIndex =
+                int currentCountryIndex =
                     data.statisticsInformationData.countries.indexWhere(
                   (item) => item.countryCode == selectedCountryISO2,
                 );
+                // Adding negative checker clause (Not Found) if the data is not initialised yet
+                if (currentCountryIndex < 0) {
+                  currentCountryIndex = 0;
+                }
+
                 return RefreshIndicator(
                   onRefresh: () => _fetchHomeData(
                     iso2: selectedCountryISO2,
@@ -203,7 +209,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                     behavior: const CustomScrollBehaviour(),
                     child: SingleChildScrollView(
                       child: Padding(
-                        padding: EdgeInsets.fromLTRB(
+                        padding: const EdgeInsets.fromLTRB(
                           Dimens.horizontalPadding,
                           Dimens.verticalPadding / 0.75,
                           0,
@@ -222,7 +228,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 50),
 
                             // Page Title
@@ -243,7 +249,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 100),
 
                             // Global Title
@@ -270,7 +276,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ],
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 100),
 
                             // Last Updated On Information
@@ -304,7 +310,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ],
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 50),
 
                             // Details Button
@@ -328,7 +334,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ],
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 75),
 
                             // Information Cards
@@ -342,7 +348,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: InfoCard(
-                                      infoColor: AppColors.orangeColor,
+                                      infoColor: AppColors.confirmedColor,
                                       infoIcon: Covid19Icons.add,
                                       infoValueNew: data
                                           .statisticsInformationData
@@ -356,7 +362,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: InfoCard(
-                                      infoColor: AppColors.greenColor,
+                                      infoColor: AppColors.recoveredColor,
                                       infoIcon: Covid19Icons.favorite,
                                       infoValueNew: data
                                           .statisticsInformationData
@@ -370,7 +376,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: InfoCard(
-                                      infoColor: AppColors.redColor,
+                                      infoColor: AppColors.deadColor,
                                       infoIcon: Covid19Icons.close,
                                       infoValueNew: data
                                           .statisticsInformationData
@@ -385,7 +391,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 35),
 
                             const Padding(
@@ -398,7 +404,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 75),
 
                             // Country Title
@@ -429,9 +435,12 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Flexible(
                                     flex: 1,
                                     child: Text(
-                                      Emoji.byISOCode(
-                                              'flag_${selectedCountryISO2.toLowerCase()}')
-                                          .char,
+                                      // Adding null checker clause if the data is not initialised yet
+                                      selectedCountryISO2 != ''
+                                          ? Emoji.byISOCode(
+                                                  'flag_${selectedCountryISO2.toLowerCase()}')
+                                              .char
+                                          : '',
                                       style: const TextStyle(
                                         fontSize: 30,
                                       ),
@@ -449,7 +458,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 200),
 
                             // Details Button
@@ -473,7 +482,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ],
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 75),
 
                             // Information Cards
@@ -487,7 +496,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: InfoCard(
-                                      infoColor: AppColors.orangeColor,
+                                      infoColor: AppColors.confirmedColor,
                                       infoIcon: Covid19Icons.add,
                                       infoValueNew: data
                                           .statisticsInformationData
@@ -503,7 +512,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: InfoCard(
-                                      infoColor: AppColors.greenColor,
+                                      infoColor: AppColors.recoveredColor,
                                       infoIcon: Covid19Icons.favorite,
                                       infoValueNew: data
                                           .statisticsInformationData
@@ -519,7 +528,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   Expanded(
                                     flex: 1,
                                     child: InfoCard(
-                                      infoColor: AppColors.redColor,
+                                      infoColor: AppColors.deadColor,
                                       infoIcon: Covid19Icons.close,
                                       infoValueNew: data
                                           .statisticsInformationData
@@ -536,7 +545,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ),
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 25),
 
                             // Confirmed Cases Label
@@ -555,12 +564,15 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               ],
                             ),
 
-                            // Verical Spacing
+                            // Vertical Spacing
                             SizedBoxHeightWidget(screenHeight / 75),
 
                             // Information Tab
                             InfoGraphWidget(
-                              countryStatisticsList: data.countryStatisticsList,
+                              countryStatisticsConfirmedList:
+                                  data.countryStatisticsConfirmedList,
+                              countryStatisticsRecoveredList:
+                                  data.countryStatisticsRecoveredList,
                             ),
                           ],
                         ),
@@ -574,7 +586,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 return Scaffold(
                   body: Center(
                     child: StaticErrorScreen(
-                      image: AssetImage(AssetImages.genericError),
+                      image: const AssetImage(AssetImages.genericError),
                       title: error,
                       desc: Strings.genericErrorDesc,
                       actionText: Strings.retryButton,
@@ -590,7 +602,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                 return Scaffold(
                   body: Center(
                     child: StaticErrorScreen(
-                      image: AssetImage(AssetImages.noInternet),
+                      image: const AssetImage(AssetImages.noInternet),
                       title: error,
                       desc: Strings.noInternetErrorDesc,
                       actionText: Strings.retryButton,

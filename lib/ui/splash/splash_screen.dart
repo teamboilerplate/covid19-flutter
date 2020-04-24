@@ -5,7 +5,7 @@ import 'package:covid19/utils/cache_manager.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/strings.dart';
 import 'package:covid19/constants/text_styles.dart';
-import 'package:covid19/res/asset_animations.dart';
+import 'package:covid19/res/asset_images.dart';
 import 'package:covid19/widgets/sized_box_height_widget.dart';
 import 'package:covid19/utils/device/device_utils.dart';
 
@@ -18,7 +18,7 @@ class SplashScreen extends StatelessWidget {
     final screenHeight = DeviceUtils.getScaledHeight(context, 1);
 
     return Scaffold(
-      backgroundColor: AppColors.primaryColor.withAlpha(200),
+      backgroundColor: AppColors.splashColor,
       body: Stack(
         children: <Widget>[
           // Preload prevention Image to avoid the very short spanning white screen
@@ -26,7 +26,17 @@ class SplashScreen extends StatelessWidget {
           Opacity(
             opacity: 0,
             child: CachedNetworkImage(
-              imageUrl: Endpoints.baseUrlPreventionInfographic,
+              imageUrl: Endpoints.fetchPreventionGraphic,
+              cacheManager: CacheManager(),
+            ),
+          ),
+
+          // Preload Information Image to avoid the very short spanning white screen
+          // before the Image is loaded
+          Opacity(
+            opacity: 0,
+            child: CachedNetworkImage(
+              imageUrl: Endpoints.fetchInformatiionGraphic,
               cacheManager: CacheManager(),
             ),
           ),
@@ -40,8 +50,8 @@ class SplashScreen extends StatelessWidget {
               Center(
                 child: Image(
                   width: screenWidth / 0.75,
-                  image: AssetImage(
-                    AssetAnimations.splash,
+                  image: const AssetImage(
+                    AssetImages.splash,
                   ),
                 ),
               ),

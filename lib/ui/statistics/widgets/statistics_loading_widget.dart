@@ -16,9 +16,9 @@ import 'package:covid19/widgets/sized_box_width_widget.dart';
 /// is loading
 /// **Requires**
 /// 1. [selectedCountry] - to display the name of the country
-/// 3. [selectedCountryISO2] - to fetch the flag of the selected country (From
+/// 2. [selectedCountryISO2] - to fetch the flag of the selected country (From
 /// the cache if already cached)
-/// 4. [today] - to display the current date of the user in EEEE, d MMMM y format
+/// 3. [today] - to display the current date of the user in EEEE, d MMMM y format
 class HomeLoadingWidget extends StatelessWidget {
   final String selectedCountry, selectedCountryISO2;
   final DateTime today;
@@ -53,7 +53,7 @@ class HomeLoadingWidget extends StatelessWidget {
                 color: AppColors.blackColor,
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 50),
               // Page Title
               Text(
@@ -71,7 +71,7 @@ class HomeLoadingWidget extends StatelessWidget {
                 ),
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 100),
 
               // Global Title
@@ -98,7 +98,7 @@ class HomeLoadingWidget extends StatelessWidget {
                 ],
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 100),
 
               // Last Updated On Information
@@ -109,7 +109,7 @@ class HomeLoadingWidget extends StatelessWidget {
                 gradient: Shimmer.defaultGradient,
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 50),
 
               // Details Button
@@ -132,7 +132,7 @@ class HomeLoadingWidget extends StatelessWidget {
                 ],
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 75),
 
               // Information Cards
@@ -204,7 +204,7 @@ class HomeLoadingWidget extends StatelessWidget {
                 ),
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 35),
 
               const Padding(
@@ -217,7 +217,7 @@ class HomeLoadingWidget extends StatelessWidget {
                 ),
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 75),
 
               // Country Title
@@ -262,7 +262,7 @@ class HomeLoadingWidget extends StatelessWidget {
                 ],
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 200),
 
               // Details Button
@@ -285,7 +285,7 @@ class HomeLoadingWidget extends StatelessWidget {
                 ],
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 75),
 
               // Information Cards
@@ -357,7 +357,7 @@ class HomeLoadingWidget extends StatelessWidget {
                 ),
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 25),
 
               // Confirmed Cases Label
@@ -375,7 +375,7 @@ class HomeLoadingWidget extends StatelessWidget {
                 ],
               ),
 
-              // Verical Spacing
+              // Vertical Spacing
               SizedBoxHeightWidget(screenHeight / 75),
 
               // Information Tab
@@ -383,7 +383,6 @@ class HomeLoadingWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
                   // Tab 1
-                  // Gesture Detector used to avoid the Ripple Effect caused in InkWell
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: const BoxDecoration(
@@ -395,7 +394,7 @@ class HomeLoadingWidget extends StatelessWidget {
                       ),
                     ),
                     child: Text(
-                      'Daily',
+                      Strings.dailyStatiscsLable,
                       style: TextStyles.hightlightText.copyWith(
                         fontSize: screenWidth / 20,
                       ),
@@ -403,15 +402,29 @@ class HomeLoadingWidget extends StatelessWidget {
                   ),
 
                   // Horizontal Spacing
-                  SizedBoxWidthWidget(screenWidth / 15),
+                  SizedBoxWidthWidget(screenWidth / 20),
 
                   // Tab 2
-                  // Gesture Detector used to avoid the Ripple Effect caused in InkWell
                   Container(
                     padding: const EdgeInsets.all(10),
                     decoration: const BoxDecoration(),
                     child: Text(
-                      'Weekly',
+                      Strings.weeklyStatiscsLable,
+                      style: TextStyles.titleTextStyle.copyWith(
+                        fontSize: screenWidth / 20,
+                      ),
+                    ),
+                  ),
+
+                  // Horizontal Spacing
+                  SizedBoxWidthWidget(screenWidth / 20),
+
+                  // Tab 3
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: const BoxDecoration(),
+                    child: Text(
+                      Strings.dailyGrowthStatiscsLable,
                       style: TextStyles.titleTextStyle.copyWith(
                         fontSize: screenWidth / 20,
                       ),

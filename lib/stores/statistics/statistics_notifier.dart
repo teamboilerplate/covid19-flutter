@@ -15,10 +15,12 @@ enum StatisticsState { loading, hasData, hasError, hasNetworkError, unInit }
 /// 2. Country Statistics
 class StatisticseData {
   final StatisticsResponseModel statisticsInformationData;
-  final List<CountryStatistics> countryStatisticsList;
+  final List<CountryStatistics> countryStatisticsConfirmedList;
+  final List<CountryStatistics> countryStatisticsRecoveredList;
   StatisticseData({
     @required this.statisticsInformationData,
-    @required this.countryStatisticsList,
+    @required this.countryStatisticsConfirmedList,
+    @required this.countryStatisticsRecoveredList,
   });
 }
 
@@ -50,12 +52,16 @@ class StatisticsChangeNotifier with ChangeNotifier {
       final StatisticsResponseModel countryInformation =
           await userRepository.fetchHomeData(iso2: iso2);
 
-      final List<CountryStatistics> countryStatisticsList =
-          await userRepository.fetchCountryStatistics(iso2: iso2);
+      final List<CountryStatistics> countryStatisticsConfirmedList =
+          await userRepository.fetchCountryStatisticsConfirmed(iso2: iso2);
+
+      final List<CountryStatistics> countryStatisticsRecoveredList =
+          await userRepository.fetchCountryStatisticsRecovered(iso2: iso2);
 
       data = StatisticseData(
         statisticsInformationData: countryInformation,
-        countryStatisticsList: countryStatisticsList,
+        countryStatisticsConfirmedList: countryStatisticsConfirmedList,
+        countryStatisticsRecoveredList: countryStatisticsRecoveredList,
       );
 
       // Setting the state as `StatisticsState.hasData` indicating an API request has been completed

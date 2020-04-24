@@ -1,5 +1,3 @@
-import 'dart:convert';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -10,7 +8,6 @@ import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/text_styles.dart';
 import 'package:covid19/icons/covid19_icons.dart';
 import 'package:covid19/data/network/constants/endpoints.dart';
-import 'package:covid19/models/statistics/statistics_response_model.dart';
 import 'package:covid19/utils/custom_scroll_behaviour.dart';
 import 'package:covid19/utils/cache_manager.dart';
 import 'package:covid19/utils/device/device_utils.dart';
@@ -18,32 +15,7 @@ import 'package:covid19/widgets/custom_alert_dialog.dart';
 
 /// Displays the information in regards to prevention of Coronavirus
 /// and reference to where the data is taken from
-class PreventionScreen extends StatefulWidget {
-  @override
-  _PreventionScreenState createState() => _PreventionScreenState();
-}
-
-class _PreventionScreenState extends State<PreventionScreen> {
-  File preventionImage;
-  @override
-  void initState() {
-    super.initState();
-    getStatisticsFile();
-  }
-
-  Future getStatisticsFile() async {
-    final cachedImage =
-        await CacheManager().getSingleFile(Endpoints.fetchHomeData);
-
-    final contents = await cachedImage.readAsString();
-
-    final jsonResponse = jsonDecode(contents);
-
-    final countryInformation = StatisticsResponseModel.fromJson(jsonResponse);
-
-    debugPrint('${countryInformation.global.newConfirmed}');
-  }
-
+class PreventionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = DeviceUtils.getScaledWidth(context, 1);
@@ -96,12 +68,12 @@ class _PreventionScreenState extends State<PreventionScreen> {
                               fontSize: screenWidth / 25,
                             ),
                             children: <InlineSpan>[
-                              TextSpan(
+                              const TextSpan(
                                 text: Strings.informationSourceDescription,
                               ),
                               TextSpan(
                                 text: Strings.blog,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   decoration: TextDecoration.underline,
                                   color: AppColors.accentBlueColor,
                                 ),
@@ -109,25 +81,29 @@ class _PreventionScreenState extends State<PreventionScreen> {
                                 // throwing an error if the user doesn't have any browswer to open the link (Shouldn't ever happen)
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () async => await canLaunch(
-                                          Endpoints.dataSourceReferenceURL)
-                                      ? launch(Endpoints.dataSourceReferenceURL)
+                                          Endpoints
+                                              .preventionDataSourceReferenceURL)
+                                      ? launch(Endpoints
+                                          .preventionDataSourceReferenceURL)
                                       : throw 'Could not launch Refernce URL',
                               ),
-                              TextSpan(
+                              const TextSpan(
                                 text: Strings.writtenBy,
                               ),
                               // Launcing the URL of the Author's Website
                               // throwing an error if the user doesn't have any browswer to open the link (Shouldn't ever happen)
                               TextSpan(
-                                text: Strings.author,
-                                style: TextStyle(
+                                text: Strings.authorPrevetnionGraphic,
+                                style: const TextStyle(
                                   decoration: TextDecoration.underline,
                                   color: AppColors.accentBlueColor,
                                 ),
                                 recognizer: TapGestureRecognizer()
                                   ..onTap = () async => await canLaunch(
-                                          Endpoints.dataSourceAuthorURL)
-                                      ? launch(Endpoints.dataSourceAuthorURL)
+                                          Endpoints
+                                              .preventionDataSourceAuthorURL)
+                                      ? launch(Endpoints
+                                          .preventionDataSourceAuthorURL)
                                       : throw 'Could not launch Refernce URL',
                               ),
                             ],
@@ -194,13 +170,13 @@ class _PreventionScreenState extends State<PreventionScreen> {
         child: SingleChildScrollView(
           // Padding been added to keep the VISME logo visible at the bottom
           child: Container(
-            padding: EdgeInsets.only(
+            padding: const EdgeInsets.only(
               top: Dimens.verticalPadding / 0.2,
               bottom: Dimens.verticalPadding / 0.15,
             ),
             color: AppColors.preventionBackgroundColor,
             child: CachedNetworkImage(
-              imageUrl: Endpoints.baseUrlPreventionInfographic,
+              imageUrl: Endpoints.fetchPreventionGraphic,
               cacheManager: CacheManager(),
             ),
           ),
@@ -222,7 +198,7 @@ class _PreventionScreenState extends State<PreventionScreen> {
             size: screenWidth / 20,
             color: AppColors.whiteColor,
           ),
-          label: Text(
+          label: const Text(
             'Go Back',
             style: TextStyles.infoLabelTextStyle,
           ),
