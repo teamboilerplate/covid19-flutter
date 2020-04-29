@@ -6,7 +6,7 @@ class AppColors {
   // Application Colour scheme
   static const Color primaryColor = Color(0xFF222A45);
   static const Color secondaryColor = Color(0xFFF1F1F1);
-  static const Color accentColor = Color(0xFFDC1D7D);
+  static const Color accentColor = Color(0xFF007BEF);
   static const Color secondaryAccentColor = Color(0xFF8D5FC2);
 
   static const Color splashColor = Color(0xFF1C1D3C);

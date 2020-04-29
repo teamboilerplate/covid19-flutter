@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/gestures.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/dimens.dart';
 import 'package:covid19/constants/strings.dart';
 import 'package:covid19/constants/text_styles.dart';
 import 'package:covid19/data/network/constants/endpoints.dart';
+import 'package:covid19/icons/covid19_icons.dart';
 import 'package:covid19/res/asset_images.dart';
 import 'package:covid19/ui/home/home_navigator.dart';
 import 'package:covid19/ui/home/widgets/home_card_widget.dart';
 import 'package:covid19/utils/cache_manager.dart';
 import 'package:covid19/utils/custom_scroll_behaviour.dart';
 import 'package:covid19/utils/device/device_utils.dart';
+import 'package:covid19/widgets/custom_alert_dialog.dart';
 import 'package:covid19/widgets/sized_box_height_widget.dart';
 
 /// [HomeScreen] is the first Screen of the application which displays various
@@ -45,12 +49,113 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  // Page Title
-                  Text(
-                    Strings.appSlogan,
-                    style: TextStyles.statisticsHeadingTextStlye.copyWith(
-                      fontSize: screenWidth / 12,
-                    ),
+                  // Page Header Rowƒ
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // Page Title
+                      Text(
+                        Strings.appSlogan,
+                        style: TextStyles.statisticsHeadingTextStlye.copyWith(
+                          fontSize: screenWidth / 12,
+                        ),
+                      ),
+
+                      // Information Icon
+                      GestureDetector(
+                        onTap: () => showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return CustomAlertDialog(
+                              title: RichText(
+                                softWrap: true,
+                                text: TextSpan(children: <TextSpan>[
+                                  // Dialog Title - Data Source
+                                  TextSpan(
+                                    text:
+                                        '${Strings.projectOpenSourceHeading}\n\n',
+                                    style: TextStyles.hightlightText.copyWith(
+                                      fontSize: screenWidth / 20,
+                                    ),
+                                  ),
+
+                                  // Dialoog description referncing and linking the blog post
+                                  // and the Author
+                                  TextSpan(
+                                    style: TextStyles
+                                        .statisticsSubHeadingTextStlye
+                                        .copyWith(
+                                      fontSize: screenWidth / 25,
+                                    ),
+                                    children: <InlineSpan>[
+                                      const TextSpan(
+                                        text: Strings.projectOpenSourceDetails,
+                                      ),
+                                      TextSpan(
+                                        text: Strings.github,
+                                        style: const TextStyle(
+                                          decoration: TextDecoration.underline,
+                                          color: AppColors.accentBlueColor,
+                                        ),
+                                        // Launching the URL of the blog post
+                                        // throwing an error if the user doesn't have any browswer to open the link (Shouldn't ever happen)
+                                        recognizer: TapGestureRecognizer()
+                                          ..onTap = () async => await canLaunch(
+                                                  Endpoints
+                                                      .baseUrlGithubRepository)
+                                              ? launch(Endpoints
+                                                  .baseUrlGithubRepository)
+                                              : throw 'Could not launch Refernce URL',
+                                      ),
+                                    ],
+                                  ),
+                                ]),
+                              ),
+
+                              // Defining the Action item [Close] for the Dialog
+                              actions: <Widget>[
+                                GestureDetector(
+                                  onTap: () => Navigator.of(context).pop(),
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                      horizontal: screenWidth / 25,
+                                      vertical: screenHeight / 75,
+                                    ),
+                                    decoration: BoxDecoration(
+                                      boxShadow: const [
+                                        BoxShadow(
+                                          offset: Offset(-2, 4),
+                                          blurRadius: 2,
+                                          color: AppColors.boxShadowColor,
+                                        ),
+                                      ],
+                                      borderRadius: BorderRadius.all(
+                                        Radius.circular(screenWidth / 25),
+                                      ),
+                                      color: AppColors.accentBlueColor,
+                                    ),
+                                    child: Text(
+                                      'Close',
+                                      style: TextStyles
+                                          .statisticsHeadingTextStlye
+                                          .copyWith(
+                                        fontSize: screenWidth / 25,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                        child: Icon(
+                          Covid19Icons.error,
+                          size: screenWidth / 12,
+                          color: AppColors.blackColor,
+                        ),
+                      ),
+                    ],
                   ),
 
                   // Vertical Spacing

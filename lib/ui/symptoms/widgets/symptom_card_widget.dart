@@ -1,10 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:covid19/constants/colors.dart';
 import 'package:covid19/constants/text_styles.dart';
 import 'package:covid19/utils/cache_manager.dart';
 import 'package:covid19/utils/device/device_utils.dart';
 import 'package:covid19/widgets/sized_box_height_widget.dart';
-import 'package:flutter/material.dart';
 
 /// To Build the widget to display the card for each Symptom
 /// **Requires**
@@ -84,6 +84,17 @@ class SymptomCardWidget extends StatelessWidget {
             ),
             child: CachedNetworkImage(
               imageUrl: imageURL,
+              height: screenHeight / 8.5,
+              placeholder: (context, url) => Container(
+                width: screenHeight / 8.5,
+                height: screenHeight / 8.5,
+                decoration: BoxDecoration(
+                  color: AppColors.offBlackColor.withOpacity(0.5),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(50),
+                  ),
+                ),
+              ),
               cacheManager: CacheManager(),
             ),
           ),

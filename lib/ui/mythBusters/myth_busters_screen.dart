@@ -41,88 +41,109 @@ class MythBustersScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // Back Icon
-              GestureDetector(
-                onTap: () => Navigator.of(context).pop(),
-                child: Icon(
-                  Covid19Icons.keyboardArrowLeft,
-                  size: screenWidth / 12,
-                  color: AppColors.blackColor,
+              // Wrapping the header in an Expanded widget to keep it fixed while scrolling˝
+              Expanded(
+                flex: 2,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Back Icon
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: Icon(
+                        Covid19Icons.keyboardArrowLeft,
+                        size: screenWidth / 18,
+                        color: AppColors.blackColor,
+                      ),
+                    ),
+
+                    // Vertical Spacing
+                    SizedBoxHeightWidget(screenHeight / 50),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        // Page Title
+                        Text(
+                          Strings.mythBusterTitle,
+                          style: TextStyles.statisticsHeadingTextStlye.copyWith(
+                            fontSize: screenWidth / 15,
+                          ),
+                        ),
+
+                        // Horizontal Spacing
+                        SizedBoxWidthWidget(screenWidth / 25),
+
+                        // Myth Busters Icon
+                        Container(
+                          width: screenWidth / 8,
+                          height: screenWidth / 8,
+                          decoration: BoxDecoration(
+                            boxShadow: const [
+                              BoxShadow(
+                                offset: Offset(0, 0),
+                                blurRadius: 29,
+                                color: AppColors.boxShadowColor,
+                              ),
+                            ],
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(screenWidth / 10),
+                            ),
+                            color: AppColors.mythColor,
+                          ),
+                          child: Center(
+                            child: Image.asset(
+                              AssetImages.myth,
+                              height: screenWidth / 8,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+
+                    // Instruction text
+                    Text(
+                      'Click to know facts',
+                      style: TextStyles.faqBodyTextStyle.copyWith(
+                        fontSize: screenWidth / 30,
+                      ),
+                    ),
+
+                    // Vertical Spacing
+                    SizedBoxHeightWidget(screenHeight / 100),
+                  ],
                 ),
               ),
 
-              // Vertical Spacing
-              SizedBoxHeightWidget(screenHeight / 50),
-
-              Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  // Page Title
-                  Text(
-                    Strings.mythBusterTitle,
-                    style: TextStyles.statisticsHeadingTextStlye.copyWith(
-                      fontSize: screenWidth / 15,
-                    ),
-                  ),
-
-                  // Horizontal Spacing
-                  SizedBoxWidthWidget(screenWidth / 25),
-
-                  // Myth Busters Icon
-                  Container(
-                    width: screenWidth / 8,
-                    height: screenWidth / 8,
-                    decoration: BoxDecoration(
-                      boxShadow: const [
-                        BoxShadow(
-                          offset: Offset(0, 0),
-                          blurRadius: 29,
-                          color: AppColors.boxShadowColor,
-                        ),
-                      ],
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(screenWidth / 10),
-                      ),
-                      color: AppColors.mythColor,
-                    ),
-                    child: Center(
-                      child: Image.asset(
-                        AssetImages.myth,
-                        height: screenWidth / 8,
-                      ),
-                    ),
-                  )
-                ],
-              ),
-
-              // Vertical Spacing
-              SizedBoxHeightWidget(screenHeight / 50),
-
-              // Symptom Items
-              // Wrapping the contents in a [Flexible] to make sure that the remaining space
-              // in the screen is filled (Removing this causes the overflow error to occur as
-              // a column does not allow scrolling inherently)
-              Flexible(
+              // Myth Buster Items
+              // Wrapping the contents in a [Expanded] to make sure that the remaining space
+              // in the screen is filled
+              Expanded(
+                flex: 8,
                 // Defining a [SingleChildScrollView] to scroll only the Symptom Items and not the header
                 child: ScrollConfiguration(
                   behavior: const CustomScrollBehaviour(),
-                  child: SingleChildScrollView(
-                    child: Padding(
-                      padding: EdgeInsets.only(
-                        top: screenHeight / 50,
-                      ),
-                      child: Column(
-                        children: [
-                          // Adding all the symptoms from [mythBusterData] to the Column
-                          for (final item in mythBusterData)
-                            MythCardWidget(
-                              myth: item.myth,
-                              fact: item.fact,
-                            ),
-                        ],
-                      ),
-                    ),
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: mythBusterData.length,
+                    itemBuilder: (context, index) {
+                      // Adding Padding to the first item for the top shadow to be visible
+                      if (index == 0) {
+                        return Padding(
+                          padding: EdgeInsets.only(top: screenHeight / 200),
+                          child: MythCardWidget(
+                            myth: mythBusterData[index].myth,
+                            fact: mythBusterData[index].fact,
+                          ),
+                        );
+                      } else {
+                        return MythCardWidget(
+                          myth: mythBusterData[index].myth,
+                          fact: mythBusterData[index].fact,
+                        );
+                      }
+                    },
                   ),
                 ),
               ),

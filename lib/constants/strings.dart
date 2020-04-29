@@ -37,6 +37,13 @@ class Strings {
 
   static const covidInformationTitle = 'What is Covid-19';
 
+  static const projectOpenSourceHeading = 'Open Source';
+
+  static const projectOpenSourceDetails =
+      'The project is completely open source. You can find the source code on our ';
+
+  static const github = 'Github';
+
   /// ------------------------------------------------------
   /// Strings for Statistics and StatisticsLoadingWidget
   /// used in (ui/statistics) and (ui/statistics/widgets)

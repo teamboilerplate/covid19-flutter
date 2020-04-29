@@ -10,6 +10,10 @@ class Endpoints {
   // base url for Home Screen Graphic
   static const baseUrlGraphics = 'http://boilerplate.in/covid19';
 
+  // TeamBoilerplate Github
+  static const baseUrlGithubRepository =
+      'https://github.com/teamboilerplate/covid19-flutter';
+
   static const preventionDataSourceReferenceURL =
       'https://visme.co/blog/coronavirus-prevention';
 
