@@ -54,13 +54,13 @@ class InformationScreen extends StatelessWidget {
                         text: TextSpan(children: <TextSpan>[
                           // Dialog Title - Data Source
                           TextSpan(
-                            text: '${Strings.dataSource}\n\n\n',
+                            text: '${Strings.dataSource}\n\n',
                             style: TextStyles.hightlightText.copyWith(
                               fontSize: screenWidth / 20,
                             ),
                           ),
 
-                          // Dialoog description referncing and linking the blog post
+                          // Dialog description referncing and linking the blog post
                           // and the Author
                           TextSpan(
                             style: TextStyles.statisticsSubHeadingTextStlye
@@ -89,7 +89,7 @@ class InformationScreen extends StatelessWidget {
                               const TextSpan(
                                 text: Strings.writtenBy,
                               ),
-                              // Launcing the URL of the Author's Website
+                              // Launching the URL of the Author's Website
                               // throwing an error if the user doesn't have any browswer to open the link (Shouldn't ever happen)
                               TextSpan(
                                 text: Strings.authorInformationGraphic,

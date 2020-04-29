@@ -42,50 +42,57 @@ class SymptomsScreen extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              // Back Icon
-              GestureDetector(
-                onTap: () => Navigator.of(context).pop(),
-                child: Icon(
-                  Covid19Icons.keyboardArrowLeft,
-                  size: screenWidth / 12,
-                  color: AppColors.blackColor,
+              // Wrapping the header in an Expanded widget to keep it fixed while scrolling
+              Expanded(
+                flex: 1,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    // Back Icon
+                    GestureDetector(
+                      onTap: () => Navigator.of(context).pop(),
+                      child: Icon(
+                        Covid19Icons.keyboardArrowLeft,
+                        size: screenWidth / 18,
+                        color: AppColors.blackColor,
+                      ),
+                    ),
+
+                    // Vertical Spacing
+                    SizedBoxHeightWidget(screenHeight / 50),
+
+                    // Page Title
+                    Text(
+                      Strings.symptomsTitle,
+                      style: TextStyles.statisticsHeadingTextStlye.copyWith(
+                        fontSize: screenWidth / 15,
+                      ),
+                    ),
+
+                    // Vertical Spacing
+                    SizedBoxHeightWidget(screenHeight / 25),
+                  ],
                 ),
               ),
-
-              // Vertical Spacing
-              SizedBoxHeightWidget(screenHeight / 50),
-
-              // Page Title
-              Text(
-                Strings.symptomsTitle,
-                style: TextStyles.statisticsHeadingTextStlye.copyWith(
-                  fontSize: screenWidth / 15,
-                ),
-              ),
-
-              // Vertical Spacing
-              SizedBoxHeightWidget(screenHeight / 25),
 
               // Symptom Items
               // Wrapping the contents in a [Flexible] to make sure that the remaining space
-              // in the screen is filled (Removing this causes the overflow error to occur as
-              // a column does not allow scrolling inherently)
-              Flexible(
-                // Defining a [SingleChildScrollView] to scroll only the Symptom Items and not the header
+              // in the screen is filled
+              Expanded(
+                flex: 5,
                 child: ScrollConfiguration(
                   behavior: const CustomScrollBehaviour(),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: [
-                        // Adding all the symptoms from [symptomsData] to the Column
-                        for (final item in symptomsData)
-                          SymptomCardWidget(
-                            title: item.title,
-                            description: item.description,
-                            imageURL: item.imageURL,
-                          )
-                      ],
-                    ),
+                  // Use a ListView.builder for performace enahncements
+                  child: ListView.builder(
+                    shrinkWrap: true,
+                    itemCount: symptomsData.length,
+                    itemBuilder: (context, index) {
+                      return SymptomCardWidget(
+                        title: symptomsData[index].title,
+                        description: symptomsData[index].description,
+                        imageURL: symptomsData[index].imageURL,
+                      );
+                    },
                   ),
                 ),
               ),
