@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:convert';
+import 'package:covid19/ui/statistics/global_countries_details_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -15,7 +16,7 @@ import 'package:covid19/stores/statistics/statistics_notifier.dart';
 import 'package:covid19/ui/static/static_error_screen.dart';
 import 'package:covid19/ui/statistics//widgets/statistics_loading_widget.dart';
 import 'package:covid19/ui/statistics/widgets/info_graph_widgert.dart';
-import 'package:covid19/ui/statistics/widgets/info_widget.dart';
+import 'package:covid19/ui/statistics/widgets/info_card_widget.dart';
 import 'package:covid19/utils/bloc/application_bloc.dart';
 import 'package:covid19/utils/bloc/application_state.dart';
 import 'package:covid19/utils/custom_scroll_behaviour.dart';
@@ -223,7 +224,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               onTap: () => Navigator.of(context).pop(),
                               child: Icon(
                                 Covid19Icons.keyboardArrowLeft,
-                                size: screenWidth / 12,
+                                size: screenHeight / 45,
                                 color: AppColors.blackColor,
                               ),
                             ),
@@ -236,7 +237,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               Strings.outbreakTitle,
                               style: TextStyles.statisticsHeadingTextStlye
                                   .copyWith(
-                                fontSize: screenWidth / 23,
+                                fontSize: screenHeight / 45,
                               ),
                             ),
 
@@ -245,7 +246,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               todayDateFormatter(today),
                               style: TextStyles.statisticsSubHeadingTextStlye
                                   .copyWith(
-                                fontSize: screenWidth / 26,
+                                fontSize: screenHeight / 60,
                               ),
                             ),
 
@@ -264,13 +265,13 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                     Strings.globalTitle,
                                     softWrap: true,
                                     style: TextStyles.hightlightText.copyWith(
-                                      fontSize: screenWidth / 10,
+                                      fontSize: screenHeight / 30,
                                     ),
                                   ),
                                 ),
                                 Icon(
                                   Covid19Icons.globe,
-                                  size: screenWidth / 12,
+                                  size: screenHeight / 35,
                                   color: AppColors.blackColor,
                                 ),
                               ],
@@ -281,7 +282,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
 
                             // Last Updated On Information
                             Wrap(
-                              crossAxisAlignment: WrapCrossAlignment.start,
+                              crossAxisAlignment: WrapCrossAlignment.center,
                               direction: Axis.horizontal,
                               // Last Updated Date & Time
                               children: <Widget>[
@@ -294,7 +295,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   style: TextStyles
                                       .statisticsSubHeadingTextStlye
                                       .copyWith(
-                                    fontSize: screenWidth / 30,
+                                    fontSize: screenHeight / 70,
                                   ),
                                 ),
                                 GestureDetector(
@@ -303,7 +304,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   ),
                                   child: Icon(
                                     Covid19Icons.autorenew,
-                                    size: screenWidth / 28,
+                                    size: screenHeight / 65,
                                     color: AppColors.offBlackColor,
                                   ),
                                 ),
@@ -317,17 +318,31 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: <Widget>[
-                                Padding(
-                                  padding: const EdgeInsets.only(
-                                    right: Dimens.horizontalPadding / 0.75,
+                                GestureDetector(
+                                  onTap: () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          GlobalCountriesDetails(
+                                        globalCountriesList: data
+                                            .statisticsInformationData
+                                            .countries,
+                                      ),
+                                    ),
                                   ),
-                                  child: Text(
-                                    Strings.details,
-                                    maxLines: 2,
-                                    softWrap: true,
-                                    style: TextStyles.statisticsAccentTextStyle
-                                        .copyWith(
-                                      fontSize: screenWidth / 22,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(
+                                      right: Dimens.horizontalPadding / 0.75,
+                                    ),
+                                    child: Text(
+                                      Strings.details,
+                                      maxLines: 2,
+                                      softWrap: true,
+                                      style: TextStyles
+                                          .statisticsAccentTextStyle
+                                          .copyWith(
+                                        fontSize: screenHeight / 50,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -345,9 +360,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
+                                  // Global Confirmed Cases
                                   Expanded(
                                     flex: 1,
-                                    child: InfoCard(
+                                    child: InfoCardWidget(
                                       infoColor: AppColors.confirmedColor,
                                       infoIcon: Covid19Icons.add,
                                       infoValueNew: data
@@ -359,9 +375,14 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                       infoLabel: Strings.infectedLabel,
                                     ),
                                   ),
+
+                                  // Horizontal Spacing
+                                  SizedBoxWidthWidget(screenWidth / 75),
+
+                                  // Global Recovered Cases
                                   Expanded(
                                     flex: 1,
-                                    child: InfoCard(
+                                    child: InfoCardWidget(
                                       infoColor: AppColors.recoveredColor,
                                       infoIcon: Covid19Icons.favorite,
                                       infoValueNew: data
@@ -373,9 +394,41 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                       infoLabel: Strings.recoveredLabel,
                                     ),
                                   ),
+
+                                  // Horizontal Spacing˝
+                                  SizedBoxWidthWidget(screenWidth / 75),
+
+                                  // Global Active Cases
                                   Expanded(
                                     flex: 1,
-                                    child: InfoCard(
+                                    child: InfoCardWidget(
+                                      infoColor: AppColors.activeColor,
+                                      infoIcon: Icons.text_format,
+                                      infoValueNew: data
+                                              .statisticsInformationData
+                                              .global
+                                              .newConfirmed -
+                                          (data.statisticsInformationData.global
+                                                  .newRecovered +
+                                              data.statisticsInformationData
+                                                  .global.newDeaths),
+                                      infoValue: data.statisticsInformationData
+                                              .global.totalConfirmed -
+                                          (data.statisticsInformationData.global
+                                                  .totalRecovered +
+                                              data.statisticsInformationData
+                                                  .global.totalDeaths),
+                                      infoLabel: Strings.activeLabel,
+                                    ),
+                                  ),
+
+                                  // Horizontal Spacing
+                                  SizedBoxWidthWidget(screenWidth / 75),
+
+                                  // Global Deaths
+                                  Expanded(
+                                    flex: 1,
+                                    child: InfoCardWidget(
                                       infoColor: AppColors.deadColor,
                                       infoIcon: Covid19Icons.close,
                                       infoValueNew: data
@@ -427,7 +480,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                         softWrap: true,
                                         style:
                                             TextStyles.hightlightText.copyWith(
-                                          fontSize: screenWidth / 10,
+                                          fontSize: screenHeight / 30,
                                         ),
                                       ),
                                     ),
@@ -441,8 +494,8 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                                   'flag_${selectedCountryISO2.toLowerCase()}')
                                               .char
                                           : '',
-                                      style: const TextStyle(
-                                        fontSize: 30,
+                                      style: TextStyle(
+                                        fontSize: screenHeight / 35,
                                       ),
                                     ),
                                   ),
@@ -450,7 +503,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                     flex: 1,
                                     child: Icon(
                                       Covid19Icons.arrowDropDown,
-                                      size: screenWidth / 12,
+                                      size: screenHeight / 30,
                                       color: AppColors.offBlackColor,
                                     ),
                                   ),
@@ -475,7 +528,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                     softWrap: true,
                                     style: TextStyles.statisticsAccentTextStyle
                                         .copyWith(
-                                      fontSize: screenWidth / 22,
+                                      fontSize: screenHeight / 50,
                                     ),
                                   ),
                                 ),
@@ -493,9 +546,10 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: <Widget>[
+                                  // Country Speicific Confirmed Cases
                                   Expanded(
                                     flex: 1,
-                                    child: InfoCard(
+                                    child: InfoCardWidget(
                                       infoColor: AppColors.confirmedColor,
                                       infoIcon: Covid19Icons.add,
                                       infoValueNew: data
@@ -509,9 +563,14 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                       infoLabel: Strings.infectedLabel,
                                     ),
                                   ),
+
+                                  // Horizontal Spacing
+                                  SizedBoxWidthWidget(screenWidth / 75),
+
+                                  // Country Speicific Recovered Cases
                                   Expanded(
                                     flex: 1,
-                                    child: InfoCard(
+                                    child: InfoCardWidget(
                                       infoColor: AppColors.recoveredColor,
                                       infoIcon: Covid19Icons.favorite,
                                       infoValueNew: data
@@ -525,9 +584,55 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                       infoLabel: Strings.recoveredLabel,
                                     ),
                                   ),
+
+                                  // Horizontal Spacing
+                                  SizedBoxWidthWidget(screenWidth / 75),
+
+                                  // Country Speicific Active Cases
                                   Expanded(
                                     flex: 1,
-                                    child: InfoCard(
+                                    child: InfoCardWidget(
+                                      infoColor: AppColors.activeColor,
+                                      infoIcon: Icons.text_format,
+                                      infoValueNew: data
+                                              .statisticsInformationData
+                                              .countries[currentCountryIndex]
+                                              .newConfirmed -
+                                          (data
+                                                  .statisticsInformationData
+                                                  .countries[
+                                                      currentCountryIndex]
+                                                  .newRecovered +
+                                              data
+                                                  .statisticsInformationData
+                                                  .countries[
+                                                      currentCountryIndex]
+                                                  .newDeaths),
+                                      infoValue: data
+                                              .statisticsInformationData
+                                              .countries[currentCountryIndex]
+                                              .totalConfirmed -
+                                          (data
+                                                  .statisticsInformationData
+                                                  .countries[
+                                                      currentCountryIndex]
+                                                  .totalRecovered +
+                                              data
+                                                  .statisticsInformationData
+                                                  .countries[
+                                                      currentCountryIndex]
+                                                  .totalDeaths),
+                                      infoLabel: Strings.activeLabel,
+                                    ),
+                                  ),
+
+                                  // Horizontal Spacing
+                                  SizedBoxWidthWidget(screenWidth / 75),
+
+                                  // Country Speicific Deaths
+                                  Expanded(
+                                    flex: 1,
+                                    child: InfoCardWidget(
                                       infoColor: AppColors.deadColor,
                                       infoIcon: Covid19Icons.close,
                                       infoValueNew: data
@@ -558,7 +663,7 @@ class _StatisticsScreenState extends State<StatisticsScreen> {
                                   softWrap: true,
                                   style: TextStyles.statisticsHeadingTextStlye
                                       .copyWith(
-                                    fontSize: screenWidth / 18,
+                                    fontSize: screenHeight / 35,
                                   ),
                                 ),
                               ],

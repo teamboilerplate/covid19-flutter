@@ -56,7 +56,7 @@ class InformationScreen extends StatelessWidget {
                           TextSpan(
                             text: '${Strings.dataSource}\n\n',
                             style: TextStyles.hightlightText.copyWith(
-                              fontSize: screenWidth / 20,
+                              fontSize: screenHeight / 50,
                             ),
                           ),
 
@@ -65,7 +65,7 @@ class InformationScreen extends StatelessWidget {
                           TextSpan(
                             style: TextStyles.statisticsSubHeadingTextStlye
                                 .copyWith(
-                              fontSize: screenWidth / 25,
+                              fontSize: screenHeight / 60,
                             ),
                             children: <InlineSpan>[
                               const TextSpan(
@@ -127,7 +127,7 @@ class InformationScreen extends StatelessWidget {
                                 ),
                               ],
                               borderRadius: BorderRadius.all(
-                                Radius.circular(screenWidth / 25),
+                                Radius.circular(screenHeight / 75),
                               ),
                               color: AppColors.accentBlueColor,
                             ),
@@ -135,7 +135,7 @@ class InformationScreen extends StatelessWidget {
                               'Close',
                               style: TextStyles.statisticsHeadingTextStlye
                                   .copyWith(
-                                fontSize: screenWidth / 25,
+                                fontSize: screenHeight / 65,
                               ),
                             ),
                           ),
@@ -154,7 +154,7 @@ class InformationScreen extends StatelessWidget {
                   ),
                   child: Icon(
                     Covid19Icons.error,
-                    size: screenWidth / 12,
+                    size: screenHeight / 25,
                     color: AppColors.blackColor,
                   ),
                 ),
@@ -192,7 +192,7 @@ class InformationScreen extends StatelessWidget {
           materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
           icon: Icon(
             Covid19Icons.keyboardArrowLeft,
-            size: screenWidth / 20,
+            size: screenHeight / 45,
             color: AppColors.whiteColor,
           ),
           label: const Text(

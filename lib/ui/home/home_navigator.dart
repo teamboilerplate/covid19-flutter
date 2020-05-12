@@ -12,7 +12,7 @@ import 'package:covid19/ui/information/information_screen.dart';
 /// States for [HomeRoutes]
 enum HomeRoutes {
   home,
-  latestNumbers,
+  statistics,
   prevention,
   symptomChecker,
   symptoms,
@@ -28,8 +28,8 @@ extension HomeRouteDefinitions on HomeRoutes {
     switch (this) {
       case HomeRoutes.home:
         return '/';
-      case HomeRoutes.latestNumbers:
-        return '/latest-numbers';
+      case HomeRoutes.statistics:
+        return '/statistics';
       case HomeRoutes.prevention:
         return '/prevention';
       case HomeRoutes.symptomChecker:
@@ -52,8 +52,8 @@ extension HomeRouteDefinitions on HomeRoutes {
     switch (str) {
       case '/':
         return HomeRoutes.home;
-      case '/latest-numbers':
-        return HomeRoutes.latestNumbers;
+      case '/statistics':
+        return HomeRoutes.statistics;
       case '/prevention':
         return HomeRoutes.prevention;
       case '/symptom-checker':
@@ -84,7 +84,7 @@ class HomeRouter {
     switch (HomeRouteDefinitions.fromString(settings.name)) {
       case HomeRoutes.home:
         return CustomPageRoute(HomeScreen());
-      case HomeRoutes.latestNumbers:
+      case HomeRoutes.statistics:
         return MaterialPageRoute(builder: (_) => StatisticsScreen());
       case HomeRoutes.prevention:
         return MaterialPageRoute(builder: (_) => PreventionScreen());

@@ -59,17 +59,17 @@ class SymptomCardWidget extends StatelessWidget {
                 Text(
                   title,
                   style: TextStyles.statisticsHeadingTextStlye.copyWith(
-                    fontSize: screenWidth / 20,
+                    fontSize: screenHeight / 45,
                   ),
                 ),
 
                 // Vertical Spacing
-                SizedBoxHeightWidget(screenHeight / 75),
+                SizedBoxHeightWidget(screenHeight / 125),
 
                 Text(
                   description,
                   style: TextStyles.statisticsSubHeadingTextStlye.copyWith(
-                    fontSize: screenWidth / 25,
+                    fontSize: screenHeight / 55,
                   ),
                 ),
               ],
@@ -84,10 +84,10 @@ class SymptomCardWidget extends StatelessWidget {
             ),
             child: CachedNetworkImage(
               imageUrl: imageURL,
-              height: screenHeight / 8.5,
+              height: screenHeight / 10,
               placeholder: (context, url) => Container(
-                width: screenHeight / 8.5,
-                height: screenHeight / 8.5,
+                width: screenHeight / 10,
+                height: screenHeight / 10,
                 decoration: BoxDecoration(
                   color: AppColors.offBlackColor.withOpacity(0.5),
                   borderRadius: const BorderRadius.all(

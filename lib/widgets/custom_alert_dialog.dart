@@ -349,7 +349,7 @@ class CustomAlertDialog extends StatelessWidget {
         child: DefaultTextStyle(
           style: titleTextStyle ??
               dialogTheme.titleTextStyle ??
-              theme.textTheme.title,
+              theme.textTheme.headline1,
           child: Semantics(
             namesRoute: true,
             container: true,
@@ -360,10 +360,13 @@ class CustomAlertDialog extends StatelessWidget {
     } else {
       switch (defaultTargetPlatform) {
         case TargetPlatform.iOS:
+        case TargetPlatform.macOS:
           label = semanticLabel;
           break;
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
+        case TargetPlatform.windows:
+        case TargetPlatform.linux:
           label = semanticLabel ??
               MaterialLocalizations.of(context)?.alertDialogLabel;
       }
@@ -377,7 +380,7 @@ class CustomAlertDialog extends StatelessWidget {
           child: DefaultTextStyle(
             style: contentTextStyle ??
                 dialogTheme.contentTextStyle ??
-                theme.textTheme.subhead,
+                theme.textTheme.subtitle1,
             child: content,
           ),
         ),

@@ -49,7 +49,7 @@ class HomeLoadingWidget extends StatelessWidget {
               // Back Icon
               Icon(
                 Covid19Icons.keyboardArrowLeft,
-                size: screenWidth / 12,
+                size: screenHeight / 45,
                 color: AppColors.blackColor,
               ),
 
@@ -59,7 +59,7 @@ class HomeLoadingWidget extends StatelessWidget {
               Text(
                 Strings.outbreakTitle,
                 style: TextStyles.statisticsHeadingTextStlye.copyWith(
-                  fontSize: screenWidth / 23,
+                  fontSize: screenHeight / 45,
                 ),
               ),
 
@@ -67,7 +67,7 @@ class HomeLoadingWidget extends StatelessWidget {
               Text(
                 todayDateFormatter(today),
                 style: TextStyles.statisticsSubHeadingTextStlye.copyWith(
-                  fontSize: screenWidth / 26.1,
+                  fontSize: screenHeight / 60,
                 ),
               ),
 
@@ -86,13 +86,13 @@ class HomeLoadingWidget extends StatelessWidget {
                       Strings.globalTitle,
                       softWrap: true,
                       style: TextStyles.hightlightText.copyWith(
-                        fontSize: screenWidth / 10,
+                        fontSize: screenHeight / 30,
                       ),
                     ),
                   ),
                   Icon(
                     Covid19Icons.globe,
-                    size: screenWidth / 12,
+                    size: screenHeight / 35,
                     color: AppColors.blackColor,
                   ),
                 ],
@@ -105,7 +105,7 @@ class HomeLoadingWidget extends StatelessWidget {
               Shimmer(
                 rrect: true,
                 radius: 5,
-                rrectSize: Size(screenWidth / 1.2, screenHeight / 47),
+                rrectSize: Size(screenWidth / 1.2, screenHeight / 65),
                 gradient: Shimmer.defaultGradient,
               ),
 
@@ -125,7 +125,7 @@ class HomeLoadingWidget extends StatelessWidget {
                       maxLines: 2,
                       softWrap: true,
                       style: TextStyles.statisticsAccentTextStyle.copyWith(
-                        fontSize: screenWidth / 22,
+                        fontSize: screenHeight / 50,
                       ),
                     ),
                   ),
@@ -157,7 +157,7 @@ class HomeLoadingWidget extends StatelessWidget {
                         child: Shimmer(
                           rrect: true,
                           radius: 5,
-                          rrectSize: Size(0, screenHeight / 6.1),
+                          rrectSize: Size(0, screenHeight / 6),
                           gradient: Shimmer.defaultGradient,
                         ),
                       ),
@@ -176,7 +176,7 @@ class HomeLoadingWidget extends StatelessWidget {
                         child: Shimmer(
                           rrect: true,
                           radius: 5,
-                          rrectSize: Size(0, screenHeight / 6.1),
+                          rrectSize: Size(0, screenHeight / 6),
                           gradient: Shimmer.defaultGradient,
                         ),
                       ),
@@ -195,7 +195,7 @@ class HomeLoadingWidget extends StatelessWidget {
                         child: Shimmer(
                           rrect: true,
                           radius: 5,
-                          rrectSize: Size(0, screenHeight / 6.1),
+                          rrectSize: Size(0, screenHeight / 6),
                           gradient: Shimmer.defaultGradient,
                         ),
                       ),
@@ -235,7 +235,7 @@ class HomeLoadingWidget extends StatelessWidget {
                         selectedCountry,
                         softWrap: true,
                         style: TextStyles.hightlightText.copyWith(
-                          fontSize: screenWidth / 10,
+                          fontSize: screenHeight / 30,
                         ),
                       ),
                     ),
@@ -246,8 +246,8 @@ class HomeLoadingWidget extends StatelessWidget {
                       Emoji.byISOCode(
                               'flag_${selectedCountryISO2.toLowerCase()}')
                           .char,
-                      style: const TextStyle(
-                        fontSize: 30,
+                      style: TextStyle(
+                        fontSize: screenHeight / 35,
                       ),
                     ),
                   ),
@@ -255,7 +255,7 @@ class HomeLoadingWidget extends StatelessWidget {
                     flex: 1,
                     child: Icon(
                       Covid19Icons.arrowDropDown,
-                      size: screenWidth / 12,
+                      size: screenHeight / 30,
                       color: AppColors.offBlackColor,
                     ),
                   ),
@@ -278,7 +278,7 @@ class HomeLoadingWidget extends StatelessWidget {
                       maxLines: 2,
                       softWrap: true,
                       style: TextStyles.statisticsAccentTextStyle.copyWith(
-                        fontSize: screenWidth / 22,
+                        fontSize: screenHeight / 50,
                       ),
                     ),
                   ),
@@ -310,7 +310,7 @@ class HomeLoadingWidget extends StatelessWidget {
                         child: Shimmer(
                           rrect: true,
                           radius: 5,
-                          rrectSize: Size(0, screenHeight / 6.1),
+                          rrectSize: Size(0, screenHeight / 6),
                           gradient: Shimmer.defaultGradient,
                         ),
                       ),
@@ -329,7 +329,7 @@ class HomeLoadingWidget extends StatelessWidget {
                         child: Shimmer(
                           rrect: true,
                           radius: 5,
-                          rrectSize: Size(0, screenHeight / 6.1),
+                          rrectSize: Size(0, screenHeight / 6),
                           gradient: Shimmer.defaultGradient,
                         ),
                       ),
@@ -348,7 +348,7 @@ class HomeLoadingWidget extends StatelessWidget {
                         child: Shimmer(
                           rrect: true,
                           radius: 5,
-                          rrectSize: Size(0, screenHeight / 6.1),
+                          rrectSize: Size(0, screenHeight / 6),
                           gradient: Shimmer.defaultGradient,
                         ),
                       ),
@@ -369,7 +369,7 @@ class HomeLoadingWidget extends StatelessWidget {
                     maxLines: 2,
                     softWrap: true,
                     style: TextStyles.statisticsHeadingTextStlye.copyWith(
-                      fontSize: screenWidth / 18,
+                      fontSize: screenHeight / 35,
                     ),
                   ),
                 ],
@@ -396,13 +396,13 @@ class HomeLoadingWidget extends StatelessWidget {
                     child: Text(
                       Strings.dailyStatiscsLable,
                       style: TextStyles.hightlightText.copyWith(
-                        fontSize: screenWidth / 20,
+                        fontSize: screenHeight / 45,
                       ),
                     ),
                   ),
 
                   // Horizontal Spacing
-                  SizedBoxWidthWidget(screenWidth / 20),
+                  SizedBoxWidthWidget(screenWidth / 45),
 
                   // Tab 2
                   Container(
@@ -411,13 +411,13 @@ class HomeLoadingWidget extends StatelessWidget {
                     child: Text(
                       Strings.weeklyStatiscsLable,
                       style: TextStyles.titleTextStyle.copyWith(
-                        fontSize: screenWidth / 20,
+                        fontSize: screenHeight / 45,
                       ),
                     ),
                   ),
 
                   // Horizontal Spacing
-                  SizedBoxWidthWidget(screenWidth / 20),
+                  SizedBoxWidthWidget(screenWidth / 45),
 
                   // Tab 3
                   Container(
@@ -426,7 +426,7 @@ class HomeLoadingWidget extends StatelessWidget {
                     child: Text(
                       Strings.dailyGrowthStatiscsLable,
                       style: TextStyles.titleTextStyle.copyWith(
-                        fontSize: screenWidth / 20,
+                        fontSize: screenHeight / 45,
                       ),
                     ),
                   ),

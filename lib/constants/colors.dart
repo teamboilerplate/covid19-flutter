@@ -33,6 +33,8 @@ class AppColors {
 
   static const Color recoveredColor = Color(0xFF4CAF50);
 
+  static const Color activeColor = Color(0xFF456DF0);
+
   static const Color deadColor = Color(0xFFF44336);
 
   static const Color mythColor = Color(0xFFD95F6C);
