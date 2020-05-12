@@ -14,7 +14,6 @@ import 'package:covid19/widgets/sized_box_height_widget.dart';
 class SymptomsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final screenWidth = DeviceUtils.getScaledWidth(context, 1);
     final screenHeight = DeviceUtils.getScaledHeight(context, 1);
     return Scaffold(
       // [AppBar] with 0 size used to set the statusbar background color and
@@ -53,7 +52,7 @@ class SymptomsScreen extends StatelessWidget {
                       onTap: () => Navigator.of(context).pop(),
                       child: Icon(
                         Covid19Icons.keyboardArrowLeft,
-                        size: screenWidth / 18,
+                        size: screenHeight / 45,
                         color: AppColors.blackColor,
                       ),
                     ),
@@ -65,7 +64,7 @@ class SymptomsScreen extends StatelessWidget {
                     Text(
                       Strings.symptomsTitle,
                       style: TextStyles.statisticsHeadingTextStlye.copyWith(
-                        fontSize: screenWidth / 15,
+                        fontSize: screenHeight / 35,
                       ),
                     ),
 
@@ -79,7 +78,7 @@ class SymptomsScreen extends StatelessWidget {
               // Wrapping the contents in a [Flexible] to make sure that the remaining space
               // in the screen is filled
               Expanded(
-                flex: 5,
+                flex: 6,
                 child: ScrollConfiguration(
                   behavior: const CustomScrollBehaviour(),
                   // Use a ListView.builder for performace enahncements

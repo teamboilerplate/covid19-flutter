@@ -63,7 +63,6 @@ flutter:
 
   assets:
     - assets/images/
-    - assets/animations/
 
   fonts:
     # Default font to be used all over the application

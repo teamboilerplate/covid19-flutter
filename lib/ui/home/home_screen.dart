@@ -58,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                       Text(
                         Strings.appSlogan,
                         style: TextStyles.statisticsHeadingTextStlye.copyWith(
-                          fontSize: screenWidth / 12,
+                          fontSize: screenHeight / 30,
                         ),
                       ),
 
@@ -76,7 +76,7 @@ class HomeScreen extends StatelessWidget {
                                     text:
                                         '${Strings.projectOpenSourceHeading}\n\n',
                                     style: TextStyles.hightlightText.copyWith(
-                                      fontSize: screenWidth / 20,
+                                      fontSize: screenHeight / 50,
                                     ),
                                   ),
 
@@ -86,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                                     style: TextStyles
                                         .statisticsSubHeadingTextStlye
                                         .copyWith(
-                                      fontSize: screenWidth / 25,
+                                      fontSize: screenHeight / 60,
                                     ),
                                     children: <InlineSpan>[
                                       const TextSpan(
@@ -131,7 +131,7 @@ class HomeScreen extends StatelessWidget {
                                         ),
                                       ],
                                       borderRadius: BorderRadius.all(
-                                        Radius.circular(screenWidth / 25),
+                                        Radius.circular(screenHeight / 75),
                                       ),
                                       color: AppColors.accentBlueColor,
                                     ),
@@ -140,7 +140,7 @@ class HomeScreen extends StatelessWidget {
                                       style: TextStyles
                                           .statisticsHeadingTextStlye
                                           .copyWith(
-                                        fontSize: screenWidth / 25,
+                                        fontSize: screenHeight / 65,
                                       ),
                                     ),
                                   ),
@@ -151,7 +151,7 @@ class HomeScreen extends StatelessWidget {
                         ),
                         child: Icon(
                           Covid19Icons.error,
-                          size: screenWidth / 12,
+                          size: screenHeight / 25,
                           color: AppColors.blackColor,
                         ),
                       ),
@@ -171,11 +171,6 @@ class HomeScreen extends StatelessWidget {
                           cacheManager: CacheManager(),
                         ),
                       ),
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(
-                          screenHeight * 0.075,
-                        ),
-                      ),
                       color: Colors.transparent,
                     ),
                   ),
@@ -193,7 +188,7 @@ class HomeScreen extends StatelessWidget {
                           title: Strings.statisticsTitle,
                           imagePath: AssetImages.statistics,
                           backgroundImage: true,
-                          route: HomeRoutes.latestNumbers.name,
+                          route: HomeRoutes.statistics.name,
                         ),
                       ),
 
@@ -222,7 +217,7 @@ class HomeScreen extends StatelessWidget {
                   ),
 
                   // Vertical Spacing
-                  SizedBoxHeightWidget(screenHeight / 30),
+                  SizedBoxHeightWidget(screenHeight / 250),
 
                   Row(
                     children: <Widget>[

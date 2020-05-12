@@ -52,7 +52,7 @@ class MythBustersScreen extends StatelessWidget {
                       onTap: () => Navigator.of(context).pop(),
                       child: Icon(
                         Covid19Icons.keyboardArrowLeft,
-                        size: screenWidth / 18,
+                        size: screenHeight / 45,
                         color: AppColors.blackColor,
                       ),
                     ),
@@ -68,7 +68,7 @@ class MythBustersScreen extends StatelessWidget {
                         Text(
                           Strings.mythBusterTitle,
                           style: TextStyles.statisticsHeadingTextStlye.copyWith(
-                            fontSize: screenWidth / 15,
+                            fontSize: screenHeight / 35,
                           ),
                         ),
 
@@ -77,25 +77,23 @@ class MythBustersScreen extends StatelessWidget {
 
                         // Myth Busters Icon
                         Container(
-                          width: screenWidth / 8,
-                          height: screenWidth / 8,
-                          decoration: BoxDecoration(
-                            boxShadow: const [
+                          width: screenHeight / 20,
+                          height: screenHeight / 20,
+                          decoration: const BoxDecoration(
+                            boxShadow: [
                               BoxShadow(
                                 offset: Offset(0, 0),
                                 blurRadius: 29,
                                 color: AppColors.boxShadowColor,
                               ),
                             ],
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(screenWidth / 10),
-                            ),
+                            shape: BoxShape.circle,
                             color: AppColors.mythColor,
                           ),
                           child: Center(
                             child: Image.asset(
                               AssetImages.myth,
-                              height: screenWidth / 8,
+                              height: screenHeight / 35,
                             ),
                           ),
                         )
@@ -106,7 +104,7 @@ class MythBustersScreen extends StatelessWidget {
                     Text(
                       'Click to know facts',
                       style: TextStyles.faqBodyTextStyle.copyWith(
-                        fontSize: screenWidth / 30,
+                        fontSize: screenHeight / 55,
                       ),
                     ),
 
@@ -120,7 +118,7 @@ class MythBustersScreen extends StatelessWidget {
               // Wrapping the contents in a [Expanded] to make sure that the remaining space
               // in the screen is filled
               Expanded(
-                flex: 8,
+                flex: 9,
                 // Defining a [SingleChildScrollView] to scroll only the Symptom Items and not the header
                 child: ScrollConfiguration(
                   behavior: const CustomScrollBehaviour(),

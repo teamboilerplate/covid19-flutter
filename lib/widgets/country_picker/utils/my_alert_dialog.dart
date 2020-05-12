@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
+import 'package:covid19/utils/device/device_utils.dart';
 
 class MyAlertDialog<T> extends StatelessWidget {
   /// Creates an alert dialog.
@@ -105,7 +106,7 @@ class MyAlertDialog<T> extends StatelessWidget {
         padding: titlePadding ??
             EdgeInsets.fromLTRB(24.0, 5.0, 24.0, isDividerEnabled ? 20.0 : 0.0),
         child: DefaultTextStyle(
-          style: Theme.of(context).textTheme.title,
+          style: Theme.of(context).textTheme.headline1,
           child: Semantics(
             namesRoute: true,
             child: title,
@@ -118,10 +119,13 @@ class MyAlertDialog<T> extends StatelessWidget {
     else {
       switch (defaultTargetPlatform) {
         case TargetPlatform.iOS:
+        case TargetPlatform.macOS:
           label = semanticLabel;
           break;
         case TargetPlatform.android:
         case TargetPlatform.fuchsia:
+        case TargetPlatform.windows:
+        case TargetPlatform.linux:
           label = semanticLabel ??
               MaterialLocalizations.of(context)?.alertDialogLabel;
       }
@@ -133,7 +137,7 @@ class MyAlertDialog<T> extends StatelessWidget {
         child: Padding(
           padding: contentPadding,
           child: DefaultTextStyle(
-            style: Theme.of(context).textTheme.subhead,
+            style: Theme.of(context).textTheme.subtitle1,
             child: content,
           ),
         ),
@@ -162,6 +166,7 @@ class MyAlertDialog<T> extends StatelessWidget {
       ),
       elevation: 5,
       child: Container(
+        width: DeviceUtils.getScaledHeight(context, 0.5),
         child: dialogChild,
       ),
     );

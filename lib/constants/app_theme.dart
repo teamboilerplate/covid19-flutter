@@ -12,6 +12,6 @@ final ThemeData themeData = ThemeData(
   backgroundColor: AppColors.whiteColor,
   accentColorBrightness: Brightness.light,
   textTheme: const TextTheme(
-    title: TextStyles.titleTextStyle,
+    headline1: TextStyles.titleTextStyle,
   ),
 );

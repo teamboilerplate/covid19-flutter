@@ -48,25 +48,23 @@ class MythCardWidget extends StatelessWidget {
                       children: <Widget>[
                         // Fact Icon
                         Container(
-                          width: screenWidth / 8,
-                          height: screenWidth / 8,
-                          decoration: BoxDecoration(
-                            boxShadow: const [
+                          width: screenHeight / 20,
+                          height: screenHeight / 20,
+                          decoration: const BoxDecoration(
+                            boxShadow: [
                               BoxShadow(
                                 offset: Offset(0, 0),
                                 blurRadius: 29,
                                 color: AppColors.boxShadowColor,
                               ),
                             ],
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(screenWidth / 10),
-                            ),
+                            shape: BoxShape.circle,
                             color: AppColors.factColor,
                           ),
                           child: Center(
                             child: Image.asset(
                               AssetImages.fact,
-                              height: screenWidth / 8,
+                              height: screenHeight / 35,
                             ),
                           ),
                         ),
@@ -99,7 +97,7 @@ class MythCardWidget extends StatelessWidget {
         ),
 
         // Vertical Spacing
-        SizedBoxHeightWidget(screenHeight / 75),
+        SizedBoxHeightWidget(screenHeight / 150),
       ],
     );
   }

@@ -46,7 +46,7 @@ class _FAQScreenState extends State<FAQScreen> {
               title: Text(
                 item.title,
                 style: TextStyles.faqHeadingTextStyle.copyWith(
-                  fontSize: screenWidth / 25,
+                  fontSize: screenHeight / 50,
                 ),
               ),
             );
@@ -59,7 +59,7 @@ class _FAQScreenState extends State<FAQScreen> {
               child: Text(
                 item.description,
                 style: TextStyles.faqBodyTextStyle.copyWith(
-                  fontSize: screenWidth / 25,
+                  fontSize: screenHeight / 55,
                 ),
               ),
             ),
@@ -102,7 +102,7 @@ class _FAQScreenState extends State<FAQScreen> {
                 onTap: () => Navigator.of(context).pop(),
                 child: Icon(
                   Covid19Icons.keyboardArrowLeft,
-                  size: screenWidth / 12,
+                  size: screenHeight / 45,
                   color: AppColors.blackColor,
                 ),
               ),
@@ -114,7 +114,7 @@ class _FAQScreenState extends State<FAQScreen> {
               Text(
                 Strings.faqTitle,
                 style: TextStyles.statisticsHeadingTextStlye.copyWith(
-                  fontSize: screenWidth / 15,
+                  fontSize: screenHeight / 35,
                 ),
               ),
               // Symptom Items

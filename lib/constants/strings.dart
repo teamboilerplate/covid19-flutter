@@ -58,6 +58,8 @@ class Strings {
 
   static const recoveredLabel = 'recovered';
 
+  static const activeLabel = 'Active';
+
   static const deathsLabel = 'deaths';
 
   static const confirmedCasesTitle = 'Confirmed Cases';

@@ -103,98 +103,113 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
     // 2. Area (Line) Chart for weekly data
     // 3. Dual Bar Chart for daily growth data
     final List<Widget> _pages = <Widget>[
-      Padding(
-        padding: const EdgeInsets.fromLTRB(
-          Dimens.horizontalPadding,
-          Dimens.verticalPadding / 0.75,
-          Dimens.horizontalPadding,
-          Dimens.verticalPadding / 50,
-        ),
+      Container(
         // Checking if the list has any elemnts i.e the API provided
         // data for the queried country
         child: (widget.countryStatisticsConfirmedList.isNotEmpty)
-            ? BarChart(
-                dailyBarChartData(
-                  countryStatisticsConfirmedList:
-                      widget.countryStatisticsConfirmedList.sublist(
-                    (widget.countryStatisticsConfirmedList.length) - 7,
-                    (widget.countryStatisticsConfirmedList.length) - 0,
-                  ),
-                  screenWidth: screenWidth,
-                  screenHeight: screenHeight,
+            ? Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  Dimens.horizontalPadding,
+                  Dimens.verticalPadding / 0.75,
+                  Dimens.horizontalPadding,
+                  Dimens.verticalPadding / 50,
                 ),
-              )
-            : Text(
-                Strings.emptyData,
-                style: TextStyles.errorHeadingTextStlye.copyWith(
-                  fontSize: screenWidth / 25,
-                ),
-              ),
-      ),
-      Padding(
-        padding: const EdgeInsets.only(
-          left: Dimens.horizontalPadding,
-          top: Dimens.verticalPadding / 0.45,
-          right: Dimens.horizontalPadding,
-        ),
-        // Checking if the list has any elemnts i.e the API provided
-        // data for the queried country
-        child: (widget.countryStatisticsConfirmedList.isNotEmpty)
-            ? LineChart(
-                // Using the latest 15 days days for the Weekly Information
-                weeklyAreaGraphData(
-                  countryStatisticsConfirmedList:
-                      widget.countryStatisticsConfirmedList.sublist(
-                    (widget.countryStatisticsConfirmedList.length) - 15,
-                    (widget.countryStatisticsConfirmedList.length) - 0,
+                child: BarChart(
+                  dailyBarChartData(
+                    countryStatisticsConfirmedList:
+                        widget.countryStatisticsConfirmedList.sublist(
+                      (widget.countryStatisticsConfirmedList.length) - 7,
+                      (widget.countryStatisticsConfirmedList.length) - 0,
+                    ),
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight,
                   ),
-                  screenWidth: screenWidth,
-                  screenHeight: screenHeight,
                 ),
               )
             : Padding(
                 padding: const EdgeInsets.only(
                   top: Dimens.verticalPadding / 0.75,
-                  right: Dimens.verticalPadding / 50,
                 ),
                 child: Text(
                   Strings.emptyData,
                   style: TextStyles.errorHeadingTextStlye.copyWith(
-                    fontSize: screenWidth / 25,
+                    fontSize: screenHeight / 50,
                   ),
                 ),
               ),
       ),
-      Padding(
-        padding: const EdgeInsets.fromLTRB(
-          Dimens.horizontalPadding,
-          Dimens.verticalPadding / 0.75,
-          Dimens.horizontalPadding,
-          Dimens.verticalPadding / 50,
-        ),
+      Container(
         // Checking if the list has any elemnts i.e the API provided
         // data for the queried country
         child: (widget.countryStatisticsConfirmedList.isNotEmpty)
-            ? BarChart(
-                dailyChangeBarChartData(
-                  countryStatisticsConfirmedList:
-                      widget.countryStatisticsConfirmedList.sublist(
-                    (widget.countryStatisticsConfirmedList.length) - 8,
-                    (widget.countryStatisticsConfirmedList.length) - 0,
+            ? Padding(
+                padding: const EdgeInsets.only(
+                  left: Dimens.horizontalPadding,
+                  top: Dimens.verticalPadding / 0.45,
+                  right: Dimens.horizontalPadding,
+                ),
+                child: LineChart(
+                  // Using the latest 15 days days for the Weekly Information
+                  weeklyAreaGraphData(
+                    countryStatisticsConfirmedList:
+                        widget.countryStatisticsConfirmedList.sublist(
+                      (widget.countryStatisticsConfirmedList.length) - 15,
+                      (widget.countryStatisticsConfirmedList.length) - 0,
+                    ),
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight,
                   ),
-                  countryStatisticsRecoveredList:
-                      widget.countryStatisticsRecoveredList.sublist(
-                    (widget.countryStatisticsRecoveredList.length) - 8,
-                    (widget.countryStatisticsRecoveredList.length) - 0,
-                  ),
-                  screenWidth: screenWidth,
-                  screenHeight: screenHeight,
                 ),
               )
-            : Text(
-                Strings.emptyData,
-                style: TextStyles.errorHeadingTextStlye.copyWith(
-                  fontSize: screenWidth / 25,
+            : Padding(
+                padding: const EdgeInsets.only(
+                  top: Dimens.verticalPadding / 0.75,
+                ),
+                child: Text(
+                  Strings.emptyData,
+                  style: TextStyles.errorHeadingTextStlye.copyWith(
+                    fontSize: screenHeight / 50,
+                  ),
+                ),
+              ),
+      ),
+      Container(
+        // Checking if the list has any elemnts i.e the API provided
+        // data for the queried country
+        child: (widget.countryStatisticsConfirmedList.isNotEmpty)
+            ? Padding(
+                padding: const EdgeInsets.fromLTRB(
+                  Dimens.horizontalPadding,
+                  Dimens.verticalPadding / 0.75,
+                  Dimens.horizontalPadding,
+                  Dimens.verticalPadding / 50,
+                ),
+                child: BarChart(
+                  dailyChangeBarChartData(
+                    countryStatisticsConfirmedList:
+                        widget.countryStatisticsConfirmedList.sublist(
+                      (widget.countryStatisticsConfirmedList.length) - 8,
+                      (widget.countryStatisticsConfirmedList.length) - 0,
+                    ),
+                    countryStatisticsRecoveredList:
+                        widget.countryStatisticsRecoveredList.sublist(
+                      (widget.countryStatisticsRecoveredList.length) - 8,
+                      (widget.countryStatisticsRecoveredList.length) - 0,
+                    ),
+                    screenWidth: screenWidth,
+                    screenHeight: screenHeight,
+                  ),
+                ),
+              )
+            : Padding(
+                padding: const EdgeInsets.only(
+                  top: Dimens.verticalPadding / 0.75,
+                ),
+                child: Text(
+                  Strings.emptyData,
+                  style: TextStyles.errorHeadingTextStlye.copyWith(
+                    fontSize: screenHeight / 50,
+                  ),
                 ),
               ),
       ),
@@ -248,17 +263,17 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
                     Strings.dailyStatiscsLable,
                     style: dailySelected
                         ? TextStyles.hightlightText.copyWith(
-                            fontSize: screenWidth / 20,
+                            fontSize: screenHeight / 45,
                           )
                         : TextStyles.titleTextStyle.copyWith(
-                            fontSize: screenWidth / 20,
+                            fontSize: screenHeight / 45,
                           ),
                   ),
                 ),
               ),
 
               // Horizontal Spacing
-              SizedBoxWidthWidget(screenWidth / 20),
+              SizedBoxWidthWidget(screenWidth / 45),
 
               // Tab 2
               // Gesture Detector used to avoid the Ripple Effect caused in InkWell
@@ -287,17 +302,17 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
                     Strings.weeklyStatiscsLable,
                     style: weeklyselected
                         ? TextStyles.hightlightText.copyWith(
-                            fontSize: screenWidth / 20,
+                            fontSize: screenHeight / 45,
                           )
                         : TextStyles.titleTextStyle.copyWith(
-                            fontSize: screenWidth / 20,
+                            fontSize: screenHeight / 45,
                           ),
                   ),
                 ),
               ),
 
               // Horizontal Spacing
-              SizedBoxWidthWidget(screenWidth / 20),
+              SizedBoxWidthWidget(screenWidth / 45),
 
               // Tab 3
               // Gesture Detector used to avoid the Ripple Effect caused in InkWell
@@ -326,10 +341,10 @@ class _InfoGraphWidgetState extends State<InfoGraphWidget> {
                     Strings.dailyGrowthStatiscsLable,
                     style: dailyChangeSelected
                         ? TextStyles.hightlightText.copyWith(
-                            fontSize: screenWidth / 20,
+                            fontSize: screenHeight / 45,
                           )
                         : TextStyles.titleTextStyle.copyWith(
-                            fontSize: screenWidth / 20,
+                            fontSize: screenHeight / 45,
                           ),
                   ),
                 ),
@@ -392,7 +407,7 @@ BarChartData dailyBarChartData({
           .toDouble() +
       countryStatisticsConfirmedList[countryStatisticsConfirmedListLength - 2]
               .cases /
-          7.5;
+          10;
 
   // Looping through the list to add each individual item with the normalized values
   // to the [BarChartGroupData] which is used to plot the points on the graph
@@ -497,7 +512,7 @@ BarChartData dailyBarChartData({
           return BarTooltipItem(
             '$weekDay \n ${countryStatisticsConfirmedList[group.x].cases}',
             TextStyles.statisticsToopTipTextStyle.copyWith(
-              fontSize: screenWidth / 30,
+              fontSize: screenHeight / 65,
             ),
           );
         },
@@ -511,7 +526,7 @@ BarChartData dailyBarChartData({
       leftTitles: SideTitles(
         showTitles: true,
         textStyle: TextStyles.statisticsLabelTextStyle.copyWith(
-          fontSize: screenWidth / 33,
+          fontSize: screenHeight / 75,
         ),
         margin: screenWidth / 35,
         reservedSize: screenWidth / 15,
@@ -532,7 +547,7 @@ BarChartData dailyBarChartData({
       bottomTitles: SideTitles(
         showTitles: true,
         textStyle: TextStyles.statisticsLabelTextStyle.copyWith(
-          fontSize: screenWidth / 30,
+          fontSize: screenHeight / 75,
         ),
         reservedSize: screenWidth / 20,
         margin: screenHeight / 175,
@@ -663,7 +678,7 @@ LineChartData weeklyAreaGraphData({
       leftTitles: SideTitles(
         showTitles: true,
         textStyle: TextStyles.statisticsLabelTextStyle.copyWith(
-          fontSize: screenWidth / 33,
+          fontSize: screenHeight / 75,
         ),
         margin: screenWidth / 35,
         reservedSize: screenWidth / 15,
@@ -691,7 +706,7 @@ LineChartData weeklyAreaGraphData({
         reservedSize: screenWidth / 20,
         margin: screenHeight / 175,
         textStyle: TextStyles.statisticsLabelTextStyle.copyWith(
-          fontSize: screenWidth / 30,
+          fontSize: screenHeight / 75,
         ),
 
         // Setting the date values using the [dailyMonthData] method across the graph
@@ -758,7 +773,7 @@ LineChartData weeklyAreaGraphData({
             return LineTooltipItem(
               '${dailyMonthData(date: countryStatisticsConfirmedList[flSpot.x.toInt()].date)}\n${countryStatisticsConfirmedList[flSpot.x.toInt()].cases}\nConfirmed',
               TextStyles.statisticsToopTipTextStyle.copyWith(
-                fontSize: screenWidth / 30,
+                fontSize: screenHeight / 65,
               ),
             );
           }).toList();
@@ -965,7 +980,7 @@ BarChartData dailyChangeBarChartData({
             return BarTooltipItem(
               '$weekDay \n ${confirmedList[group.x]} \n Confirmed',
               TextStyles.statisticsToopTipTextStyle.copyWith(
-                fontSize: screenWidth / 30,
+                fontSize: screenHeight / 65,
               ),
             );
           }
@@ -975,7 +990,7 @@ BarChartData dailyChangeBarChartData({
             return BarTooltipItem(
               '$weekDay \n ${recoveredList[group.x]} \n Recovered',
               TextStyles.statisticsToopTipTextStyle.copyWith(
-                fontSize: screenWidth / 30,
+                fontSize: screenHeight / 65,
               ),
             );
           }
@@ -990,7 +1005,7 @@ BarChartData dailyChangeBarChartData({
       leftTitles: SideTitles(
         showTitles: true,
         textStyle: TextStyles.statisticsLabelTextStyle.copyWith(
-          fontSize: screenWidth / 33,
+          fontSize: screenHeight / 75,
         ),
         margin: screenWidth / 22,
         reservedSize: screenWidth / 15,
@@ -1009,7 +1024,7 @@ BarChartData dailyChangeBarChartData({
       bottomTitles: SideTitles(
         showTitles: true,
         textStyle: TextStyles.statisticsLabelTextStyle.copyWith(
-          fontSize: screenWidth / 30,
+          fontSize: screenHeight / 75,
         ),
         reservedSize: screenWidth / 20,
         margin: screenHeight / 175,
